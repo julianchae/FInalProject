@@ -1,5 +1,7 @@
 package com.skilldistillery.foodtruck.services;
 
-public interface UserService {
+import com.skilldistillery.foodtruck.entities.User;
 
+public interface UserService {
+	User getUserById(int userId);
 }
