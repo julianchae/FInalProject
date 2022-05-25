@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 //mysql> desc comment;
 //+---------------+--------------+------+-----+---------+----------------+
@@ -34,8 +36,15 @@ public class Comment {
 	
 	@Column(name = "comment_date")
 	private LocalDateTime commentDate;
-
-	//TODO:Needs mapping for User and FoodTruck
+	
+	@OneToMany
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@OneToMany
+	@JoinColumn(name="food_truck_id")
+	private FoodTruck foodTruck;
+	
 	
 	public Comment() {
 		super();
@@ -71,6 +80,22 @@ public class Comment {
 
 	public void setCommentDate(LocalDateTime commentDate) {
 		this.commentDate = commentDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public FoodTruck getFoodTruck() {
+		return foodTruck;
+	}
+
+	public void setFoodTruck(FoodTruck foodTruck) {
+		this.foodTruck = foodTruck;
 	}
 
 	@Override

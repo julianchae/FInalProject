@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 //mysql> desc schedule;
 //+---------------+----------+------+-----+---------+----------------+
@@ -33,7 +35,11 @@ public class Schedule {
 	
 	private String description;
 	
-	//TODO:Needs mapping for FoodTruck and Location 
+	//TODO:Needs mapping for Location 
+	
+	@ManyToOne
+	@JoinColumn(name="food_truck_id")
+	private FoodTruck foodTruck;
 
 	public Schedule() {
 		super();
@@ -69,6 +75,14 @@ public class Schedule {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public FoodTruck getFoodTruck() {
+		return foodTruck;
+	}
+
+	public void setFoodTruck(FoodTruck foodTruck) {
+		this.foodTruck = foodTruck;
 	}
 
 	@Override

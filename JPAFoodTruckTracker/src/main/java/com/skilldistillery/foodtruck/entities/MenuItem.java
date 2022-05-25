@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class MenuItem {
@@ -29,7 +31,11 @@ public class MenuItem {
 		super();
 		
 	}
-	//TODO: Add mappings for order and food truck
+	//TODO: Add mappings for order
+	
+	@ManyToOne
+	@JoinColumn(name="food_truck_id")
+	private FoodTruck foodTruck;
 
 	public int getId() {
 		return id;
@@ -77,6 +83,14 @@ public class MenuItem {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public FoodTruck getFoodTruck() {
+		return foodTruck;
+	}
+
+	public void setFoodTruck(FoodTruck foodTruck) {
+		this.foodTruck = foodTruck;
 	}
 
 	@Override
