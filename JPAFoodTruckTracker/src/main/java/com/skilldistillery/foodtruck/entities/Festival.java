@@ -2,12 +2,17 @@ package com.skilldistillery.foodtruck.entities;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Festival {
@@ -32,8 +37,20 @@ public class Festival {
 	private LocalDate createdDate;
 	
 	
+	@ManyToMany
+	@JoinTable(name="festival_has_food_truck",
+	joinColumns = @JoinColumn(name="festival_id"),
+	inverseJoinColumns = @JoinColumn(name="food_truck_id"))
+	private List<FoodTruck> foodTrucks;
 	
-	//TODO: needs mapping for user and location and foodtruck
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
+	
 	
 	public Festival() {
 		super();
@@ -93,6 +110,30 @@ public class Festival {
 
 	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public List<FoodTruck> getFoodTrucks() {
+		return foodTrucks;
+	}
+
+	public void setFoodTrucks(List<FoodTruck> foodTrucks) {
+		this.foodTrucks = foodTrucks;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override

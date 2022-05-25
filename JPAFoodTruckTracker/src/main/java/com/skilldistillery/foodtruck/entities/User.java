@@ -1,5 +1,6 @@
 package com.skilldistillery.foodtruck.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 //mysql> desc user;
 //+-------------+---------------+------+-----+---------+----------------+
@@ -46,7 +48,17 @@ public class User {
 	@Column(name = "img_url")
 	private String imgUrl;
 
-	//TODO: Needs mapping for Location and Favorites and Request and TaggedTruck and Comment and Order
+	//TODO: Needs mapping for Location and Favorites and Request and TaggedTruck and Order
+	
+	
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
+	
+	@OneToMany(mappedBy="user")
+	private List<Festival> festivals;
+	
+	@OneToMany(mappedBy="user")
+	private List<FoodTruck> foodTrucks;
 	
 	public User() {
 		super();
@@ -114,6 +126,30 @@ public class User {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Festival> getFestivals() {
+		return festivals;
+	}
+
+	public void setFestivals(List<Festival> festivals) {
+		this.festivals = festivals;
+	}
+
+	public List<FoodTruck> getFoodTrucks() {
+		return foodTrucks;
+	}
+
+	public void setFoodTrucks(List<FoodTruck> foodTrucks) {
+		this.foodTrucks = foodTrucks;
 	}
 
 	@Override

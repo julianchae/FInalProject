@@ -1,5 +1,6 @@
 package com.skilldistillery.foodtruck.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 //mysql> desc food_category;
@@ -32,7 +36,14 @@ public class FoodCategory {
 	@Column(name ="img_url")
 	private String imgUrl;
 
-	//TODO:Needs mapping for FoodTruck
+	
+	@ManyToMany
+	@JoinTable(name="food_truck_has_food_category",
+	joinColumns = @JoinColumn(name="food_category_id"),
+	inverseJoinColumns = @JoinColumn(name="food_truck_id"))
+	private List<FoodTruck> foodTrucks;
+	
+	//TODO: Maybe map to user
 	
 	public FoodCategory() {
 		super();
@@ -68,6 +79,14 @@ public class FoodCategory {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public List<FoodTruck> getFoodTrucks() {
+		return foodTrucks;
+	}
+
+	public void setFoodTrucks(List<FoodTruck> foodTrucks) {
+		this.foodTrucks = foodTrucks;
 	}
 
 	@Override

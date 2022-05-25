@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TaggedTruck {
@@ -22,7 +24,12 @@ public class TaggedTruck {
 	@Column(name="date_tagged")
 	private LocalDate dateTagged;
 	
-	//TODO: add mappings for food truck, location, user
+	//TODO: add mappings for  location, user
+	
+	@ManyToOne
+	@JoinColumn(name="food_truck_id")
+	private FoodTruck foodTruck;
+	
 	public TaggedTruck() {
 		super();
 	}
@@ -57,6 +64,14 @@ public class TaggedTruck {
 
 	public void setDateTagged(LocalDate dateTagged) {
 		this.dateTagged = dateTagged;
+	}
+
+	public FoodTruck getFoodTruck() {
+		return foodTruck;
+	}
+
+	public void setFoodTruck(FoodTruck foodTruck) {
+		this.foodTruck = foodTruck;
 	}
 
 	@Override

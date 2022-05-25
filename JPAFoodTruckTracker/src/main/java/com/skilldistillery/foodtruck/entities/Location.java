@@ -1,11 +1,13 @@
 package com.skilldistillery.foodtruck.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 //mysql> desc location;
 //+--------+-------------+------+-----+---------+----------------+
@@ -29,6 +31,9 @@ public class Location {
 	private String city;
 	private String state;
 	private String zip;
+	
+	@OneToMany(mappedBy="location")
+	private List<Festival> festival;
 	
 	public Location() {
 		super();
@@ -62,6 +67,12 @@ public class Location {
 	}
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	public List<Festival> getFestival() {
+		return festival;
+	}
+	public void setFestival(List<Festival> festival) {
+		this.festival = festival;
 	}
 	@Override
 	public String toString() {

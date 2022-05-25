@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 public class Request {
 	
@@ -26,7 +28,11 @@ public class Request {
 	public Request() {
 		super();
 	}
-	//TODO: Mapping for user, food truck, location
+	//TODO: Mapping for user, location
+	
+	@ManyToOne
+	@JoinColumn(name="food_truck_id")
+	private FoodTruck foodTruck;
 
 	public int getId() {
 		return id;
@@ -66,6 +72,14 @@ public class Request {
 
 	public void setAccepted(boolean accepted) {
 		this.accepted = accepted;
+	}
+
+	public FoodTruck getFoodTruck() {
+		return foodTruck;
+	}
+
+	public void setFoodTruck(FoodTruck foodTruck) {
+		this.foodTruck = foodTruck;
 	}
 
 	@Override
