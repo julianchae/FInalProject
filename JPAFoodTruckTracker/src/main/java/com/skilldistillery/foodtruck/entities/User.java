@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 //+-----------------+---------------+------+-----+---------+----------------+
@@ -47,7 +51,7 @@ public class User {
 	@Column(name = "profile_img_url")
 	private String imgUrl;
 
-	//TODO: Needs mapping for Location and Favorites and Request and TaggedTruck and Order
+	//TODO: Needs mapping for Favorites and TaggedTruck
 	
 	
 	@OneToMany(mappedBy="user")
@@ -58,6 +62,25 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<FoodTruck> foodTrucks;
+	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
+	
+	@OneToMany(mappedBy="user")
+	private List<Order> orders;
+	
+	@OneToMany(mappedBy="user")
+	private List<Request> requests;
+	
+	@OneToMany(mappedBy="user")
+	private List<TaggedTruck> taggedTrucks;
+	
+	@ManyToMany
+	@JoinTable(name="favorites",
+	joinColumns = @JoinColumn(name="user_id"),
+	inverseJoinColumns = @JoinColumn(name="food_truck_id"))
+	private List<FoodTruck> favFoodTrucks;
 	
 	public User() {
 		super();
@@ -149,6 +172,50 @@ public class User {
 
 	public void setFoodTrucks(List<FoodTruck> foodTrucks) {
 		this.foodTrucks = foodTrucks;
+	}
+
+
+
+
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public List<Request> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(List<Request> requests) {
+		this.requests = requests;
+	}
+
+	public List<TaggedTruck> getTaggedTrucks() {
+		return taggedTrucks;
+	}
+
+	public void setTaggedTrucks(List<TaggedTruck> taggedTrucks) {
+		this.taggedTrucks = taggedTrucks;
+	}
+
+	public List<FoodTruck> getFavFoodTrucks() {
+		return favFoodTrucks;
+	}
+
+	public void setFavFoodTrucks(List<FoodTruck> favFoodTrucks) {
+		this.favFoodTrucks = favFoodTrucks;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override

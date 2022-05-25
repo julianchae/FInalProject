@@ -26,12 +26,28 @@ public class TaggedTruck {
 	@Column(name="date_tagged")
 	private LocalDate dateTagged;
 	
-	//TODO: add mappings for  location, user
+	//TODO: add mappings for user
 	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
 	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
 	public TaggedTruck() {
 		super();
 	}
@@ -74,6 +90,14 @@ public class TaggedTruck {
 
 	public void setFoodTruck(FoodTruck foodTruck) {
 		this.foodTruck = foodTruck;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
