@@ -59,9 +59,10 @@ class ScheduleTest {
 //		|  5 | 2022-05-01 13:35:00 | 2022-05-05 20:35:00 | Five                       |             5 |           5 |
 //		+----+---------------------+---------------------+----------------------------+---------------+-------------+
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		assertNotNull(schedule);
-		assertEquals(LocalDateTime.parse("2022-05-01T13:35:00"), schedule.getArrival());
+		assertEquals("2022-05-01T13:35:00", schedule.getArrival());
+		//assertEquals(LocalDateTime.parse("2022-05-01T13:35:00"), schedule.getArrival());
 	}
 
 }
