@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `food_category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(55) NULL,
   `description` TEXT NULL,
-  `img_url` VARCHAR(45) NULL,
+  `img_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -429,9 +429,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 1, 'Dave', 'Ramsey', 'google.com');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (2, 'foodtruckuser', 'foodtruck', 1, 'ROLE_ADMIN', 2, 'Food', 'Truck', 'foodtrucksanonymous.com');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (3, 'RandomFoodTrucker', 'password', 1, 'GENERAL', 3, 'Bob', 'Jeselnik', 'hmdc.com');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 1, 'Jurisa', 'Yockenfelder', 'https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (2, 'foodtruckuser', 'foodtruck', 1, 'ROLE_ADMIN', 2, 'Food', 'Truck', 'https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/26e603a3960425a6aa28ef1bfb22ae64/large.jpg');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (3, 'RandomFoodTrucker', 'password', 1, 'GENERAL', 3, 'Bob', 'Jeselnik', 'https://media-exp1.licdn.com/dms/image/C4D03AQFsU2PWoZ2uuQ/profile-displayphoto-shrink_800_800/0/1649875181704?e=1658966400&v=beta&t=paSWVje0pYBaPnipLLHtwpiuvsPrnPAyaacyAU7_IWk');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (4, 'SDsBestInstructor', 'password', 1, 'GENERAL', 4, 'Jer', 'Bear', 'https://i.guim.co.uk/img/media/86c3481516dce247943ac2978b4f48d16a3ac265/0_170_5120_3074/master/5120.jpg?width=620&quality=85&auto=format&fit=max&s=d73e0c12a90e9da24736865e9274ef17');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (5, 'ArchersFriend', 'password', 1, 'GENERAL', 5, 'Slater', 'Burgers', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.gannett-cdn.com%2Fpresto%2F2020%2F06%2F12%2FPPHX%2Fe7207da9-6fbe-467b-b63e-ac44e95db582-BobsBurgers_2019_KeyPoses_Bob_1.jpg%3Fcrop%3D3356%2C1888%2Cx0%2Cy480%26width%3D3200%26height%3D1801%26format%3Dpjpg%26auto%3Dwebp&imgrefurl=https%3A%2F%2Fwww.azcentral.com%2Fstory%2Fentertainment%2Fmovies%2Fbillgoodykoontz%2F2020%2F06%2F19%2Ffathers-day-bob-belcher-bobs-burgers-best-dad-tv%2F5347097002%2F&tbnid=XyIDyGLtYhddEM&vet=12ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ..i&docid=qC9uM9xa2MXDgM&w=3200&h=1801&q=bob%27s%20burger&ved=2ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ');
 
@@ -443,11 +443,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (1, 'Tacos R Us', 'Fresh traditional tacos', 'google.com', 1, 1, '2021-05-01 13:35:00', 'google.com');
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (2, 'MIchael Scott Tapas Company', 'Tapas. What else do you need to know?', 'two.com', 2, 1, '2020-02-01 13:35:00', 'googletwo.com');
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (3, 'Pizza Pizza ', 'We serve wood fired oven pizza', 'three.com', 3, 1, '2020-03-01 13:35:00', 'googlethree.com');
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (4, 'Licky Chicky', 'We specialize in chicken strips with a variety of sauces.', 'four.com', 4, 1, '2020-04-01 13:35:00', 'googlefour.com');
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (5, 'Bobs Burgers', 'Homestyle burgers. ', 'five.com', 5, 1, '2020-05-01 13:35:00', 'googlefive.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (1, 'Tacos R Us', 'Fresh traditional tacos', 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?', 1, 1, '2021-05-01 13:35:00', 'tacosrus.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (2, 'MIchael Scott Tapas Company', 'Tapas. What else do you need to know?', 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?', 2, 1, '2020-02-01 13:35:00', 'michaelscotttapascompany.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (3, 'Pizza Pizza ', 'We serve wood fired oven pizza', 'https://images.unsplash.com/photo-1513104890138-7c749659a591?', 3, 1, '2020-03-01 13:35:00', 'pizzapizza.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (4, 'Licky Chicky', 'We specialize in chicken strips with a variety of sauces.', 'https://images.unsplash.com/photo-1587606381492-7586d66a04a5?', 4, 1, '2020-04-01 13:35:00', 'LickyChicky.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (5, 'Bobs Burgers', 'Homestyle burgers. ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7sfEVEo_RVnqQu1K9KWquwcsDGfvdHzJhSA&usqp=CAU', 5, 1, '2020-05-01 13:35:00', 'BobbyBurgers.com');
 
 COMMIT;
 
@@ -457,11 +457,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Mexican', 'authenticate tacos', 'google.com');
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Spanish style tapas', 'steak tapas', '2.com');
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Pizza', 'pizza', '3.com');
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (4, 'Fried chicken', 'chicken strips', '4.com');
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (5, 'American ', 'burgers, fries', '5.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Mexican', 'Tacos, burritos, tostadas.', 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Spanish', 'Tapas, paella.', 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Italian', 'Pizza and pasta. ', 'https://images.unsplash.com/photo-1552580715-4d9bc27f1e2f?');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (4, 'Fried chicken', 'Chicken strips, chicken sandwiches.', 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (5, 'American ', 'Burgers, hotdogs, fries.', 'https://images.unsplash.com/photo-1601313816462-fe3cbebf6753?');
 
 COMMIT;
 
@@ -471,11 +471,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (1, 'Taco Burger', 'Tacos on a burger. ', 5.99, 'google.com', 1, 1);
-INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (2, 'Steak Tapas', 'tapas tapas', 7.99, 'two.com', 2, 2);
-INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (3, 'Pepperoni Pizza', 'pizza pizza', 11.99, 'three.com', 3, 3);
-INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (4, 'Chicken Strips', 'strips strips', 8.50, 'four.com', 4, 4);
-INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (5, 'Cheeseburger', 'Cheese on a burger', 5.50, 'five.com', 5, 5);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (1, 'Taco Burger', 'Tacos on a burger. ', 5.99, 'https://i0.wp.com/www.alidaskitchen.com/wp-content/uploads/2015/06/IMG_2974-pm600tc.jpg?ssl=1', 1, 1);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (2, 'Steak Tapas', 'tapas tapas', 7.99, 'https://steamykitchen.com/wp-content/uploads/2011/04/flank-steak-goat-cheese-tapas-recipe-7908.jpg', 2, 2);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (3, 'Pepperoni Pizza', 'pizza pizza', 11.99, 'https://www.thespruceeats.com/thmb/EFfZEGfHWzb-qJTCsUlNCitowYs=/2492x1869/smart/filters:no_upscale()/Pepperonipizzahoriz-3d53b00a7cce429eae3bfb629df356ec.jpg', 3, 3);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (4, 'Chicken Strips', 'strips strips', 8.50, 'https://www.thespruceeats.com/thmb/vDlaVREm3DdAUHEJeUqv53zbWao=/4256x2832/filters:fill(auto,1)/spicy-fried-chicken-strips-3056880-hero-01-e5bad43e0d3441749f17c1b98b5486c2.jpg', 4, 4);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (5, 'Cheeseburger', 'Cheese on a burger', 5.50, 'https://static.showit.co/800/wqVSgNPySpucCIF2ZW6yCA/shared/image_4.png', 5, 5);
 
 COMMIT;
 
@@ -569,11 +569,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (1, 1, 'Beers, Brats, Battlestar Galactica Fest', 1, '2022-07-01', '13:35:00', 'Beers, Beets, Food', 'google.com', '2022-01-01 13:35:00');
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (2, 2, 'Food Truck Mania', 2, '2022-02-01', '13:35:00', 'So many trucks!', 'Two.com', '2022-02-01 13:35:00');
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (3, 3, 'Truck a palooza', 3, '2023-03-01', '13:35:00', 'Festival of food', 'Three.com', '2022-03-01 13:35:00');
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (4, 4, 'Pizza and Burgers Fest', 4, '2024-04-01', '13:35:00', 'Pizza and Burger Trucks', 'Four.com', '2022-04-01 13:35:00');
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (5, 5, 'Sandal Extravaganza', 5, '2025-05-01', '13:35:00', 'Walk around in sandals eating food', 'Five.com', '2022-05-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (1, 1, 'Beers, Brats, Battlestar Galactica Fest', 1, '2022-07-01', '13:35:00', 'Beers, Beets, Food', 'https://64.media.tumblr.com/3088bc582dae38b21f195e468fb8d224/tumblr_inline_ousnf8oJkW1t0aw4o_640.jpg', '2022-01-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (2, 2, 'Food Truck Mania', 2, '2022-02-01', '13:35:00', 'So many trucks!', 'https://images.unsplash.com/photo-1612208176815-e132bcf971b0?', '2022-02-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (3, 3, 'Truck a palooza', 3, '2023-03-01', '13:35:00', 'Festival of food', 'https://images.unsplash.com/photo-1505496704829-37e28089504e?', '2022-03-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (4, 4, 'Pizza and Burgers Fest', 4, '2024-04-01', '13:35:00', 'Pizza and Burger Trucks', 'https://images.unsplash.com/photo-1487004121828-9fa15a215a7a?', '2022-04-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (5, 5, 'Sandal Extravaganza', 5, '2025-05-01', '13:35:00', 'Walk around in sandals eating food', 'https://images.unsplash.com/photo-1625563206627-7e713d1ac0a8?', '2022-05-01 13:35:00');
 
 COMMIT;
 
