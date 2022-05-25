@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `location_id` INT NOT NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
-  `img_url` VARCHAR(2000) NULL,
+  `profile_img_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_location1_idx` (`location_id` ASC),
@@ -372,18 +372,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `order`
+-- Table `pre_order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `order` ;
+DROP TABLE IF EXISTS `pre_order` ;
 
-CREATE TABLE IF NOT EXISTS `order` (
+CREATE TABLE IF NOT EXISTS `pre_order` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ordered_date` DATETIME NULL,
   `special_requests` TEXT NULL,
-  `user_id` INT NOT NULL,
-  `menu_item_id` INT NOT NULL,
   `completed` TINYINT NOT NULL DEFAULT 0,
   `pickup_date` DATETIME NULL,
+  `user_id` INT NOT NULL,
+  `menu_item_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_order_user1_idx` (`user_id` ASC),
   INDEX `fk_order_menu_item1_idx` (`menu_item_id` ASC),
@@ -416,6 +416,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `location` (`id`, `street`, `city`, `state`, `zip`) VALUES (1, ' 10175 Easter Street', 'Grand Junction', 'CO', '81505');
+INSERT INTO `location` (`id`, `street`, `city`, `state`, `zip`) VALUES (2, '19968 Cucumber Ave', 'Aurora', 'CO', '80019');
+INSERT INTO `location` (`id`, `street`, `city`, `state`, `zip`) VALUES (3, '1550 Larson Road', 'Lone Tree', 'CO', '80124');
+INSERT INTO `location` (`id`, `street`, `city`, `state`, `zip`) VALUES (4, '1611 Main Circle', 'Highlands Ranch', 'CO', '80129');
+INSERT INTO `location` (`id`, `street`, `city`, `state`, `zip`) VALUES (5, '8200 Park Meadows Drive', 'Lone Tree', 'CO', '80124');
 
 COMMIT;
 
@@ -425,7 +429,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `img_url`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 1, 'Dave', 'Ramsey', 'google.com');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 1, 'Dave', 'Ramsey', 'google.com');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (2, 'foodtruckuser', 'foodtruck', 1, 'ROLE_ADMIN', 2, 'Food', 'Truck', 'foodtrucksanonymous.com');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (3, 'RandomFoodTrucker', 'password', 1, 'GENERAL', 3, 'Bob', 'Jeselnik', 'hmdc.com');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (4, 'SDsBestInstructor', 'password', 1, 'GENERAL', 4, 'Jer', 'Bear', 'https://i.guim.co.uk/img/media/86c3481516dce247943ac2978b4f48d16a3ac265/0_170_5120_3074/master/5120.jpg?width=620&quality=85&auto=format&fit=max&s=d73e0c12a90e9da24736865e9274ef17');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (5, 'ArchersFriend', 'password', 1, 'GENERAL', 5, 'Slater', 'Burgers', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.gannett-cdn.com%2Fpresto%2F2020%2F06%2F12%2FPPHX%2Fe7207da9-6fbe-467b-b63e-ac44e95db582-BobsBurgers_2019_KeyPoses_Bob_1.jpg%3Fcrop%3D3356%2C1888%2Cx0%2Cy480%26width%3D3200%26height%3D1801%26format%3Dpjpg%26auto%3Dwebp&imgrefurl=https%3A%2F%2Fwww.azcentral.com%2Fstory%2Fentertainment%2Fmovies%2Fbillgoodykoontz%2F2020%2F06%2F19%2Ffathers-day-bob-belcher-bobs-burgers-best-dad-tv%2F5347097002%2F&tbnid=XyIDyGLtYhddEM&vet=12ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ..i&docid=qC9uM9xa2MXDgM&w=3200&h=1801&q=bob%27s%20burger&ved=2ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ');
 
 COMMIT;
 
@@ -435,8 +443,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (1, 'Tacos R Us', 'Fresh traditional tacos', 'google.com', 1, 1, '2020-05-01 13:35:00', 'google.com');
-INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (2, 'MIchael Scott Tapas Company', 'Tapas. What else do you need to know?', 'google.com', 1, 1, '2020-05-01 13:35:00', 'google.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (1, 'Tacos R Us', 'Fresh traditional tacos', 'google.com', 1, 1, '2021-05-01 13:35:00', 'google.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (2, 'MIchael Scott Tapas Company', 'Tapas. What else do you need to know?', 'two.com', 2, 1, '2020-02-01 13:35:00', 'googletwo.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (3, 'Pizza Pizza ', 'We serve wood fired oven pizza', 'three.com', 3, 1, '2020-03-01 13:35:00', 'googlethree.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (4, 'Licky Chicky', 'We specialize in chicken strips with a variety of sauces.', 'four.com', 4, 1, '2020-04-01 13:35:00', 'googlefour.com');
+INSERT INTO `food_truck` (`id`, `name`, `description`, `img_url`, `user_id`, `active`, `date_created`, `website_url`) VALUES (5, 'Bobs Burgers', 'Homestyle burgers. ', 'five.com', 5, 1, '2020-05-01 13:35:00', 'googlefive.com');
 
 COMMIT;
 
@@ -446,7 +457,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Taco Burger', 'Tacos on a bun. ', 'google.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Mexican', 'authenticate tacos', 'google.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Spanish style tapas', 'steak tapas', '2.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Pizza', 'pizza', '3.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (4, 'Fried chicken', 'chicken strips', '4.com');
+INSERT INTO `food_category` (`id`, `name`, `description`, `img_url`) VALUES (5, 'American ', 'burgers, fries', '5.com');
 
 COMMIT;
 
@@ -457,6 +472,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (1, 'Taco Burger', 'Tacos on a burger. ', 5.99, 'google.com', 1, 1);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (2, 'Steak Tapas', 'tapas tapas', 7.99, 'two.com', 2, 2);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (3, 'Pepperoni Pizza', 'pizza pizza', 11.99, 'three.com', 3, 3);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (4, 'Chicken Strips', 'strips strips', 8.50, 'four.com', 4, 4);
+INSERT INTO `menu_item` (`id`, `name`, `description`, `price`, `img_url`, `active`, `food_truck_id`) VALUES (5, 'Cheeseburger', 'Cheese on a burger', 5.50, 'five.com', 5, 5);
 
 COMMIT;
 
@@ -467,6 +486,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `comment` (`id`, `comment`, `rating`, `user_id`, `food_truck_id`, `comment_date`) VALUES (1, 'Great food!', 5, 1, 1, '2022-05-01 13:35:00');
+INSERT INTO `comment` (`id`, `comment`, `rating`, `user_id`, `food_truck_id`, `comment_date`) VALUES (2, 'Sauce is great. ', 4, 2, 2, '2022-04-01 14:35:00');
+INSERT INTO `comment` (`id`, `comment`, `rating`, `user_id`, `food_truck_id`, `comment_date`) VALUES (3, 'Bring your own napkins', 3, 3, 3, '2018-03-01 13:39:00');
+INSERT INTO `comment` (`id`, `comment`, `rating`, `user_id`, `food_truck_id`, `comment_date`) VALUES (4, 'High prices', 2, 4, 4, '2021-04-01 16:22:00');
+INSERT INTO `comment` (`id`, `comment`, `rating`, `user_id`, `food_truck_id`, `comment_date`) VALUES (5, 'Best burgers ever!', 5, 5, 5, '2022-05-01 14:47:00');
 
 COMMIT;
 
@@ -476,7 +499,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (1, 'google.com', 1, 1, 1, 'good food', '2000-05-01 13:35:00');
+INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (1, 'google.com', 1, 1, 1, 'Smells amazing. ', '2000-05-01 13:35:00');
+INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (2, 'googletwo.com', 2, 2, 2, 'Almost out of steak.', '2001-05-01 17:22:00');
+INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (3, 'googlethree.com', 3, 3, 3, 'Seems like they have new items.', '2002-05-01 15:56:00');
+INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (4, 'googlefour.com', 4, 4, 4, 'Only here until 7pm', '2003-05-01 11:32:00');
+INSERT INTO `tagged_truck` (`id`, `photo_url`, `food_truck_id`, `user_id`, `location_id`, `comment`, `date_tagged`) VALUES (5, 'googlefive.com', 5, 5, 5, 'Looks busy. ', '2019-05-01 08:35:00');
 
 COMMIT;
 
@@ -487,6 +514,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `schedule` (`id`, `arrival`, `departure`, `description`, `food_truck_id`, `location_id`) VALUES (1, '2022-05-01 13:35:00', '2022-05-01 20:35:00', 'Good deal', 1, 1);
+INSERT INTO `schedule` (`id`, `arrival`, `departure`, `description`, `food_truck_id`, `location_id`) VALUES (2, '2022-05-02 13:35:00', '2022-05-02 20:35:00', 'Great prices', 2, 2);
+INSERT INTO `schedule` (`id`, `arrival`, `departure`, `description`, `food_truck_id`, `location_id`) VALUES (3, '2022-05-03 13:35:00', '2022-05-03 20:35:00', 'Well be under the overhang', 3, 3);
+INSERT INTO `schedule` (`id`, `arrival`, `departure`, `description`, `food_truck_id`, `location_id`) VALUES (4, '2022-05-01 13:35:00', '2022-05-04 20:35:00', 'Come see us!', 4, 4);
+INSERT INTO `schedule` (`id`, `arrival`, `departure`, `description`, `food_truck_id`, `location_id`) VALUES (5, '2022-05-01 13:35:00', '2022-05-05 20:35:00', 'Five', 5, 5);
 
 COMMIT;
 
@@ -497,6 +528,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `favorites` (`food_truck_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `favorites` (`food_truck_id`, `user_id`) VALUES (2, 2);
+INSERT INTO `favorites` (`food_truck_id`, `user_id`) VALUES (3, 3);
+INSERT INTO `favorites` (`food_truck_id`, `user_id`) VALUES (4, 4);
+INSERT INTO `favorites` (`food_truck_id`, `user_id`) VALUES (5, 5);
 
 COMMIT;
 
@@ -507,6 +542,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (1, 'Please don\'t park by the fire hydrant', 1, 1, 1, '2022-05-01 13:35:00', '2022-06-01 13:35:00', 1);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (2, 'Back in until you touch the curb. ', 2, 2, 2, '2022-02-01 13:35:00', '2019-06-01 13:35:00', 1);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (3, 'No electicity for truck.', 3, 3, 3, '2022-03-01 13:35:00', '2020-06-01 13:35:00', 1);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (4, 'Please use porta potty.', 4, 4, 4, '2022-04-01 13:35:00', '2021-06-01 13:35:00', 1);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (5, 'Not allowed inside!', 5, 5, 5, '2022-05-01 13:35:00', '2018-02-07 13:35:00', 1);
 
 COMMIT;
 
@@ -517,6 +556,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `food_truck_has_food_category` (`food_truck_id`, `food_category_id`) VALUES (1, 1);
+INSERT INTO `food_truck_has_food_category` (`food_truck_id`, `food_category_id`) VALUES (2, 2);
+INSERT INTO `food_truck_has_food_category` (`food_truck_id`, `food_category_id`) VALUES (3, 3);
+INSERT INTO `food_truck_has_food_category` (`food_truck_id`, `food_category_id`) VALUES (4, 4);
+INSERT INTO `food_truck_has_food_category` (`food_truck_id`, `food_category_id`) VALUES (5, 5);
 
 COMMIT;
 
@@ -526,7 +569,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (1, 1, 'Beers, Brats, Battlestar Galactica Fest', 1, '2022-07-01', '13:35:00', 'Taco Truck Mania', 'google.com', '2022-04-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (1, 1, 'Beers, Brats, Battlestar Galactica Fest', 1, '2022-07-01', '13:35:00', 'Beers, Beets, Food', 'google.com', '2022-01-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (2, 2, 'Food Truck Mania', 2, '2022-02-01', '13:35:00', 'So many trucks!', 'Two.com', '2022-02-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (3, 3, 'Truck a palooza', 3, '2023-03-01', '13:35:00', 'Festival of food', 'Three.com', '2022-03-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (4, 4, 'Pizza and Burgers Fest', 4, '2024-04-01', '13:35:00', 'Pizza and Burger Trucks', 'Four.com', '2022-04-01 13:35:00');
+INSERT INTO `festival` (`id`, `user_id`, `name`, `location_id`, `festival_date`, `start_time`, `description`, `img_url`, `created_date`) VALUES (5, 5, 'Sandal Extravaganza', 5, '2025-05-01', '13:35:00', 'Walk around in sandals eating food', 'Five.com', '2022-05-01 13:35:00');
 
 COMMIT;
 
@@ -537,6 +584,10 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `festival_has_food_truck` (`festival_id`, `food_truck_id`) VALUES (1, 1);
+INSERT INTO `festival_has_food_truck` (`festival_id`, `food_truck_id`) VALUES (2, 2);
+INSERT INTO `festival_has_food_truck` (`festival_id`, `food_truck_id`) VALUES (3, 3);
+INSERT INTO `festival_has_food_truck` (`festival_id`, `food_truck_id`) VALUES (4, 4);
+INSERT INTO `festival_has_food_truck` (`festival_id`, `food_truck_id`) VALUES (5, 5);
 
 COMMIT;
 
@@ -547,16 +598,24 @@ COMMIT;
 START TRANSACTION;
 USE `foodtruckdb`;
 INSERT INTO `user_has_food_category` (`user_id`, `food_category_id`) VALUES (1, 1);
+INSERT INTO `user_has_food_category` (`user_id`, `food_category_id`) VALUES (2, 2);
+INSERT INTO `user_has_food_category` (`user_id`, `food_category_id`) VALUES (3, 3);
+INSERT INTO `user_has_food_category` (`user_id`, `food_category_id`) VALUES (4, 4);
+INSERT INTO `user_has_food_category` (`user_id`, `food_category_id`) VALUES (5, 5);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `order`
+-- Data for table `pre_order`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `order` (`id`, `ordered_date`, `special_requests`, `user_id`, `menu_item_id`, `completed`, `pickup_date`) VALUES (1, '2022-05-01 13:35:00', 'No pickles', 1, 1, 1, '2022-05-01 15:35:00');
+INSERT INTO `pre_order` (`id`, `ordered_date`, `special_requests`, `completed`, `pickup_date`, `user_id`, `menu_item_id`) VALUES (1, '2022-05-01 13:35:00', 'No pickles', 1, '2022-05-01 15:35:00', 1, 1);
+INSERT INTO `pre_order` (`id`, `ordered_date`, `special_requests`, `completed`, `pickup_date`, `user_id`, `menu_item_id`) VALUES (2, '2022-04-29 13:00:00', 'Double steak.', 1, '2022-05-01 14:30:00', 2, 2);
+INSERT INTO `pre_order` (`id`, `ordered_date`, `special_requests`, `completed`, `pickup_date`, `user_id`, `menu_item_id`) VALUES (3, '2022-05-18 17:54:00', 'Extra sauce please. ', 1, '2022-05-18 19:25:00', 3, 3);
+INSERT INTO `pre_order` (`id`, `ordered_date`, `special_requests`, `completed`, `pickup_date`, `user_id`, `menu_item_id`) VALUES (4, '2022-05-29 12:14:00', 'Two forks!', 0, '2022-05-30 16:20:00', 4, 4);
+INSERT INTO `pre_order` (`id`, `ordered_date`, `special_requests`, `completed`, `pickup_date`, `user_id`, `menu_item_id`) VALUES (5, '2022-05-01 14:42:00', 'No bun, lettuce wrap. ', 1, '2022-05-01 17:35:00', 5, 5);
 
 COMMIT;
 
