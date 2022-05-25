@@ -1,6 +1,6 @@
 package com.skilldistillery.foodtruck.entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -16,9 +16,9 @@ public class Order {
 	@GeneratedValue
 	private int id;
 	@Column(name="ordered_date")
-	private LocalDate orderedDate;
+	private LocalDateTime orderedDate;
 	@Column(name="pickup_date")
-	private LocalDate pickupDate;
+	private LocalDateTime pickupDate;
 	@Column(name="special_requests")
 	private String specialRequests;
 	private boolean completed;
@@ -44,25 +44,25 @@ public class Order {
 
 
 
-	public LocalDate getOrderedDate() {
+	public LocalDateTime getOrderedDate() {
 		return orderedDate;
 	}
 
 
 
-	public void setOrderedDate(LocalDate orderedDate) {
+	public void setOrderedDate(LocalDateTime orderedDate) {
 		this.orderedDate = orderedDate;
 	}
 
 
 
-	public LocalDate getPickupDate() {
+	public LocalDateTime getPickupDate() {
 		return pickupDate;
 	}
 
 
 
-	public void setPickupDate(LocalDate pickupDate) {
+	public void setPickupDate(LocalDateTime pickupDate) {
 		this.pickupDate = pickupDate;
 	}
 
