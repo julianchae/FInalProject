@@ -1,6 +1,7 @@
 package com.skilldistillery.foodtruck.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CommentTest {
@@ -42,7 +44,8 @@ class CommentTest {
 	}
 
 	@Test
-	void test() {
+	@DisplayName("testing basic Comment mapping")
+	void test1() {
 		
 //		mysql> select * from comment;
 //		+----+------------------------+--------+---------+---------------+---------------------+
@@ -57,6 +60,23 @@ class CommentTest {
 
 		assertNotNull(comment);
 		assertEquals("Great food!", comment.getComment());
+	}
+	
+	@Test
+	@DisplayName("testing Comment to User mapping")
+	void test2() {
+		
+//		mysql> SELECT * FROM comment WHERE comment.id = 1;
+//		+----+-------------+--------+---------+---------------+---------------------+
+//		| id | comment     | rating | user_id | food_truck_id | comment_date        |
+//		+----+-------------+--------+---------+---------------+---------------------+
+//		|  1 | Great food! |      5 |       1 |             1 | 2022-05-01 13:35:00 |
+//		+----+-------------+--------+---------+---------------+---------------------+
+		
+		assertNotNull(comment);
+		assertNotNull(comment.getUser());
+		assertEquals(1, comment.getUser().getId());
+		
 	}
 
 }
