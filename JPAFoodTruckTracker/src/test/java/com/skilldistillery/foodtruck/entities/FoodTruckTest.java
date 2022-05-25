@@ -58,5 +58,68 @@ class FoodTruckTest {
 		assertNotNull(foodTruck);
 		assertEquals("Tacos R Us", foodTruck.getName());
 	}
+	@Test
+	void test_FoodTruck_to_Commments_OneToMany_mapping() {
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getComments());
+		assertTrue( foodTruck.getComments().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_Festival_ManyToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getFestivals());
+		assertTrue( foodTruck.getFestivals().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_FoodCat_ManyToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getFoodCategories());
+		assertTrue( foodTruck.getFoodCategories().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_Schedule_OneToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getSchedules());
+		assertTrue( foodTruck.getSchedules().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_MenuItems_OneToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getMenuItems());
+		assertTrue( foodTruck.getMenuItems().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_Request_OneToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getRequests());
+		assertTrue( foodTruck.getRequests().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_TaggedTruck_OneToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getTaggedTrucks());
+		assertTrue( foodTruck.getTaggedTrucks().size() > 0);
+	}
+	@Test
+	void test_FoodTruck_to_User_ManyToMany_mapping() {
+		
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getUser());
+		assertEquals("Yockenfelder", foodTruck.getUser().getLastName());
+	}
 
 }
