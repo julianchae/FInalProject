@@ -2,10 +2,27 @@ package com.skilldistillery.foodtruck.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+//mysql> desc user;
+//+-------------+---------------+------+-----+---------+----------------+
+//| Field       | Type          | Null | Key | Default | Extra          |
+//+-------------+---------------+------+-----+---------+----------------+
+//| id          | int(11)       | NO   | PRI | NULL    | auto_increment |
+//| username    | varchar(45)   | NO   | UNI | NULL    |                |
+//| password    | varchar(200)  | NO   |     | NULL    |                |
+//| enabled     | tinyint(4)    | NO   |     | 1       |                |
+//| role        | varchar(45)   | YES  |     | NULL    |                |
+//| location_id | int(11)       | NO   | MUL | NULL    |                |
+//| first_name  | varchar(45)   | YES  |     | NULL    |                |
+//| last_name   | varchar(45)   | YES  |     | NULL    |                |
+//| img_url     | varchar(2000) | YES  |     | NULL    |                |
+//+-------------+---------------+------+-----+---------+----------------+
+
 
 @Entity
 public class User {
@@ -19,7 +36,18 @@ public class User {
 	private boolean enabled;
 	private String role;
 	private String password;
+	
+	@Column(name = "first_name")
+	private String firstName;
+	
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name = "img_url")
+	private String imgUrl;
 
+	//TODO: Needs mapping for Location and Favorites and Request and TaggedTruck and Comment and Order
+	
 	public User() {
 		super();
 	}
@@ -64,9 +92,34 @@ public class User {
 		this.password = password;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
+		return "User [id=" + id + ", username=" + username + ", enabled=" + enabled + ", role=" + role + ", password="
+				+ password + ", firstName=" + firstName + ", lastName=" + lastName + ", imgUrl=" + imgUrl + "]";
 	}
 
 	@Override
