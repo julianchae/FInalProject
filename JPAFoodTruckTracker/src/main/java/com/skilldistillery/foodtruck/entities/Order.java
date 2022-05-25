@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +25,14 @@ public class Order {
 	private String specialRequests;
 	private boolean completed;
 	
-	//TODO: Map out User, menu
 	
+	@ManyToOne
+	@JoinColumn(name="menu_item_id")
+	private MenuItem menuItem;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	public Order() {
 		super();
@@ -88,6 +96,30 @@ public class Order {
 
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
+	}
+
+
+
+	public MenuItem getMenuItem() {
+		return menuItem;
+	}
+
+
+
+	public void setMenuItem(MenuItem menuItem) {
+		this.menuItem = menuItem;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

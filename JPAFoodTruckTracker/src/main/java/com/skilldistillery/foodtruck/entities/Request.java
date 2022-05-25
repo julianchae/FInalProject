@@ -30,7 +30,7 @@ public class Request {
 	public Request() {
 		super();
 	}
-	//TODO: Mapping for user
+
 	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
@@ -39,6 +39,10 @@ public class Request {
 	@ManyToOne
 	@JoinColumn(name="location_id")
 	private Location location;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public int getId() {
 		return id;
@@ -94,6 +98,14 @@ public class Request {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

@@ -41,6 +41,12 @@ public class Location {
 	@OneToMany(mappedBy="location")
 	private List<Request> requests;
 	
+	@OneToMany(mappedBy="location")
+	private List<TaggedTruck> taggedTrucks;
+	
+	@OneToMany(mappedBy="location")
+	private List<User> user;
+	
 	
 	
 	public Location() {
@@ -94,6 +100,21 @@ public class Location {
 	}
 	public void setSchedules(List<Schedule> schedules) {
 		this.schedules = schedules;
+	}
+	public List<TaggedTruck> getTaggedTrucks() {
+		return taggedTrucks;
+	}
+	public void setTaggedTrucks(List<TaggedTruck> taggedTrucks) {
+		this.taggedTrucks = taggedTrucks;
+	}
+
+	
+	
+	public List<User> getUser() {
+		return user;
+	}
+	public void setUser(List<User> user) {
+		this.user = user;
 	}
 	@Override
 	public String toString() {

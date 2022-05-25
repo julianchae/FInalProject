@@ -35,7 +35,7 @@ public class Schedule {
 	
 	private String description;
 	
-	//TODO:Needs mapping for Location 
+
 	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")

@@ -56,6 +56,9 @@ public class FoodTruck {
 	@OneToMany(mappedBy="foodTruck")
 	private List<TaggedTruck> taggedTrucks;
 	
+	@ManyToMany(mappedBy="favFoodTrucks")
+	private List<User> users;
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -212,6 +215,16 @@ public class FoodTruck {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 

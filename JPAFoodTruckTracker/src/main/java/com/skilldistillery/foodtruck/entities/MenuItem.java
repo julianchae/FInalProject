@@ -1,5 +1,6 @@
 package com.skilldistillery.foodtruck.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,11 +35,13 @@ public class MenuItem {
 		super();
 		
 	}
-	//TODO: Add mappings for order
 	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
+	
+	@OneToMany(mappedBy="menuItem")
+	private List<Order> orders; 
 
 	public int getId() {
 		return id;
@@ -93,6 +97,14 @@ public class MenuItem {
 
 	public void setFoodTruck(FoodTruck foodTruck) {
 		this.foodTruck = foodTruck;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override
