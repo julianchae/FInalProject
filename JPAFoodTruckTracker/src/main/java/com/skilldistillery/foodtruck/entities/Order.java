@@ -30,6 +30,68 @@ public class Order {
 	public Order() {
 		super();
 	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public LocalDate getOrderedDate() {
+		return orderedDate;
+	}
+
+
+
+	public void setOrderedDate(LocalDate orderedDate) {
+		this.orderedDate = orderedDate;
+	}
+
+
+
+	public LocalDate getPickupDate() {
+		return pickupDate;
+	}
+
+
+
+	public void setPickupDate(LocalDate pickupDate) {
+		this.pickupDate = pickupDate;
+	}
+
+
+
+	public String getSpecialRequests() {
+		return specialRequests;
+	}
+
+
+
+	public void setSpecialRequests(String specialRequests) {
+		this.specialRequests = specialRequests;
+	}
+
+
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+
 
 	@Override
 	public int hashCode() {
