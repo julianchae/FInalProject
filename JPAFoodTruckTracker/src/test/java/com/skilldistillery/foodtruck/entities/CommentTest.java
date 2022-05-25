@@ -79,4 +79,20 @@ class CommentTest {
 		
 	}
 
+	@Test
+	@DisplayName("testing Comment to FoodTruck mapping")
+	void test3() {
+		
+//		mysql> SELECT * FROM comment WHERE comment.id = 1;
+//		+----+-------------+--------+---------+---------------+---------------------+
+//		| id | comment     | rating | user_id | food_truck_id | comment_date        |
+//		+----+-------------+--------+---------+---------------+---------------------+
+//		|  1 | Great food! |      5 |       1 |             1 | 2022-05-01 13:35:00 |
+//		+----+-------------+--------+---------+---------------+---------------------+
+		
+		assertNotNull(comment);
+		assertNotNull(comment.getFoodTruck());
+		assertEquals(1, comment.getFoodTruck().getId());
+		
+	}
 }
