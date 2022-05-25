@@ -33,7 +33,14 @@ public class Location {
 	private String zip;
 	
 	@OneToMany(mappedBy="location")
-	private List<Festival> festival;
+	private List<Festival> festivals;
+	
+	@OneToMany(mappedBy="location")
+	private List<Schedule> schedules;
+	
+	@OneToMany(mappedBy="location")
+	private List<Request> requests;
+	
 	
 	public Location() {
 		super();
@@ -68,11 +75,24 @@ public class Location {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public List<Festival> getFestival() {
-		return festival;
+
+	public List<Festival> getFestivals() {
+		return festivals;
 	}
-	public void setFestival(List<Festival> festival) {
-		this.festival = festival;
+	public void setFestivals(List<Festival> festivals) {
+		this.festivals = festivals;
+	}
+	public List<Request> getRequests() {
+		return requests;
+	}
+	public void setRequests(List<Request> requests) {
+		this.requests = requests;
+	}
+	public List<Schedule> getSchedules() {
+		return schedules;
+	}
+	public void setSchedules(List<Schedule> schedules) {
+		this.schedules = schedules;
 	}
 	@Override
 	public String toString() {

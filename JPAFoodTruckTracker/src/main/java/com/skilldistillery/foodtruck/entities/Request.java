@@ -30,11 +30,15 @@ public class Request {
 	public Request() {
 		super();
 	}
-	//TODO: Mapping for user, location
+	//TODO: Mapping for user
 	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
+	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
 
 	public int getId() {
 		return id;
@@ -82,6 +86,14 @@ public class Request {
 
 	public void setFoodTruck(FoodTruck foodTruck) {
 		this.foodTruck = foodTruck;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override
