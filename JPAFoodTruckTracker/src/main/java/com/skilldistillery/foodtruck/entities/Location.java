@@ -42,6 +42,7 @@ public class Location {
 	private List<Request> requests;
 	
 	
+	
 	public Location() {
 		super();
 	}
