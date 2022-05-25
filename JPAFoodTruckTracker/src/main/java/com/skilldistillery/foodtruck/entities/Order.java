@@ -12,7 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pre_order")
 public class Order {
-	
 	@Id
 	@GeneratedValue
 	private int id;

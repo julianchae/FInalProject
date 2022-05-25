@@ -23,7 +23,6 @@
 		<class>com.skilldistillery.foodtruck.entities.Request</class>
 		<class>com.skilldistillery.foodtruck.entities.Schedule</class>
 		<class>com.skilldistillery.foodtruck.entities.TaggedTruck</class>
-		
 		<!-- End Entities Here -->
 
 
