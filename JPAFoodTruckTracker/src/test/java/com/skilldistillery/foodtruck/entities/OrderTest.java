@@ -56,7 +56,7 @@ class OrderTest {
 //		+----+---------------------+------------------------+-----------+---------------------+---------+--------------+
 
 		assertNotNull(order);
-		assertEquals("2022-05-01 13:35:00", order.getOrderedDate());
+		assertEquals("2022-05-01T13:35", order.getOrderedDate().toString());
 	}
 
 }

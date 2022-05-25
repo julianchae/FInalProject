@@ -56,6 +56,6 @@ class TaggedTruckTest {
 //		+----+-----------------+---------------+---------+-------------+---------------------------------+---------------------+
 		
 		assertNotNull(taggedTruck);
-		assertEquals("Smells amazing.", taggedTruck.getComment());
+		assertEquals("Smells amazing. ", taggedTruck.getComment());
 	}
 }
