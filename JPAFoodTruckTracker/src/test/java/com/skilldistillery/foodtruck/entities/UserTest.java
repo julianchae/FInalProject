@@ -46,7 +46,7 @@ class UserTest {
 	@Test
 	void test() {
 		assertNotNull(user);
-		assertEquals("Dave", user.getFirstName());
+		assertEquals("Jurisa", user.getFirstName());
 	}
 
 }

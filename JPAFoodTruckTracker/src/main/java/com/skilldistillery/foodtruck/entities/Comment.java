@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 //mysql> desc comment;
 //+---------------+--------------+------+-----+---------+----------------+
@@ -37,11 +37,11 @@ public class Comment {
 	@Column(name = "comment_date")
 	private LocalDateTime commentDate;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
 	
