@@ -13,11 +13,17 @@
     
 		<!-- Begin Entities Here -->
 		<class>com.skilldistillery.foodtruck.entities.User</class>
-
-
-
-
-
+		<class>com.skilldistillery.foodtruck.entities.Comment</class>
+		<class>com.skilldistillery.foodtruck.entities.Festival</class>
+		<class>com.skilldistillery.foodtruck.entities.FoodCategory</class>
+		<class>com.skilldistillery.foodtruck.entities.FoodTruck</class>
+		<class>com.skilldistillery.foodtruck.entities.Location</class>
+		<class>com.skilldistillery.foodtruck.entities.MenuItem</class>
+		<class>com.skilldistillery.foodtruck.entities.Order</class>
+		<class>com.skilldistillery.foodtruck.entities.Request</class>
+		<class>com.skilldistillery.foodtruck.entities.Schedule</class>
+		<class>com.skilldistillery.foodtruck.entities.TaggedTruck</class>
+		
 		<!-- End Entities Here -->
 
 
