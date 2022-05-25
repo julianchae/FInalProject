@@ -61,7 +61,8 @@ class ScheduleTest {
 		
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		assertNotNull(schedule);
-		assertEquals("2022-05-01T13:35:00", schedule.getArrival());
+		assertEquals(2022, schedule.getArrival().getYear());
+		assertEquals(5, schedule.getArrival().getMonthValue());
 		//assertEquals(LocalDateTime.parse("2022-05-01T13:35:00"), schedule.getArrival());
 	}
 
