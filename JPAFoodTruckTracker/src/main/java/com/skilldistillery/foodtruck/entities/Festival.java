@@ -37,6 +37,7 @@ public class Festival {
 	private LocalDate createdDate;
 	
 	
+	
 	@ManyToMany
 	@JoinTable(name="festival_has_food_truck",
 	joinColumns = @JoinColumn(name="festival_id"),

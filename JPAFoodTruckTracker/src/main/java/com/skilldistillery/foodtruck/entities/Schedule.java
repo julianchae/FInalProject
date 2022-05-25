@@ -40,6 +40,10 @@ public class Schedule {
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
+	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
 
 	public Schedule() {
 		super();
@@ -83,6 +87,14 @@ public class Schedule {
 
 	public void setFoodTruck(FoodTruck foodTruck) {
 		this.foodTruck = foodTruck;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override
