@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "pre_order")
 public class Order {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name="ordered_date")
 	private LocalDateTime orderedDate;
