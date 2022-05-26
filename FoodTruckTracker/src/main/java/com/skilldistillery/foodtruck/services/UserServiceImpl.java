@@ -32,4 +32,33 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public User update(String username, int id, User user) {
+		Optional<User> op = userRepo.findById(id);
+		User user1 = null;
+		if (op.isPresent()) {
+			user1 = op.get();
+			if(user1.getUsername().equals(username)) {
+				user.setId(id);
+				return userRepo.saveAndFlush(user);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean delete(String username, int id) {
+		Optional<User> op = userRepo.findById(id);
+		User user1 = null;
+		if (op.isPresent()) {
+			user1 = op.get();
+			if(user1.getUsername().equals(username)) {
+				userRepo.deleteById(id);
+				op = userRepo.findById(id);
+				return !op.isPresent();
+			}
+		}
+		return false;
+	}
+
 }
