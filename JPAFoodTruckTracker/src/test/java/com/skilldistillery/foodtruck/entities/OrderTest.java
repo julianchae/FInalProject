@@ -1,6 +1,7 @@
 package com.skilldistillery.foodtruck.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class OrderTest {
@@ -58,6 +60,24 @@ class OrderTest {
 		assertNotNull(order);
 		assertEquals(2022, order.getOrderedDate().getYear());
 		assertEquals(5, order.getOrderedDate().getMonthValue());
+	}
+	@Test
+	@DisplayName("Order to menu item mapping")
+	void test2() {
+		assertNotNull(order);
+		assertEquals("Taco Burger", order.getMenuItem().getName());
+		
+		
+		
+	}
+	@Test
+	@DisplayName("Order to User mapping")
+	void test3() {
+		assertNotNull(order);
+		assertEquals("Jurisa", order.getUser().getFirstName());
+		
+		
+		
 	}
 
 }

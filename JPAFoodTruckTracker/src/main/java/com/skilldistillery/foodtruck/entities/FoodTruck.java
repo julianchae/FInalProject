@@ -218,12 +218,12 @@ public class FoodTruck {
 	}
 
 
-	public List<User> getUsers() {
+	public List<User> getUsersWhoFavorited() {
 		return users;
 	}
 
 
-	public void setUsers(List<User> users) {
+	public void setUsersWhoFavorited(List<User> users) {
 		this.users = users;
 	}
 

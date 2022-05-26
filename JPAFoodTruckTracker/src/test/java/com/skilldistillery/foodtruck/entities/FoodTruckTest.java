@@ -1,6 +1,8 @@
 package com.skilldistillery.foodtruck.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class FoodTruckTest {
@@ -113,6 +116,16 @@ class FoodTruckTest {
 		assertNotNull(foodTruck.getTaggedTrucks());
 		assertTrue( foodTruck.getTaggedTrucks().size() > 0);
 	}
+	
+	@Test
+	@DisplayName("Foodtruck to favorites")
+	void test2() {
+		
+		assertNotNull(foodTruck);
+		assertNotNull(foodTruck.getUsersWhoFavorited());
+		assertTrue( foodTruck.getUsersWhoFavorited().size() > 0);
+	}
+	
 	@Test
 	void test_FoodTruck_to_User_ManyToMany_mapping() {
 		

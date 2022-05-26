@@ -43,7 +43,8 @@ public class FoodCategory {
 	inverseJoinColumns = @JoinColumn(name="food_truck_id"))
 	private List<FoodTruck> foodTrucks;
 	
-	//TODO: Maybe map to user
+	//FIXME: Connection b/w user and foodCat to 
+	//determine favorite category
 	
 	public FoodCategory() {
 		super();

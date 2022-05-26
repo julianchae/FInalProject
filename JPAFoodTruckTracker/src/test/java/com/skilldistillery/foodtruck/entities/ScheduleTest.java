@@ -3,9 +3,6 @@ package com.skilldistillery.foodtruck.entities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ScheduleTest {
@@ -64,6 +62,21 @@ class ScheduleTest {
 		assertEquals(2022, schedule.getArrival().getYear());
 		assertEquals(5, schedule.getArrival().getMonthValue());
 		//assertEquals(LocalDateTime.parse("2022-05-01T13:35:00"), schedule.getArrival());
+	}
+
+	@Test
+	@DisplayName("Schedule to FoodTruck mapping")
+	void test2() {
+		assertNotNull(schedule);
+		assertEquals("Tacos R Us", schedule.getFoodTruck().getName());
+		
+	}
+	@Test
+	@DisplayName("Schedule to Location Mapping")
+	void test3() {
+		assertNotNull(schedule);
+		assertEquals("Grand Junction", schedule.getLocation().getCity());
+		
 	}
 
 }

@@ -1,7 +1,8 @@
 package com.skilldistillery.foodtruck.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class MenuItemTest {
@@ -58,5 +60,23 @@ class MenuItemTest {
 		assertNotNull(menuItem);
 		assertEquals("Taco Burger", menuItem.getName());
 	}
+
+	@Test
+	@DisplayName("Menu to Foodtruck name")
+	void test2() {
+		assertNotNull(menuItem);
+		assertNotNull(menuItem.getFoodTruck());
+		assertEquals("Tacos R Us" ,menuItem.getFoodTruck().getName());
+		
+	}
+	@Test
+	@DisplayName("Menu Item to Orders")
+	void test3() {
+		assertNotNull(menuItem);
+		assertNotNull(menuItem.getOrders());
+		assertTrue(menuItem.getOrders().size() > 0);
+		
+	}
+
 
 }

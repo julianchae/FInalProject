@@ -1,6 +1,7 @@
 package com.skilldistillery.foodtruck.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RequestTest {
@@ -58,5 +60,27 @@ class RequestTest {
 		assertNotNull(request);
 		assertEquals("Please don't park by the fire hydrant", request.getRemarks());
 	}
+	@Test
+	@DisplayName("Request to food truck mapping")
+	void test2() {
+		assertNotNull(request);
+		assertEquals("Tacos R Us", request.getFoodTruck().getName());
+		
+	}
+	@Test 
+	@DisplayName("Request to Location Mapping")
+	void test3(){
+		assertNotNull(request);
+		assertEquals(" 10175 Easter Street", request.getLocation().getStreet());
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }
