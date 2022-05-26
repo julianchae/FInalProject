@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -76,10 +75,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<TaggedTruck> taggedTrucks;
 	
-	@ManyToMany
-	@JoinTable(name="favorites",
-	joinColumns = @JoinColumn(name="user_id"),
-	inverseJoinColumns = @JoinColumn(name="food_truck_id"))
+	@ManyToMany(mappedBy="users")
 	private List<FoodTruck> favFoodTrucks;
 	
 	public User() {
@@ -201,6 +197,7 @@ public class User {
 	public void setTaggedTrucks(List<TaggedTruck> taggedTrucks) {
 		this.taggedTrucks = taggedTrucks;
 	}
+
 
 	public List<FoodTruck> getFavFoodTrucks() {
 		return favFoodTrucks;

@@ -45,7 +45,7 @@ public class Location {
 	private List<TaggedTruck> taggedTrucks;
 	
 	@OneToMany(mappedBy="location")
-	private List<User> user;
+	private List<User> users;
 	
 	
 	
@@ -109,13 +109,14 @@ public class Location {
 	}
 
 	
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	
-	public List<User> getUser() {
-		return user;
-	}
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
+	
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip

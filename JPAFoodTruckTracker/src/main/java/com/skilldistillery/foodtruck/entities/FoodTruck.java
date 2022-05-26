@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -56,13 +57,20 @@ public class FoodTruck {
 	
 	@OneToMany(mappedBy="foodTruck")
 	private List<TaggedTruck> taggedTrucks;
-	
-	@ManyToMany(mappedBy="favFoodTrucks")
-	private List<User> users;
-	
+
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	
+	@ManyToMany
+	@JoinTable(
+			name="favorites",
+			joinColumns = @JoinColumn(name="food_truck_id"),
+			inverseJoinColumns = @JoinColumn(name="user_id")
+			)
+	private List<User> users;
+	
 	
 
 	public FoodTruck() {
@@ -225,6 +233,16 @@ public class FoodTruck {
 
 
 	public void setUsersWhoFavorited(List<User> users) {
+		this.users = users;
+	}
+
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
