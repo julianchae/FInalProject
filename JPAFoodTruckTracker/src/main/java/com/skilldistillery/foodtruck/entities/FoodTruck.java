@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="food_truck")
 public class FoodTruck {
@@ -36,25 +38,25 @@ public class FoodTruck {
 	private String dateCreated;
 	@Column(name = "website_url")
 	private String websiteUrl;
-		
+	@JsonIgnore
 	@OneToMany(mappedBy="foodTruck")
 	private List<Comment> comments; 
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="foodTrucks")
 	private List<Festival> festivals;
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="foodTrucks")
 	private List<FoodCategory> foodCategories;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="foodTruck")
 	private List<Schedule> schedules;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="foodTruck")
 	private List<MenuItem> menuItems;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="foodTruck")
 	private List<Request> requests;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="foodTruck")
 	private List<TaggedTruck> taggedTrucks;
 
