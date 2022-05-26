@@ -14,7 +14,7 @@ import com.skilldistillery.foodtruck.services.TruckService;
 @RestController
 @RequestMapping("api")
 public class TruckController {
-	//TruckController
+	
 	
 	@Autowired
 	private TruckService truckServe;
