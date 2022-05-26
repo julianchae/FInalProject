@@ -6,7 +6,19 @@
     <input [(ngModel)]="newUser.password" type="password" name="password" placeholder="Password">
     <br>
     <label for="email">Email</label>
-    <input [(ngModel)]="newUser.email" type="text" name="email" placeholder="email">
+    <input [(ngModel)]="newUser.email" type="text" name="email" placeholder="Email">
+    <br>
+    <label for="role">Role</label>
+    <input [(ngModel)]="newUser.role" type="boolean" name="role" placeholder="Are you a food truck owner?">
+    <br>
+    <label for="firstName">First Name</label>
+    <input [(ngModel)]="newUser.firstName" type="text" name="firstName" placeholder="First Name">
+    <br>
+    <label for="lastName">Last Name</label>
+    <input [(ngModel)]="newUser.lastName" type="text" name="lastName" placeholder="Last Name">
+    <br>
+    <label for="imgUrl">Profile Image URL</label>
+    <input [(ngModel)]="newUser.imgUrl" type="text" name="imgUrl" placeholder="Insert Profile Image URL">
     <br>
     <button (click)="register(newUser)">Register</button>
 
