@@ -31,7 +31,20 @@ public class UserController {
 //		}
 //		return user;
 //	}
-
+	
+	// SMOKE TEST ONLY, DELETE/COMMENT OUT LATER
+	@GetMapping("test/users/{userId}")
+	public User getUserForTest(
+	  @PathVariable Integer userId,
+	  HttpServletResponse res
+	) {
+	  User user = userServe.getUserById(userId);
+	  if (user == null) {
+	    res.setStatus(404);
+	  }
+	  return user;
+	}
+	
 	@GetMapping("user/{username}")
 	public User getUserByUsername(@PathVariable String username, HttpServletResponse resp) {
 		User user = userServe.getUserByUsername(username);
