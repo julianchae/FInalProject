@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(200) NOT NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
   `role` VARCHAR(45) NULL,
-  `location_id` INT NOT NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `profile_img_url` VARCHAR(2000) NULL,
+  `location_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_location1_idx` (`location_id` ASC),
@@ -429,11 +429,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 1, 'Jurisa', 'Yockenfelder', 'https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (2, 'foodtruckuser', 'foodtruck', 1, 'ROLE_ADMIN', 2, 'Food', 'Truck', 'https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/26e603a3960425a6aa28ef1bfb22ae64/large.jpg');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (3, 'RandomFoodTrucker', 'password', 1, 'GENERAL', 3, 'Bob', 'Jeselnik', 'https://media-exp1.licdn.com/dms/image/C4D03AQFsU2PWoZ2uuQ/profile-displayphoto-shrink_800_800/0/1649875181704?e=1658966400&v=beta&t=paSWVje0pYBaPnipLLHtwpiuvsPrnPAyaacyAU7_IWk');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (4, 'SDsBestInstructor', 'password', 1, 'GENERAL', 4, 'Jer', 'Bear', 'https://i.guim.co.uk/img/media/86c3481516dce247943ac2978b4f48d16a3ac265/0_170_5120_3074/master/5120.jpg?width=620&quality=85&auto=format&fit=max&s=d73e0c12a90e9da24736865e9274ef17');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `location_id`, `first_name`, `last_name`, `profile_img_url`) VALUES (5, 'ArchersFriend', 'password', 1, 'GENERAL', 5, 'Slater', 'Burgers', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.gannett-cdn.com%2Fpresto%2F2020%2F06%2F12%2FPPHX%2Fe7207da9-6fbe-467b-b63e-ac44e95db582-BobsBurgers_2019_KeyPoses_Bob_1.jpg%3Fcrop%3D3356%2C1888%2Cx0%2Cy480%26width%3D3200%26height%3D1801%26format%3Dpjpg%26auto%3Dwebp&imgrefurl=https%3A%2F%2Fwww.azcentral.com%2Fstory%2Fentertainment%2Fmovies%2Fbillgoodykoontz%2F2020%2F06%2F19%2Ffathers-day-bob-belcher-bobs-burgers-best-dad-tv%2F5347097002%2F&tbnid=XyIDyGLtYhddEM&vet=12ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ..i&docid=qC9uM9xa2MXDgM&w=3200&h=1801&q=bob%27s%20burger&ved=2ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `profile_img_url`, `location_id`) VALUES (1, 'admin', '$2a$10$bab1OlosOTq0/3fj9wutSex96pbHs6en/bPpaoMbDjdMEKV8cP0Qy', 1, 'ROLE_ADMIN', 'Jurisa', 'Yockenfelder', 'https://cdn.icon-icons.com/icons2/2506/PNG/512/user_icon_150670.png', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `profile_img_url`, `location_id`) VALUES (2, 'foodtruckuser', 'foodtruck', 1, 'ROLE_ADMIN', 'Food', 'Truck', 'https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/26e603a3960425a6aa28ef1bfb22ae64/large.jpg', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `profile_img_url`, `location_id`) VALUES (3, 'RandomFoodTrucker', 'password', 1, 'GENERAL', 'Bob', 'Jeselnik', 'https://media-exp1.licdn.com/dms/image/C4D03AQFsU2PWoZ2uuQ/profile-displayphoto-shrink_800_800/0/1649875181704?e=1658966400&v=beta&t=paSWVje0pYBaPnipLLHtwpiuvsPrnPAyaacyAU7_IWk', 3);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `profile_img_url`, `location_id`) VALUES (4, 'SDsBestInstructor', 'password', 1, 'GENERAL', 'Jer', 'Bear', 'https://i.guim.co.uk/img/media/86c3481516dce247943ac2978b4f48d16a3ac265/0_170_5120_3074/master/5120.jpg?width=620&quality=85&auto=format&fit=max&s=d73e0c12a90e9da24736865e9274ef17', 4);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `profile_img_url`, `location_id`) VALUES (5, 'ArchersFriend', 'password', 1, 'GENERAL', 'Slater', 'Burgers', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.gannett-cdn.com%2Fpresto%2F2020%2F06%2F12%2FPPHX%2Fe7207da9-6fbe-467b-b63e-ac44e95db582-BobsBurgers_2019_KeyPoses_Bob_1.jpg%3Fcrop%3D3356%2C1888%2Cx0%2Cy480%26width%3D3200%26height%3D1801%26format%3Dpjpg%26auto%3Dwebp&imgrefurl=https%3A%2F%2Fwww.azcentral.com%2Fstory%2Fentertainment%2Fmovies%2Fbillgoodykoontz%2F2020%2F06%2F19%2Ffathers-day-bob-belcher-bobs-burgers-best-dad-tv%2F5347097002%2F&tbnid=XyIDyGLtYhddEM&vet=12ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ..i&docid=qC9uM9xa2MXDgM&w=3200&h=1801&q=bob%27s%20burger&ved=2ahUKEwjrgvGFuPv3AhXJCs0KHR0eDS4QMygHegUIARDtAQ', 5);
 
 COMMIT;
 
