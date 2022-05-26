@@ -53,14 +53,13 @@ public class UserController {
 			resp.setStatus(404);
 		}
 		return user;
-
 	}
-
 	@PostMapping("user/{user}")
 	public User createUser(@RequestBody User user, HttpServletResponse resp) {
 
 		return user;
 	}
+	
 	
 	
 	
