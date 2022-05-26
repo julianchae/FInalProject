@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LocationTest {
@@ -42,7 +43,8 @@ class LocationTest {
 	}
 
 	@Test
-	void test() {
+	@DisplayName("testing basic Location mapping")
+	void test1() {
 		
 //		mysql> select * from location;
 //		+----+-------------------------+-----------------+-------+-------+
@@ -57,6 +59,59 @@ class LocationTest {
 
 		assertNotNull(location);
 		assertEquals(" 10175 Easter Street", location.getStreet());
+	}
+	
+	@Test
+	@DisplayName("testing Location to User mapping")
+	void test2() {
+		
+		assertNotNull(location);
+		assertEquals("Jurisa",location.getUser().getFirstName());
+	}
+	
+//	@Test
+//	@DisplayName("testing Location to User mapping")
+//	void test2() {
+//		
+//		assertNotNull(location);
+//		assertNotNull(location.getUsers());
+//		assertTrue(location.getUsers().size()>0);	
+//	}
+	
+	@Test
+	@DisplayName("testing Location to Festival mapping")
+	void test3() {
+		
+		assertNotNull(location);
+		assertNotNull(location.getFestivals());
+		assertTrue(location.getFestivals().size()>0);
+	}
+	
+	@Test
+	@DisplayName("testing Location to Request mapping")
+	void test4() {
+	
+		assertNotNull(location);
+		assertNotNull(location.getRequests());
+		assertTrue(location.getRequests().size()>0);
+	}
+	
+	@Test
+	@DisplayName("testing Location to Schedule mapping")
+	void test5() {
+	
+		assertNotNull(location);
+		assertNotNull(location.getSchedules());
+		assertTrue(location.getSchedules().size()>0);	
+	}
+	
+	@Test
+	@DisplayName("testing Location to TaggedTruck mapping")
+	void test6() {
+	
+		assertNotNull(location);
+		assertNotNull(location.getTaggedTrucks());
+		assertTrue(location.getTaggedTrucks().size()>0);
 	}
 
 }
