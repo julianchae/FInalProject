@@ -1,6 +1,5 @@
 package com.skilldistillery.foodtruck.services;
 
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +10,9 @@ import com.skilldistillery.foodtruck.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
 
 	@Override
 	public User getUserById(int userId) {
@@ -22,6 +20,15 @@ public class UserServiceImpl implements UserService {
 		if (userOpt.isPresent()) {
 			return userOpt.get();
 		}
+		return null;
+	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		User user = userRepo.findByUsername(username);
+		if(user != null) {
+		return user;}
+		
 		return null;
 	}
 

@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.services.UserService;
 
+
+
 @RestController
+@RequestMapping("api")
 @CrossOrigin({"*", "http://localhost"})
 public class UserController {
 	
@@ -30,5 +34,21 @@ public class UserController {
 	  }
 	  return user;
 	}
+	
+	
+	@GetMapping("user/{username}")
+		public User getUserByUsername(@PathVariable String username, HttpServletResponse resp) {
+		User user = userServe.getUserByUsername(username);
+		
+		
+		if(user == null) {
+			resp.setStatus(404);
+		}
+		
+		return user;
+			
+		}
+	}
+	
 
-}
+

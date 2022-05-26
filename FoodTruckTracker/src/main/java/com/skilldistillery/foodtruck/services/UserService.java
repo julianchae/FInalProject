@@ -4,4 +4,6 @@ import com.skilldistillery.foodtruck.entities.User;
 
 public interface UserService {
 	User getUserById(int userId);
+
+	User getUserByUsername(String username);
 }
