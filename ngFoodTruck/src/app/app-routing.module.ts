@@ -1,3 +1,4 @@
+import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { Login } from './models/login';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path:'logout', component: LogoutComponent},
   {path:'home', component: HomeComponent}
 ];
 
