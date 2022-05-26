@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodtruck.entities.FoodTruck;
 import com.skilldistillery.foodtruck.entities.MenuItem;
-import com.skilldistillery.foodtruck.repositories.MenuItemRepository;
 import com.skilldistillery.foodtruck.services.TruckService;
 
 @RestController
@@ -28,12 +28,8 @@ public class TruckController {
 	
 	@Autowired
 	private TruckService truckServe;
-	@Autowired
-	private MenuItemRepository menuRepo;
-	
 	@GetMapping("trucks")
 	public List<FoodTruck> getAllFoodtrucks(){
-		
 		return truckServe.getAllTrucks();
 	}
 	@GetMapping("users/trucks")
@@ -51,11 +47,8 @@ public class TruckController {
 			return foodtrucks;
 	}
 	
-	
-	
-	
 	@PutMapping("trucks/menuItem/{mid}")
-	public MenuItem addMenuItem(
+	public MenuItem updateMenuItem(
 			Principal principal,
 			@RequestBody MenuItem menuItem, @PathVariable
 			int mid,
@@ -72,8 +65,24 @@ public class TruckController {
 	}
 	return menuItem;
 
-		
-		
-		
 	}
+	@PostMapping("trucks/{tid}/menuItem")
+	public MenuItem addMenuItem(
+			Principal principal,
+			@RequestBody MenuItem item,
+			@PathVariable int tid,
+			HttpServletRequest req, 
+			HttpServletResponse resp
+			) {
+		
+		 item = truckServe.addMenuItem(item, principal.getName(), tid);
+		
+		if(item== null) {
+			resp.setStatus(404);
+			
+		}
+		return item;
+	
+	}
+	
 }
