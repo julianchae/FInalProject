@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `profile_img_url` VARCHAR(2000) NULL,
-  `location_id` INT NOT NULL,
+  `location_id` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_location1_idx` (`location_id` ASC),
