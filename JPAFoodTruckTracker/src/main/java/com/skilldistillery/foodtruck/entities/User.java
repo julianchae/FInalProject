@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 //+-----------------+---------------+------+-----+---------+----------------+
 //| Field           | Type          | Null | Key | Default | Extra          |
@@ -62,7 +62,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<FoodTruck> foodTrucks;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="location_id")
 	private Location location;
 	

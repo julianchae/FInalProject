@@ -62,23 +62,6 @@ class LocationTest {
 	}
 	
 	@Test
-	@DisplayName("testing Location to User mapping")
-	void test2() {
-		
-		assertNotNull(location);
-		assertEquals("Jurisa",location.getUser().getFirstName());
-	}
-	
-//	@Test
-//	@DisplayName("testing Location to User mapping")
-//	void test2() {
-//		
-//		assertNotNull(location);
-//		assertNotNull(location.getUsers());
-//		assertTrue(location.getUsers().size()>0);	
-//	}
-	
-	@Test
 	@DisplayName("testing Location to Festival mapping")
 	void test3() {
 		

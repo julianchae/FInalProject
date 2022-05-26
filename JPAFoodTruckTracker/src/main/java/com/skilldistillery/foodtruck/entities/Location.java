@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 //mysql> desc location;
 //+--------+-------------+------+-----+---------+----------------+
@@ -45,12 +43,6 @@ public class Location {
 	
 	@OneToMany(mappedBy="location")
 	private List<TaggedTruck> taggedTrucks;
-	
-//	@OneToMany(mappedBy="location")
-//	private List<User> users;
-	
-	@OneToOne(mappedBy="location")
-	private User user;
 	
 	public Location() {
 		super();
@@ -111,13 +103,6 @@ public class Location {
 		this.taggedTrucks = taggedTrucks;
 	}
 	
-	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	@Override
 	public String toString() {
 		return "Location [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
