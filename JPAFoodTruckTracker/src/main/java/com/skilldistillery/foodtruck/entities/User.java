@@ -62,6 +62,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<FoodTruck> foodTrucks;
 	
+	//=======================
 	@OneToOne
 	@JoinColumn(name="location_id")
 	private Location location;
