@@ -30,7 +30,6 @@ public class AuthController {
 	    user = authService.register(user);
 	    return user;
 	}
-
 	@GetMapping(path = "/authenticate")
 	public User authenticate(Principal principal) {
 	    return authService.getUserByUsername(principal.getName());
