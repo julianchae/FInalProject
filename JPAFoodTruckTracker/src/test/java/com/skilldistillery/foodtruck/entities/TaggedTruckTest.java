@@ -58,4 +58,22 @@ class TaggedTruckTest {
 		assertNotNull(taggedTruck);
 		assertEquals("Smells amazing. ", taggedTruck.getComment());
 	}
+	
+	@Test
+	void test_TaggedTruck_to_FoodTruck_mapping() {
+		assertNotNull(taggedTruck);
+		assertEquals("Tacos R Us", taggedTruck.getFoodTruck().getName());
+	}
+	
+	@Test
+	void test_TaggedTruck_to_location_mapping() {
+		assertNotNull(taggedTruck);
+		assertEquals("Grand Junction", taggedTruck.getLocation().getCity());
+	}
+	
+	@Test
+	void test_TaggedTruck_to_User_mapping() {
+		assertNotNull(taggedTruck);
+		assertEquals("Jurisa", taggedTruck.getUser().getFirstName());
+	}
 }
