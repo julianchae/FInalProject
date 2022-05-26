@@ -6,8 +6,16 @@ import {MatCardModule} from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/home/home.component';
+
+
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 
@@ -17,9 +25,14 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     RegisterComponent,
 
+
     LoginComponent,
     LogoutComponent,
 
+    HomeComponent,
+
+    LoginComponent,
+    LogoutComponent,
     HomeComponent
 
   ],
