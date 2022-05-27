@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+
+
 const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
@@ -16,7 +18,7 @@ const routes: Routes = [
   {path:'truck/:id', component: SingleTruckComponent},
   {path:'home', component: HomeComponent},
   {path:'profile', component: ProfileComponent},
-  {path:'crud-food-truck', component: CrudFoodTruckComponent},
+  {path:'updateFoodTruck', component: CrudFoodTruckComponent},
   {path:'**', component: HomeComponent}
 
 ];
