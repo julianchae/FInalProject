@@ -7,6 +7,8 @@ import com.skilldistillery.foodtruck.entities.Comment;
 public interface CommentService {
 
 	List<Comment> findAllComments();
+
+	List<Comment> findCommentOnTruck(int tid);
 	
 	
 
