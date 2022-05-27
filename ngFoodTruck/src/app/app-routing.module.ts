@@ -1,3 +1,4 @@
+import { CrudFoodTruckComponent } from './components/crud-food-truck/crud-food-truck.component';
 import { SingleTruckComponent } from './components/single-truck/single-truck.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'truck/:id', component: SingleTruckComponent},
   {path:'home', component: HomeComponent},
   {path:'profile', component: ProfileComponent},
+  {path:'crud-food-truck', component: CrudFoodTruckComponent},
   {path:'**', component: HomeComponent}
 
 ];

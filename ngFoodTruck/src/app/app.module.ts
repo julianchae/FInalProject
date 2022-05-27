@@ -18,6 +18,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { SingleTruckComponent } from './components/single-truck/single-truck.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CrudFoodTruckComponent } from './components/crud-food-truck/crud-food-truck.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -32,7 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeComponent,
     NavigationComponent,
     SingleTruckComponent,
-    ProfileComponent
+    ProfileComponent,
+    CrudFoodTruckComponent
 
 
 
@@ -46,7 +49,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
 
 
   ],
