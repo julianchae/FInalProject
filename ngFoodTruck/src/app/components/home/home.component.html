@@ -1,7 +1,7 @@
 
-<div *ngIf="foodTrucks">
+<div *ngIf="foodTrucks" class="food-truck-div">
 
-  <mat-card class="example-card" *ngFor="let foodTruck of foodTrucks">
+  <mat-card class="example-card" *ngFor="let foodTruck of foodTrucks" >
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{foodTruck.name}}</mat-card-title>
@@ -14,8 +14,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent">LIKE</button>
-      <button mat-raised-button color="accent">SHARE</button>
+      <button mat-raised-button color="accent" [routerLink]="['/truck/' + foodTruck.id]">Show more...</button>
     </mat-card-actions>
   </mat-card>
 </div>
