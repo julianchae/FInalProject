@@ -81,7 +81,8 @@ public class UserController {
 	}
 	
 	@PostMapping("users/comment/{tid}")
-	public Comment createCommentOnTruck(@RequestBody 
+	public Comment createCommentOnTruck(
+			@RequestBody 
 			Comment comment, 
 			Principal principal,
 			@PathVariable int tid) {

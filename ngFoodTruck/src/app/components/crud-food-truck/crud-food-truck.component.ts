@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodTruck } from 'src/app/models/food-truck';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { FoodTruckService } from 'src/app/services/food-truck.service';
 
 @Component({
@@ -18,14 +20,31 @@ export class CrudFoodTruckComponent implements OnInit {
 
   editFoodTruck: FoodTruck | null = null;
 
+
+
   constructor(private truckSvc: FoodTruckService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
     foodTruck: FoodTruck | null = null;
+    user: User | null = null;
 
   ngOnInit(): void {
     this.loadFoodTruck();
+    this.authService.getLoggedInUser().subscribe({
+      next:(user) => {
+        this.user = Object.assign({},user);
+        // this.user.password = '';
+        //  this.user = user;
+        // console.log(user);
+
+      },
+      error:(fail) => {
+        console.error(fail);
+        // return null;
+      }
+    });
   }
 
   loadFoodTruck(){

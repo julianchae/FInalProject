@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { FoodTruck } from './../models/food-truck';
 import { Injectable } from '@angular/core';
@@ -12,7 +13,19 @@ export class FoodTruckService {
 
   private url = environment.baseUrl + "api/trucks";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+      private authServ: AuthService
+    ) { }
+
+    getHttpOptions() {
+      let options = {
+        headers: {
+          Authorization: 'Basic ' + this.authServ.getCredentials(),
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+      };
+      return options;
+    }
 
   index() {
     return this.http.get<FoodTruck[]>(this.url)
@@ -35,7 +48,7 @@ export class FoodTruckService {
   }
 
   create(foodTruck: FoodTruck) {
-    return this.http.post<FoodTruck>((this.url + "/trucks"), foodTruck).pipe(
+    return this.http.post<FoodTruck>(this.url, foodTruck, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('KABOOM');
@@ -44,7 +57,7 @@ export class FoodTruckService {
   }
   update(updateFoodTruck: FoodTruck) {
  //TODO: update routes!!!
-    return this.http.put<FoodTruck>((this.url + '/foodtruck/' + updateFoodTruck.id), updateFoodTruck).pipe(
+    return this.http.put<FoodTruck>((this.url + '/foodtruck/' + updateFoodTruck.id), updateFoodTruck, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('KABOOM');
@@ -53,7 +66,7 @@ export class FoodTruckService {
   }
   destroy(id: number) {
 //TODO: update routes!!!
-    return this.http.delete<boolean>(this.url + '/foodtruck/' + id).pipe(
+    return this.http.delete<boolean>(this.url + '/foodtruck/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('KABOOM');
