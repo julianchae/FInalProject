@@ -33,6 +33,22 @@ public class TruckController {
 	public List<FoodTruck> getMyFoodtrucks(Principal pricipal){
 		return truckServe.getUsersTrucks(pricipal.getName());
 	}
+	
+	
+	
+	@GetMapping("trucks/single/{tid}")
+	public FoodTruck getSingleFoodtruck
+		(@PathVariable int tid,
+			HttpServletResponse resp) {
+		FoodTruck truck = null;
+		truck = truckServe.getSingleTruck(tid);
+
+		if (truck == null) {
+			resp.setStatus(404);
+		}
+		return truck;
+		
+	}
 	@GetMapping("trucks/{keyword}")
 	public List<FoodTruck> getFoodtrucksByKeyword(
 			@PathVariable String keyword,
