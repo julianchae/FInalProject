@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.foodtruck.entities.FoodTruck;
 import com.skilldistillery.foodtruck.entities.MenuItem;
+import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.repositories.MenuItemRepository;
 import com.skilldistillery.foodtruck.repositories.TruckRepository;
+import com.skilldistillery.foodtruck.repositories.UserRepository;
 @Service
 public class TruckServiceImpl implements TruckService {
 
@@ -19,6 +21,9 @@ public class TruckServiceImpl implements TruckService {
 	private TruckRepository truckRepo;
 	@Autowired
 	private MenuItemRepository menuRepo;
+	@Autowired
+	private UserRepository userRepo;
+	
 	@Override
 	public List<FoodTruck> getAllTrucks() {
 		
@@ -75,7 +80,6 @@ public class TruckServiceImpl implements TruckService {
 			
 		return menu;
 		
-		
 	}
 	
 	@Override
@@ -85,9 +89,16 @@ public class TruckServiceImpl implements TruckService {
 			truck=op.get();		
 		return truck;
 	}
-
-		
-		
 	
-	
+	@Override
+	public FoodTruck addFoodTruck(String username, FoodTruck newFoodtruck) {
+		List<FoodTruck>foodtrucks=
+		truckRepo.findByUser_Username(username);
+		User user = userRepo.findByUsername(username);
+		newFoodtruck.setUser(user);
+		foodtrucks.add(newFoodtruck);
+		truckRepo.saveAndFlush(newFoodtruck);
+		return newFoodtruck;
+		
+	}
 }

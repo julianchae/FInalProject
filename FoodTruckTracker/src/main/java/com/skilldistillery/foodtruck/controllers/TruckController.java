@@ -34,7 +34,29 @@ public class TruckController {
 		return truckServe.getUsersTrucks(pricipal.getName());
 	}
 	
+	//users can create a food truck
 	
+	@PostMapping("trucks")
+	public FoodTruck createNewFoodTruck(
+			Principal principal,
+			@RequestBody FoodTruck foodtruck,
+			HttpServletResponse resp,
+			HttpServletRequest req) {
+		
+		
+		foodtruck= truckServe.addFoodTruck(principal.getName(), foodtruck);
+		
+		if (foodtruck == null) {
+			resp.setStatus(404);
+		}else {
+			resp.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(foodtruck.getId());
+			resp.setHeader("Location", url.toString());
+			
+		}return foodtruck;
+		
+	}
 	
 	@GetMapping("trucks/single/{tid}")
 	public FoodTruck getSingleFoodtruck
@@ -66,7 +88,6 @@ public class TruckController {
 			int mid,
 			HttpServletRequest req, 
 			HttpServletResponse resp) {
-		
 				menuItem =
 				truckServe.updateFoodtruckMenu(mid,
 				menuItem, 
