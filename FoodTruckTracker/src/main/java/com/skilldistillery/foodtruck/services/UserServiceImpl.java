@@ -1,11 +1,16 @@
 package com.skilldistillery.foodtruck.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.foodtruck.entities.Comment;
+import com.skilldistillery.foodtruck.entities.FoodTruck;
 import com.skilldistillery.foodtruck.entities.User;
+import com.skilldistillery.foodtruck.repositories.CommentRepository;
+import com.skilldistillery.foodtruck.repositories.TruckRepository;
 import com.skilldistillery.foodtruck.repositories.UserRepository;
 
 @Service
@@ -13,6 +18,10 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private TruckRepository truckRepo;
+	@Autowired
+	private CommentRepository commentRepo;
 
 	@Override
 	public User getUserById(int userId) {
@@ -59,6 +68,21 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public Comment createCommentOnTruck(String name, 
+			int tid, 
+			Comment comment) {
+		User user =userRepo.findByUsername(name);
+		comment.setUser(user);
+		Optional<FoodTruck> op = truckRepo.findById(tid);
+		FoodTruck truck=op.get();		
+		comment.setFoodTruck(truck);
+		List<Comment>userComments=	user.getComments();
+		userComments.add(comment);
+		return commentRepo.saveAndFlush(comment);
+		
 	}
 
 }
