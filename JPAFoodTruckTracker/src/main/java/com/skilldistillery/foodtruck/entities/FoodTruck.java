@@ -1,7 +1,7 @@
 package com.skilldistillery.foodtruck.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
-
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -35,7 +35,7 @@ public class FoodTruck {
 	
 	private boolean active;
 	@Column(name = "date_created")
-	private String dateCreated;
+	private LocalDateTime dateCreated;
 	@Column(name = "website_url")
 	private String websiteUrl;
 	@JsonIgnore
@@ -130,12 +130,12 @@ public class FoodTruck {
 	}
 
 
-	public String getDateCreated() {
+	public LocalDateTime getDateCreated() {
 		return dateCreated;
 	}
 
 
-	public void setDateCreated(String dateCreated) {
+	public void setDateCreated(LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
