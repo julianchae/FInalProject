@@ -1,11 +1,8 @@
 package com.skilldistillery.foodtruck.controllers;
-
 import java.security.Principal;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.skilldistillery.foodtruck.entities.FoodTruck;
 import com.skilldistillery.foodtruck.entities.MenuItem;
 import com.skilldistillery.foodtruck.services.TruckService;
@@ -28,6 +24,7 @@ public class TruckController {
 	
 	@Autowired
 	private TruckService truckServe;
+	
 	@GetMapping("trucks")
 	public List<FoodTruck> getAllFoodtrucks(){
 		return truckServe.getAllTrucks();
@@ -46,7 +43,6 @@ public class TruckController {
 			}
 			return foodtrucks;
 	}
-	
 	@PutMapping("trucks/menuItem/{mid}")
 	public MenuItem updateMenuItem(
 			Principal principal,
@@ -64,9 +60,8 @@ public class TruckController {
 		 resp.setStatus(404);
 	}
 	return menuItem;
-
 	}
-	@PostMapping("trucks/{tid}/menuItem")
+	@PostMapping("trucks/menuItem/{tid}")
 	public MenuItem addMenuItem(
 			Principal principal,
 			@RequestBody MenuItem item,
@@ -79,10 +74,8 @@ public class TruckController {
 		
 		if(item== null) {
 			resp.setStatus(404);
-			
 		}
 		return item;
-	
 	}
 	
 }
