@@ -1,1 +1,57 @@
-<p>crud-food-truck works!</p>
+<h1>Food Truck</h1>
+
+<table>
+    <thead>
+        <tr>
+            <td> ID</td><br>
+            <td>Name</td><br>
+            <td>Description</td><br>
+            <td>Image URL</td><br>
+            <td>Active</td><br>
+            <td>Date Created</td><br>
+            <td>Website URL</td><br>
+            <td>User</td><br>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let foodTruck of foodTrucks">
+            <td>{{foodTruck.id}} </td><br><br>
+            <td>{{foodTruck.name}} </td><br><br>
+            <td>{{foodTruck.description}} </td><br><br>
+            <td>{{foodTruck.imgUrl}} </td><br><br>
+            <td>{{foodTruck.active}} </td><br><br>
+            <td>{{foodTruck.dateCreated}} </td><br><br>
+            <td>{{foodTruck.websiteUrl}} </td><br><br>
+            <td>{{foodTruck.user}} </td><br><br>
+            <button (click)="deleteFoodTruck(foodTruck.id)">Delete</button>
+            <button (click)="setEditFoodTruck(foodTruck)">Edit</button>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<form *ngIf="editFoodTruck">
+    <label for="name">Food Truck Name: </label>
+    <input type="text" name="name" [(ngModel)]="editFoodTruck.name">
+
+    <label for="description">Description: </label>
+    <input type="text" name="description" [(ngModel)]="editFoodTruck.description">
+
+    <label for="imgUrl">Sets: </label>
+    <input type="text" name="imgUrl" [(ngModel)]="editFoodTruck.imgUrl">
+
+    <label for="active">Active: </label>
+    <input type="boolean" name="active" [(ngModel)]="editFoodTruck.active">
+
+    <label for="dateCreated">Date Created: </label>
+    <input type="text" name="dateCreated" [(ngModel)]="editFoodTruck.dateCreated">
+
+    <label for="websiteUrl">Website URL: </label>
+    <input type="text" name="websiteUrl" [(ngModel)]="editFoodTruck.websiteUrl">
+
+    <label for="user">User: </label>
+    <input type="text" name="user" [(ngModel)]="editFoodTruck.user ">
+
+    <button (click)="updateFoodTruck(editFoodTruck) ">Submit</button>
+</form>
