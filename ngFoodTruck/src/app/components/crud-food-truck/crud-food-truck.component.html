@@ -1,4 +1,12 @@
-<h1>Food Truck</h1>
+<h1>Food Truck Options</h1>
+
+
+
+<h3>Create A New Food Truck</h3>
+<form>
+    Name: <input type="text" name="name" [(ngModel)]="newFoodTruck.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newFoodTruck.description"> <br> Image URL: <input type="text" name="sets" [(ngModel)]="newFoodTruck.imgUrl"><br>    Active: <input type="boolean" name="repetitions" [(ngModel)]="newFoodTruck.active"><br> Website URL: <input type="text" name="accessoryWork" [(ngModel)]="newFoodTruck.websiteUrl"><br> <input type="hidden" name="user" [value]="user"><br>
+    <button (click)="createFoodTruck(newFoodTruck)">Submit</button>
+</form>
 
 <table>
     <thead>

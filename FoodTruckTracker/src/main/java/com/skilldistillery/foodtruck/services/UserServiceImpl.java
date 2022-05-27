@@ -48,8 +48,10 @@ public class UserServiceImpl implements UserService {
 		if (op.isPresent()) {
 			user1 = op.get();
 			if(user1.getUsername().equals(username)) {
-				user.setId(id);
-				return userRepo.saveAndFlush(user);
+				user1.setFirstName(user.getFirstName());
+				user1.setLastName(user.getLastName());
+				user1.setImgUrl(user.getImgUrl());
+				return userRepo.saveAndFlush(user1);
 			}
 		}
 		return null;
