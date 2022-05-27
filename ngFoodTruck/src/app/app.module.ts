@@ -17,6 +17,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { SingleTruckComponent } from './components/single-truck/single-truck.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -30,7 +31,8 @@ import { SingleTruckComponent } from './components/single-truck/single-truck.com
     LogoutComponent,
     HomeComponent,
     NavigationComponent,
-    SingleTruckComponent
+    SingleTruckComponent,
+    ProfileComponent
 
 
 

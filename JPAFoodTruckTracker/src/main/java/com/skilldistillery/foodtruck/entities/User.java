@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //+-----------------+---------------+------+-----+---------+----------------+
 //| Field           | Type          | Null | Key | Default | Extra          |
 //+-----------------+---------------+------+-----+---------+----------------+
@@ -52,29 +54,36 @@ public class User {
 
 	//TODO: Needs mapping for Favorites and TaggedTruck
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Comment> comments;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Festival> festivals;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<FoodTruck> foodTrucks;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="location_id")
 	private Location location;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Order> orders;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Request> requests;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<TaggedTruck> taggedTrucks;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy="users")
 	private List<FoodTruck> favFoodTrucks;
 	

@@ -42,6 +42,24 @@ export class AuthService {
     );
   }
 
+
+  getLoggedInUser(): Observable <User>  {
+    let credentials = this.getCredentials();
+    if (credentials === null){
+      throw Error("not logged in")
+    }
+
+    let decoded = atob(credentials);
+    let username = decoded.split(":")[0];
+    let password = decoded.split(":")[1];
+    console.log(decoded);
+    console.log(username);
+    console.log(password);
+    let user1 = null;
+    return this.login(username, password)
+    //return null;
+  }
+
   register(user: User): Observable<User>  {
     // Create POST request to register a new account
     return this.http.post<User>(this.url + 'register', user).pipe(
