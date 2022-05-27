@@ -1,6 +1,7 @@
 package com.skilldistillery.foodtruck.services;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,6 +97,7 @@ public class TruckServiceImpl implements TruckService {
 		truckRepo.findByUser_Username(username);
 		User user = userRepo.findByUsername(username);
 		newFoodtruck.setUser(user);
+		newFoodtruck.setDateCreated(LocalDateTime.now());
 		foodtrucks.add(newFoodtruck);
 		truckRepo.saveAndFlush(newFoodtruck);
 		return newFoodtruck;
