@@ -25,6 +25,7 @@ export class CrudFoodTruckComponent implements OnInit {
     foodTruck: FoodTruck | null = null;
 
   ngOnInit(): void {
+    this.loadFoodTruck();
   }
 
   loadFoodTruck(){
