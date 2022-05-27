@@ -34,4 +34,31 @@ export class FoodTruckService {
     );
   }
 
+  create(foodTruck: FoodTruck) {
+    return this.http.post<FoodTruck>((this.url + "/trucks"), foodTruck).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+  update(updateFoodTruck: FoodTruck) {
+ //TODO: update routes!!!
+    return this.http.put<FoodTruck>((this.url + '/foodtruck/' + updateFoodTruck.id), updateFoodTruck).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+  destroy(id: number) {
+//TODO: update routes!!!
+    return this.http.delete<boolean>(this.url + '/foodtruck/' + id).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+
 }
