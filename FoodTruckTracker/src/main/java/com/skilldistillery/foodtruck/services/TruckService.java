@@ -20,4 +20,6 @@ public interface TruckService {
 	MenuItem addMenuItem(MenuItem menu, String username, int tid);
 
 	FoodTruck getSingleTruck(int tid);
+
+	FoodTruck addFoodTruck(String username, FoodTruck foodtruck);
 }
