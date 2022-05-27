@@ -1,5 +1,5 @@
 
-<mat-toolbar color="accent">
+<mat-toolbar color="primary">
 
   <a [routerLink]="['/home']" class="title-link">FoodTruckMenu</a>
   <span class="example-spacer"></span>
@@ -23,18 +23,18 @@
   </mat-menu>
 
   <mat-menu #account="matMenu">
-    <button mat-menu-item [routerLink]="['/profile']" *ngIf="loggedin">
+    <button mat-menu-item [routerLink]="['/profile']" *ngIf="loggedIn()">
       <mat-icon>face</mat-icon>
       <span>Profile</span>
     </button>
-    <button mat-menu-item [routerLink]="['/login']" *ngIf="!loggedin">
+    <button mat-menu-item [routerLink]="['/login']" *ngIf="!loggedIn()">
       <mat-icon>face</mat-icon>
       <span>Log in</span>
     </button>
-    <button mat-menu-item [routerLink]="['/register']" *ngIf="!loggedin">
+    <button mat-menu-item [routerLink]="['/register']" *ngIf="!loggedIn()">
       <mat-icon>add</mat-icon>
       <span>Create</span>
     </button>
-    <app-logout *ngIf="loggedin"></app-logout>
+    <app-logout *ngIf="loggedIn()"></app-logout>
   </mat-menu>
 </mat-toolbar>

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('credentials')) {
-      this.loggedin = true;
-    } else {
-      this.loggedin = false;
-    }
+
   }
 
-  loggedin: boolean = false;
+  loggedIn() {
+    return this.authSvc.checkLogin();
+  }
+
+
 }

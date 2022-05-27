@@ -12,15 +12,20 @@ export class LoginComponent implements OnInit {
 
   loginUser: User = new User();
 
+
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
 
 
   ) { }
 
   ngOnInit(): void {
+
   }
+
+
+
 
   login(user: User){
     console.log(user);
