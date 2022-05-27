@@ -1,1 +1,5 @@
-<button (click)="logout()"></button>
+
+<button mat-menu-item [routerLink]="['/logout']" (click)="logout()">
+  <mat-icon>clear</mat-icon>
+  <span>Sign out</span>
+</button>

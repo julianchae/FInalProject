@@ -10,6 +10,12 @@ export class NavigationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('credentials')) {
+      this.loggedin = true;
+    } else {
+      this.loggedin = false;
+    }
   }
 
+  loggedin: boolean = false;
 }
