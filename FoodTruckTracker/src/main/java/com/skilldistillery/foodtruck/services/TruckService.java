@@ -1,6 +1,5 @@
 package com.skilldistillery.foodtruck.services;
 
-import java.awt.Menu;
 import java.util.List;
 
 import com.skilldistillery.foodtruck.entities.FoodTruck;
@@ -16,7 +15,7 @@ public interface TruckService {
 
 	List<FoodTruck> getFoodTruckByKeyword(String keyword);
 
-
-
 	MenuItem updateFoodtruckMenu(int id, MenuItem menu, String username);
+	
+	MenuItem addMenuItem(MenuItem menu, String username, int tid);
 }

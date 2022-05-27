@@ -39,7 +39,6 @@ public class TruckServiceImpl implements TruckService {
 		
 		return truckRepo.findByNameLike(keyword);
 	}
-
 	@Override
 	public MenuItem updateFoodtruckMenu(
 			int id,
@@ -53,19 +52,34 @@ public class TruckServiceImpl implements TruckService {
 			for (MenuItem menuItem: foodtruck.getMenuItems()) {
 				
 				if(menuItem.getId()== id) {
-					
 					menu.setId(menuItem.getId());
 					return menuRepo.saveAndFlush(menu);
 				}
-				
-	
 			}
-			
 		}
 		return null;
-			
-	
 	}
 
+	@Override
+	public MenuItem addMenuItem(MenuItem menu, String username, int tid) {
+		
+		List<FoodTruck>foodtrucks=
+				truckRepo.findByUser_Username(username);
+		for (FoodTruck foodTruck : foodtrucks) {
+			if(foodTruck.getId()== tid) {
+				List<MenuItem> menuItems = foodTruck.getMenuItems();
+				menuItems.add(menu);
+				return menuRepo.saveAndFlush(menu);
+				}
+			}
+			
+		return menu;
+		
+		
+	}
 
+		
+		
+	
+	
 }
