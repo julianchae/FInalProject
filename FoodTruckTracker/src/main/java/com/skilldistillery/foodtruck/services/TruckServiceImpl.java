@@ -2,7 +2,7 @@ package com.skilldistillery.foodtruck.services;
 
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,6 +76,14 @@ public class TruckServiceImpl implements TruckService {
 		return menu;
 		
 		
+	}
+	
+	@Override
+	public FoodTruck getSingleTruck(int tid) {
+		FoodTruck truck = new FoodTruck();
+		Optional<FoodTruck> op = truckRepo.findById(tid);
+			truck=op.get();		
+		return truck;
 	}
 
 		
