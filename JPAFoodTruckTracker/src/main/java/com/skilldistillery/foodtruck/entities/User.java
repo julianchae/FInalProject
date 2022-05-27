@@ -42,7 +42,7 @@ public class User {
 	private boolean enabled;
 	private String role;
 	private String password;
-	private String email;
+
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -225,13 +225,6 @@ public class User {
 		this.location = location;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	@Override
 	public String toString() {
