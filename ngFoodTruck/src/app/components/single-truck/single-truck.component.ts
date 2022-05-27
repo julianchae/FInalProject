@@ -11,6 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SingleTruckComponent implements OnInit {
 
+  foodTrucks: FoodTruck[] = [];
+
+  selected: FoodTruck | null = null;
+
+  newFoodTruck: FoodTruck = new FoodTruck();
+
+  editFoodTruck: FoodTruck | null = null;
+
+
   constructor(private truckSvc: FoodTruckService,
             private route: ActivatedRoute,
             private router: Router
@@ -39,5 +48,12 @@ export class SingleTruckComponent implements OnInit {
       }
     );
   }
+  // loadFoodTruck(){
+  //   this.truckSvc.index().subscribe(
+  //     success => this.foodTrucks = success,
+  //     err => console.log("Observable got an error " + err)
+  //   );
+  // }
+
 
 }
