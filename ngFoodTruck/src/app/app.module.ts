@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -32,7 +33,9 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
+
 
   ],
   providers: [],

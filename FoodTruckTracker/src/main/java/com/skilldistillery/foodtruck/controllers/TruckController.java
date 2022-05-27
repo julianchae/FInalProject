@@ -18,7 +18,7 @@ import com.skilldistillery.foodtruck.services.TruckService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({ "*", "http://localhost" })
+@CrossOrigin({ "*", "http://localhost:4209" })
 public class TruckController {
 	
 	
