@@ -24,4 +24,14 @@ export class FoodTruckService {
     );
   }
 
+  getSingleTruck(id: number) {
+    return this.http.get<FoodTruck>(this.url + '/single/' + id)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+
 }

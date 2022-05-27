@@ -1,3 +1,4 @@
+import { SingleTruckComponent } from './components/single-truck/single-truck.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { Login } from './models/login';
@@ -10,6 +11,8 @@ const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'logout', component: LogoutComponent},
+  {path:'truck/:id', component: SingleTruckComponent},
+  {path:'**', component: HomeComponent},
   {path:'home', component: HomeComponent}
 ];
 

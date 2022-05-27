@@ -1,6 +1,6 @@
 import { FoodTruck } from './../../models/food-truck';
-import { FoodTruckService } from './../../services/food-truck.service';
 import { Component, OnInit } from '@angular/core';
+import { FoodTruckService } from 'src/app/services/food-truck.service';
 
 @Component({
   selector: 'app-home',
@@ -23,5 +23,7 @@ export class HomeComponent implements OnInit {
       err => console.log('Ovservable got and error' + err)
     );
   }
+
+
 
 }

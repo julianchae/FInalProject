@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { SingleTruckComponent } from './components/single-truck/single-truck.component';
 
 
 
@@ -28,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     LoginComponent,
     LogoutComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    SingleTruckComponent
 
 
 
