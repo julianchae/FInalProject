@@ -20,7 +20,6 @@ import com.skilldistillery.foodtruck.entities.Request;
 import com.skilldistillery.foodtruck.services.RequestService;
 
 
-
 //TODO: Needs Testing in Postman
 @RestController
 @RequestMapping("api")
@@ -35,15 +34,6 @@ public class RequestController {
 		return serv.index(principal.getName());
 	}
 	
-	@GetMapping("requests/{rid}")
-	public Request show(Principal principal, HttpServletResponse resp, @PathVariable int rid) {
-		Request request = serv.show(principal.getName(), rid);
-		if(request == null) {
-			resp.setStatus(404);
-		}
-		return request;
-	}
-
 	@PostMapping("requests")
 	public Request addRequest(Principal principal, @RequestBody Request request) {
 		System.out.println(request.getRemarks());
@@ -65,6 +55,4 @@ public class RequestController {
 			resp.setStatus(404);
 		}
 	}
-
-
 }
