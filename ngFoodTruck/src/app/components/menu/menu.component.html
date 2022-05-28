@@ -1,1 +1,38 @@
-<p>menu works!</p>
+<h1>Menu Options</h1>
+
+
+
+<h3>Create A New Menu Item</h3>
+<form>
+    Name: <input type="text" name="name" [(ngModel)]="newMenuItem.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newMenuItem.description"> <br> Image URL: <input type="text" name="sets" [(ngModel)]="newMenuItem.imgUrl"><br>    Active: <input type="boolean" name="repetitions" [(ngModel)]="newMenuItem.active"> Price: <input type="number" name="price" [(ngModel)]="newMenuItem.price">
+    <button (click)="createMenuItem(newMenuItem)">Submit</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <td> ID</td><br>
+            <td>Name</td><br>
+            <td>Description</td><br>
+            <td>Image URL</td><br>
+            <td>Active</td><br>
+            <td>Price</td><br>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menuItem of menuItems">
+            <td>{{menuItem.id}} </td><br><br>
+            <td>{{menuItem.name}} </td><br><br>
+            <td>{{menuItem.description}} </td><br><br>
+            <td>{{menuItem.imgUrl}} </td><br><br>
+            <td>{{menuItem.active}} </td><br><br>
+            <td>{{menuItem.price}} </td><br><br>
+
+            <button (click)="deleteMenuItem(menuItem.id)">Delete</button>
+            <button (click)="setEditMenuItem(menuItem)">Edit</button>
+
+        </tr>
+    </tbody>
+</table>
