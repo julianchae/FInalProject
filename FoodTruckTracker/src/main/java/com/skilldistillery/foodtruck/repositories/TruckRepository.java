@@ -11,5 +11,7 @@ public interface TruckRepository extends JpaRepository<FoodTruck, Integer> {
 	
 	List<FoodTruck> findByNameLike(String keyword);
 	
+	
+	
 
 }
