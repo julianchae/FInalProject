@@ -24,20 +24,6 @@ public class RequestServiceImpl implements RequestService {
 	public List<Request> index(String username) {
 		return requestRepo.findByUser_Username(username);
 	}
-	
-	@Override
-	public Request show(String username, int rid) {
-		Optional<Request> op = requestRepo.findById(rid);
-		Request request = null;
-		if (op.isPresent()) {
-			request = op.get();
-			if(request.getUser().getUsername().equals(username)) {
-				return request;
-			}
-		}
-		return null;
-	}
-
 
 	@Override
 	public Request create(String username, Request request) {
