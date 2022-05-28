@@ -1,4 +1,4 @@
-<div *ngIf="foodTruck">
+<section *ngIf="foodTruck">
 
 
     <div class="title-div" [style.background-image]="'url(' + foodTruck.imgUrl + ')'">
@@ -13,19 +13,29 @@
         <mat-icon>menu</mat-icon> View ▼
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/']">
+        <button mat-menu-item >
           <mat-icon>restaurant</mat-icon>
           <span>Menu</span>
         </button>
-        <button mat-menu-item [routerLink]="['/']">
+        <button mat-menu-item >
           <mat-icon>rate_review</mat-icon>
           <span>Reviews</span>
         </button>
+        <button mat-menu-item >
+          <mat-icon>schedule</mat-icon>
+          <span>Schedule</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>info</mat-icon>
+          <span>About us</span>
+        </button>
       </mat-menu>
     </mat-card>
+  </section>
 
-
-
-
-
-</div>
+  <main  *ngIf="foodTruck">
+    <div class="about-us-div">
+      <h1>About us</h1>
+      <p>{{foodTruck.description}}</p>
+    </div>
+  </main>

@@ -1,3 +1,9 @@
+h1 {
+  font-size: xx-large;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+}
+
 .img-matcard {
   margin: 0 auto;
   box-shadow: 2px 2px 2px 2px #888888;
@@ -21,9 +27,6 @@
   position: relative;
   top: 9vh;
   color: white;
-  font-size: xx-large;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 700;
 }
 
 .card-info {
@@ -46,5 +49,9 @@
 .single-icon {
   font-size: 5vh;
 
+}
+
+.about-us-div {
+  margin-left: 4vw;
 }
 
