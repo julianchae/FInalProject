@@ -20,6 +20,7 @@ import { SingleTruckComponent } from './components/single-truck/single-truck.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { CrudFoodTruckComponent } from './components/crud-food-truck/crud-food-truck.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
@@ -35,7 +36,8 @@ import {MatMenuModule} from '@angular/material/menu';
     NavigationComponent,
     SingleTruckComponent,
     ProfileComponent,
-    CrudFoodTruckComponent
+    CrudFoodTruckComponent,
+    MenuComponent
 
 
 
