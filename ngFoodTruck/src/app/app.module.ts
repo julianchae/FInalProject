@@ -20,9 +20,11 @@ import { SingleTruckComponent } from './components/single-truck/single-truck.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { CrudFoodTruckComponent } from './components/crud-food-truck/crud-food-truck.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { MenuComponent } from './components/menu/menu.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+
 
 
 
@@ -38,7 +40,8 @@ import {MatInputModule} from '@angular/material/input';
     NavigationComponent,
     SingleTruckComponent,
     ProfileComponent,
-    CrudFoodTruckComponent
+    CrudFoodTruckComponent,
+    MenuComponent
 
 
 
