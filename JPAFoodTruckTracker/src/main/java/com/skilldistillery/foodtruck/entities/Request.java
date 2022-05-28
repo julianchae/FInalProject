@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Request {
 	
@@ -31,7 +33,6 @@ public class Request {
 		super();
 	}
 
-	
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
@@ -128,7 +129,8 @@ public class Request {
 	@Override
 	public String toString() {
 		return "Request [id=" + id + ", remarks=" + remarks + ", requestPlaced=" + requestPlaced + ", requestedDate="
-				+ requestedDate + ", accepted=" + accepted + "]";
+				+ requestedDate + ", accepted=" + accepted + ", foodTruck=" + foodTruck.getId() + ", location=" + location.getId()
+				+ ", user=" + user.getId() + "]";
 	}
 	
 	
