@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.foodtruck.entities.Request;
 import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.repositories.RequestRepository;
 import com.skilldistillery.foodtruck.repositories.UserRepository;
 
+@Service
 public class RequestServiceImpl implements RequestService {
 	
 	@Autowired
@@ -54,9 +56,17 @@ public class RequestServiceImpl implements RequestService {
 		if (op.isPresent()) {
 			request1 = op.get();
 			if(request1.getUser().getUsername().equals(username)) {
-				request.setId(rid);
-				request.setUser(request1.getUser());
-				return requestRepo.saveAndFlush(request);
+
+				request1.setAccepted(request.isAccepted());
+				request1.setRemarks(request.getRemarks());
+				request1.setRequestedDate(request.getRequestedDate());
+				if (request.getFoodTruck() != null) {
+					request1.setFoodTruck(request.getFoodTruck());
+				}
+				if (request.getLocation() != null) {
+					request1.setLocation(request.getLocation());
+				}
+				return requestRepo.saveAndFlush(request1);
 			}
 		}
 		return null;
