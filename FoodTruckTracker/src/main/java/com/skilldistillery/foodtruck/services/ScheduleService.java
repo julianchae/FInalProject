@@ -11,7 +11,7 @@ public interface ScheduleService {
 	
 	List<Schedule> truckSchedule(int tid);
 	
-	Schedule addSchedule(int tid, String username);
+	Schedule addSchedule(int tid, int lid, String username, Schedule schedule);
 
 	List<Schedule> specificSchedule(String username);
 

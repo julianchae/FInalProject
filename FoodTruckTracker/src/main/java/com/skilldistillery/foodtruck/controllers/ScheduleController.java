@@ -58,15 +58,20 @@ public class ScheduleController {
 		}
 		return schedules;
 	}
-	@PostMapping("schedule/truck/{tid}")
+	@PostMapping("schedule/truck/{tid}/location/{lid}")
 	public Schedule addSchedule(
 			@RequestBody Schedule schedule,
 			@PathVariable int tid,
-			Principal principal) {
+			@PathVariable int lid,
+			Principal principal,
+			HttpServletResponse resp) {
 		
-		
-		return null;
-		
+		schedule = scheduleServe.addSchedule(tid, lid, principal.getName(), schedule);
+		if(schedule == null) {
+			resp.setStatus(404);
+			
+		}
+		return schedule;
 	}
 	
 	

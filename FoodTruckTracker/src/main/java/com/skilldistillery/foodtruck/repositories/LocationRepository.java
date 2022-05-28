@@ -7,4 +7,5 @@ import com.skilldistillery.foodtruck.entities.Location;
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 	Location findByStreet(String street);
 	
+	Location queryById(int id);
 }
