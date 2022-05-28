@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //mysql> desc location;
 //+--------+-------------+------+-----+---------+----------------+
 //| Field  | Type        | Null | Key | Default | Extra          |
@@ -31,16 +33,19 @@ public class Location {
 	private String city;
 	private String state;
 	private String zip;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="location")
 	private List<Festival> festivals;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="location")
 	private List<Schedule> schedules;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="location")
 	private List<Request> requests;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="location")
 	private List<TaggedTruck> taggedTrucks;
 	
