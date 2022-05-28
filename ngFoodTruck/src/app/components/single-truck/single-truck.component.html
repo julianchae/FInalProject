@@ -1,6 +1,15 @@
 <div *ngIf="foodTruck">
-<h3>{{foodTruck.name}}</h3>
-<h5>{{foodTruck.description}}</h5>
+  <mat-card class="main-card">
+
+    <div class="title-div">
+
+      <h1>{{foodTruck.name}}</h1>
+      <h5>{{foodTruck.description}}</h5>
+    </div>
 
 
+<mat-card class="img-matcard">
+  <img [src]="foodTruck.imgUrl" class="truck-img">
+</mat-card>
+</mat-card>
 </div>
