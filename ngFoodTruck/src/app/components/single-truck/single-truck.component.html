@@ -1,6 +1,41 @@
-<div *ngIf="foodTruck">
-<h3>{{foodTruck.name}}</h3>
-<h5>{{foodTruck.description}}</h5>
+<section *ngIf="foodTruck">
 
 
-</div>
+    <div class="title-div" [style.background-image]="'url(' + foodTruck.imgUrl + ')'">
+
+      <h1>{{foodTruck.name}}</h1>
+    </div>
+
+    <mat-card class="card-info">
+      <mat-icon class="single-icon" color="primary"> local_shipping</mat-icon>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menu" aria-label="Hanburger dropdown for links">
+        <mat-icon>menu</mat-icon> View ▼
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item >
+          <mat-icon>restaurant</mat-icon>
+          <span>Menu</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>rate_review</mat-icon>
+          <span>Reviews</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>schedule</mat-icon>
+          <span>Schedule</span>
+        </button>
+        <button mat-menu-item >
+          <mat-icon>info</mat-icon>
+          <span>About us</span>
+        </button>
+      </mat-menu>
+    </mat-card>
+  </section>
+
+  <main  *ngIf="foodTruck">
+    <div class="about-us-div">
+      <h1>About us</h1>
+      <p>{{foodTruck.description}}</p>
+    </div>
+  </main>
