@@ -81,11 +81,12 @@ public class TruckController {
 			}
 			return foodtrucks;
 	}
-	@PutMapping("trucks/menuItem/{mid}")
+	@PutMapping("trucks/menuItem/{tid}/{mid}")
 	public MenuItem updateMenuItem(
 			Principal principal,
-			@RequestBody MenuItem menuItem, @PathVariable
-			int mid,
+			@RequestBody MenuItem menuItem, 
+			@PathVariable int mid,
+			@PathVariable int tid,
 			HttpServletRequest req, 
 			HttpServletResponse resp) {
 				menuItem =
@@ -115,4 +116,22 @@ public class TruckController {
 		return item;
 	}
 	
-}
+	@GetMapping("trucks/menuItems/{tid}")
+	public List<MenuItem> getMenuItemsForTruck(
+			HttpServletRequest req, 
+			HttpServletResponse resp,
+			@PathVariable int tid
+			) {
+		List<MenuItem> menu = truckServe.getFullMenuForSpecificTruck(tid);
+		if(menu== null) {
+			resp.setStatus(404);
+		}
+		return menu;
+	}
+
+		
+		
+				
+	}
+	
+

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="menu_item")
 public class MenuItem {
@@ -35,11 +37,11 @@ public class MenuItem {
 		super();
 		
 	}
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="food_truck_id")
 	private FoodTruck foodTruck;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="menuItem")
 	private List<Order> orders; 
 

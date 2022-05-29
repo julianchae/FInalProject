@@ -22,4 +22,6 @@ public interface TruckService {
 	FoodTruck getSingleTruck(int tid);
 
 	FoodTruck addFoodTruck(String username, FoodTruck foodtruck);
+	
+	List<MenuItem> getFullMenuForSpecificTruck(int tid);
 }

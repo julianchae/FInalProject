@@ -103,4 +103,11 @@ public class TruckServiceImpl implements TruckService {
 		return newFoodtruck;
 		
 	}
+
+	@Override
+	public List<MenuItem> getFullMenuForSpecificTruck(int tid) {
+		
+	List<MenuItem> menu=	menuRepo.findByFoodTruckId(tid);
+		return menu;
+	}
 }
