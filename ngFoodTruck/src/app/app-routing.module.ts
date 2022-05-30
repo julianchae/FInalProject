@@ -22,8 +22,8 @@ const routes: Routes = [
   {path:'profile', component: ProfileComponent},
   {path:'updateFoodTruck', component: CrudFoodTruckComponent},
   {path:'updateMenuItem', component: MenuComponent},
-  {path:'**', component: HomeComponent},
-  {path:'schedule/truck/:id', component: ScheduleComponent}
+  {path:'schedule/truck/:id', component: ScheduleComponent},
+  {path:'**', component: HomeComponent}
 
 ];
 
