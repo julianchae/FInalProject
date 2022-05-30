@@ -102,10 +102,7 @@ public class UserController {
 			Principal principal
 			) {
 		
-		
 		userServe.requestTruck(tid, lid, request, principal.getName());
-		
-		
 		return request;
 		
 	}
