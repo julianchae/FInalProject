@@ -75,6 +75,7 @@ public class TruckServiceImpl implements TruckService {
 			if(foodTruck.getId()== tid) {
 				List<MenuItem> menuItems = foodTruck.getMenuItems();
 				menuItems.add(menu);
+				menu.setFoodTruck(foodTruck);
 				return menuRepo.saveAndFlush(menu);
 				}
 			}
