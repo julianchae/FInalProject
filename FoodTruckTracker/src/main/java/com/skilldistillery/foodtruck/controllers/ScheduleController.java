@@ -69,7 +69,6 @@ public class ScheduleController {
 		schedule = scheduleServe.addSchedule(tid, lid, principal.getName(), schedule);
 		if(schedule == null) {
 			resp.setStatus(404);
-			
 		}
 		return schedule;
 	}

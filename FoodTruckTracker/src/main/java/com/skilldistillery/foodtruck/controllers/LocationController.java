@@ -38,10 +38,10 @@ public class LocationController {
 	  }
 	 
 		@PostMapping("locations")
-		public Location addLocation(Principal principal, @RequestBody Location location) {
+		public Location addLocation(Principal principal,
+				@RequestBody Location location) {
 			System.out.println(location.getCity());
 			System.out.println(location.getStreet());
-//			System.out.println(location);
 			return serv.create(principal.getName(), location);
 		}
 		
