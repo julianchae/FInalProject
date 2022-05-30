@@ -90,10 +90,7 @@ public class UserController {
 		
 		userServe.createCommentOnTruck(principal.getName(),
 				tid, comment);
-		
-		
 		return comment;
-		
 	}
 	
 	
