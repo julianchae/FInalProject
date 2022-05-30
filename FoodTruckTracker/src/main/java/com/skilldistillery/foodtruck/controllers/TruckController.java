@@ -85,16 +85,15 @@ public class TruckController {
 			}
 			return foodtrucks;
 	}
-	@PutMapping("trucks/menuItem/{tid}/{mid}")
+	@PutMapping("trucks/menuItem/{mid}")
 	public MenuItem updateMenuItem(
 			Principal principal,
 			@RequestBody MenuItem menuItem, 
 			@PathVariable int mid,
-			@PathVariable int tid,
 			HttpServletRequest req, 
 			HttpServletResponse resp) {
 				menuItem =
-				truckServe.updateFoodtruckMenu(mid,
+				truckServe.updateFoodtruckMenu(mid, 
 				menuItem, 
 				principal.getName());
 		
