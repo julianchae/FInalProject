@@ -47,7 +47,8 @@ public class TruckServiceImpl implements TruckService {
 	}
 	@Override
 	public MenuItem updateFoodtruckMenu(
-			int id,
+			int mid,
+			
 			MenuItem menu,
 			String username) {
 		List<FoodTruck> foodtrucks = 
@@ -57,7 +58,8 @@ public class TruckServiceImpl implements TruckService {
 			
 			for (MenuItem menuItem: foodtruck.getMenuItems()) {
 				
-				if(menuItem.getId()== id) {
+				if(menuItem.getId()== mid) {
+			menu.setFoodTruck(foodtruck);
 					menu.setId(menuItem.getId());
 					return menuRepo.saveAndFlush(menu);
 				}
