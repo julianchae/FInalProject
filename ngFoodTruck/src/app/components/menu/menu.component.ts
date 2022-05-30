@@ -77,8 +77,8 @@ export class MenuComponent implements OnInit {
       err => console.log(err)
     );
   }
-  updateFoodTruck(menuItem: Menu, tid: number, mid: number){
-    this.menuServ.update(menuItem, tid, mid).subscribe(
+  updateFoodTruck(menuItem: Menu, mid: number){
+    this.menuServ.update(menuItem, mid).subscribe(
       data => {
         this.reload();
         this.selected = null;

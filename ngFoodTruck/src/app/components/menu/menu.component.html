@@ -77,6 +77,6 @@
       <input matInput type="number" name="price" [(ngModel)]="editMenuItem.price">
       <mat-label>Price</mat-label>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="updateFoodTruck(editMenuItem, truck.id, editMenuItem.id); editMenuItem = null">Update</button>
+    <button mat-raised-button color="primary" (click)="updateFoodTruck(editMenuItem, editMenuItem.id); editMenuItem = null">Update</button>
   </mat-card>
 </div>

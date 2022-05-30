@@ -46,9 +46,9 @@ export class MenuService {
     }
 
 
-    update(updateMenuItem: Menu, tid: number, mid: number) {
+    update(updateMenuItem: Menu, mid: number) {
 
-         return this.http.put<Menu>((this.url + '/' + tid + '/' + mid), updateMenuItem, this.getHttpOptions()).pipe(
+         return this.http.put<Menu>((this.url + '/' + mid), updateMenuItem, this.getHttpOptions()).pipe(
            catchError((err: any) => {
              console.log(err);
              return throwError('KABOOM');
