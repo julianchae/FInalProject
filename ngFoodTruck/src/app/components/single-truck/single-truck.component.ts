@@ -20,6 +20,10 @@ export class SingleTruckComponent implements OnInit {
 
   editFoodTruck: FoodTruck | null = null;
 
+  showMenuItems: boolean = true;
+  showAboutUs: boolean = false;
+  showSchedule: boolean = false;
+  showComments: boolean = false;
 
   constructor(private truckSvc: FoodTruckService,
             private route: ActivatedRoute,
@@ -49,6 +53,32 @@ export class SingleTruckComponent implements OnInit {
       }
     );
   }
+
+  selectDisplayDiv(choice: string) {
+    if (choice === 'menu') {
+      this.showMenuItems = true;
+      this.showAboutUs = false;
+      this.showComments = false;
+      this.showSchedule = false;
+    } else if (choice === 'about') {
+      this.showMenuItems = false;
+      this.showAboutUs = true;
+      this.showComments = false;
+      this.showSchedule = false;
+    } else if (choice === 'schedule') {
+      this.showMenuItems = false;
+      this.showAboutUs = false;
+      this.showComments = false;
+      this.showSchedule = true;
+    } else if (choice === 'comment') {
+      this.showMenuItems = false;
+      this.showAboutUs = false;
+      this.showComments = true;
+      this.showSchedule = false;
+
+    }
+  }
+
   // loadFoodTruck(){
   //   this.truckSvc.index().subscribe(
   //     success => this.foodTrucks = success,
