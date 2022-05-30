@@ -107,12 +107,8 @@ public class UserServiceImpl implements UserService {
 		FoodTruck truck=op.get();	
 		request.setFoodTruck(truck);
 		
-		
 		request.setRequestPlaced(LocalDate.now());
-		
 		requestRepo.saveAndFlush(request);
-		
-		
 		
 		return request;
 	}

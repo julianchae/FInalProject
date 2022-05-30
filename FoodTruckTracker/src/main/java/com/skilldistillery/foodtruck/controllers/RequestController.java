@@ -35,10 +35,9 @@ public class RequestController {
 	}
 	
 	@PostMapping("requests")
-	public Request addRequest(Principal principal, @RequestBody Request request) {
-		System.out.println(request.getRemarks());
-		System.out.println(request.getFoodTruck());
-//		System.out.println(request);
+	public Request userCanAddRequest(Principal principal, 
+			@RequestBody Request request ) {
+	
 		return serv.create(principal.getName(), request);
 	}
 	
