@@ -1,5 +1,6 @@
 package com.skilldistillery.foodtruck.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.foodtruck.entities.Comment;
 import com.skilldistillery.foodtruck.entities.FoodTruck;
+import com.skilldistillery.foodtruck.entities.Location;
+import com.skilldistillery.foodtruck.entities.Request;
 import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.repositories.CommentRepository;
+import com.skilldistillery.foodtruck.repositories.LocationRepository;
+import com.skilldistillery.foodtruck.repositories.RequestRepository;
 import com.skilldistillery.foodtruck.repositories.TruckRepository;
 import com.skilldistillery.foodtruck.repositories.UserRepository;
 
@@ -22,6 +27,10 @@ public class UserServiceImpl implements UserService {
 	private TruckRepository truckRepo;
 	@Autowired
 	private CommentRepository commentRepo;
+	@Autowired
+	private RequestRepository requestRepo;
+	@Autowired
+	private LocationRepository locationRepo;
 
 	@Override
 	public User getUserById(int userId) {
@@ -85,6 +94,27 @@ public class UserServiceImpl implements UserService {
 		userComments.add(comment);
 		return commentRepo.saveAndFlush(comment);
 		
+	}
+
+	@Override
+	public Request requestTruck(int tid, int lid, Request request, String name) {
+		Optional <Location> loc =locationRepo.findById(lid);
+		Location location = loc.get();
+		request.setLocation(location);
+		User user =userRepo.findByUsername(name);
+		request.setUser(user);
+		Optional<FoodTruck> op = truckRepo.findById(tid);
+		FoodTruck truck=op.get();	
+		request.setFoodTruck(truck);
+		
+		
+		request.setRequestPlaced(LocalDate.now());
+		
+		requestRepo.saveAndFlush(request);
+		
+		
+		
+		return request;
 	}
 
 }
