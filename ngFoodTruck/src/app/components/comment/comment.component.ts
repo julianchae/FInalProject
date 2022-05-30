@@ -48,8 +48,8 @@ export class CommentComponent implements OnInit {
     );
   }
 
-  createCommentOnTruck(){
-this.commentSvc.createCommentOnTruck(this.truck.id, this.comment).subscribe(
+  createCommentOnTruck(newComment: Comment){
+this.commentSvc.createCommentOnTruck(this.truck.id, this.newComment).subscribe(
   data => {
     this.loadCommentsForTruck();
     this.newComment = new Comment();

@@ -1,1 +1,22 @@
-<p>comment works!</p>
+<mat-card class="example-card" *ngFor="let comment of comments" >
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>User Name: {{comment.user?.username}}</mat-card-title>
+    <mat-card-title>Review: {{comment.comment}}</mat-card-title>
+    <mat-card-title>Rating: {{comment.rating}}</mat-card-title>
+  </mat-card-header>
+
+</mat-card>
+
+  <mat-card>
+    <h3>Leave A Review!</h3>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Comment</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="newComment.comment">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Rating</mat-label>
+      <input matInput type="text" name="description" [(ngModel)]="newComment.rating">
+    </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createCommentOnTruck(newComment)">Submit</button>
+  </mat-card>

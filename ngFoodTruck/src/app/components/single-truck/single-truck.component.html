@@ -43,6 +43,12 @@
     <div class="menu-div" *ngIf="showMenuItems">
       <app-menu [truck]="foodTruck"> </app-menu>
     </div>
+ <!-- Review Div -->
+ <div class="review-div" *ngIf="showComments">
+  <app-comment [truck]="foodTruck"> </app-comment>
+</div>
+
+
     <!-- Schedule Div -->
     <div class="schedule-div" *ngIf="showSchedule">
       <app-schedule [truck]="foodTruck"></app-schedule>
