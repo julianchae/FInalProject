@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Festival {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

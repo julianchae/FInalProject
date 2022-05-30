@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.foodtruck.entities.Comment;
+import com.skilldistillery.foodtruck.entities.Request;
 import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.services.UserService;
 
@@ -90,12 +91,33 @@ public class UserController {
 		
 		userServe.createCommentOnTruck(principal.getName(),
 				tid, comment);
-		
-		
 		return comment;
+	}
+	
+	@PostMapping("users/requests/{tid}/{lid}")
+	public Request userRequestTruck(
+			@PathVariable int tid,
+			@PathVariable int lid,
+			@RequestBody Request request,
+			Principal principal
+			) {
+		
+		
+		userServe.requestTruck(tid, lid, request, principal.getName());
+		
+		
+		return request;
 		
 	}
 	
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
