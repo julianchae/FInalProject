@@ -35,8 +35,9 @@ export class MenuService {
         })
       );
     }
-    create(menuItem: Menu) {
-      return this.http.post<Menu>(this.url, menuItem, this.getHttpOptions()).pipe(
+    create(menuItem: Menu, tid: number) {
+      console.log(menuItem);
+      return this.http.post<Menu>(this.url + '/' + tid, menuItem, this.getHttpOptions()).pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError('KABOOM');
@@ -45,9 +46,9 @@ export class MenuService {
     }
 
 
-    update(updateMenuItem: Menu) {
+    update(updateMenuItem: Menu, tid: number) {
       //TODO: update routes!!!
-         return this.http.put<Menu>((this.url + '/menuItem/' + updateMenuItem.id), updateMenuItem, this.getHttpOptions()).pipe(
+         return this.http.put<Menu>((this.url + '/menuItem/' + tid), updateMenuItem, this.getHttpOptions()).pipe(
            catchError((err: any) => {
              console.log(err);
              return throwError('KABOOM');

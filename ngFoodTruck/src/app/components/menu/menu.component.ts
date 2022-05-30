@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
     );
   }
   createMenuItem(menuItem: Menu){
-    this.menuServ.create(menuItem).subscribe(
+    this.menuServ.create(menuItem, this.truck.id).subscribe(
       data => {
         this.loadMenu();
         this.newMenuItem = new Menu();
@@ -76,8 +76,8 @@ export class MenuComponent implements OnInit {
       err => console.log(err)
     );
   }
-  updateFoodTruck(menuItem: Menu){
-    this.menuServ.update(menuItem).subscribe(
+  updateFoodTruck(menuItem: Menu, tid: number){
+    this.menuServ.update(menuItem, this.truck.id).subscribe(
       data => {
         this.reload();
         this.selected = null;
