@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
     menuItem: Menu | null = null;
     user: User | null = null;
 
+
   ngOnInit(): void {
     this.loadMenu();
     this.authService.getLoggedInUser().subscribe({
@@ -86,8 +87,8 @@ export class MenuComponent implements OnInit {
     );
   }
   setEditMenuItem(foodTruck: Menu) {
-    this.selected = foodTruck;
-    this.editMenuItem = Object.assign({}, this.selected);
+    this.editMenuItem = Object.assign({}, foodTruck);
+    console.log(this.editMenuItem);
   }
   displayMenuItem(menuItem: Menu) {
     this.selected = menuItem;
