@@ -33,7 +33,7 @@
 <button mat-raised-button color="primary" (click)="createMenuItem(newMenuItem)">Submit</button>
 </mat-card>
 
-<div class="food-truck-div">
+<div class="food-truck-div" *ngIf="!editMenuItem">
 
   <mat-card class="example-card" *ngFor="let menuItem of menuItems" >
     <mat-card-header>
@@ -48,7 +48,35 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="accent" class="main-btn" (click)="setEditMenuItem(menuItem)">Edit</button>
-      <button mat-raised-button color="warni" class="main-btn" (click)="deleteMenuItem(menuItem.id)">Delete</button>
+      <button mat-raised-button color="warn" class="main-btn" (click)="deleteMenuItem(menuItem.id)">Delete</button>
     </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="editMenuItem">
+
+  <mat-card>
+    <button mat-raised-button color="warn" (click)="editMenuItem = null">X</button>
+    <h3>Create A New Menu Item</h3>
+    <mat-form-field appearance="fill" style="display: none;">
+    <input matInput name="id" [(ngModel)]="editMenuItem.id">
+  </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="editMenuItem.name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" name="description" [(ngModel)]="editMenuItem.description">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Image URL</mat-label>
+      <input matInput type="text" name="imgUrl" [(ngModel)]="editMenuItem.imgUrl">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput type="number" name="price" [(ngModel)]="editMenuItem.price">
+      <mat-label>Price</mat-label>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="updateFoodTruck(editMenuItem, editMenuItem.id); editMenuItem = null">Update</button>
   </mat-card>
 </div>
