@@ -57,7 +57,7 @@ export class MenuService {
        }
        destroy(id: number) {
 
-         return this.http.delete<boolean>(this.url + '/foodtruck/' + id, this.getHttpOptions()).pipe(
+         return this.http.delete<boolean>(this.url + '/' + id, this.getHttpOptions()).pipe(
            catchError((err: any) => {
              console.log(err);
              return throwError('KABOOM');
