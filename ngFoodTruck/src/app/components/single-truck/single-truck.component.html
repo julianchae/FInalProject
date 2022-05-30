@@ -13,19 +13,19 @@
         <mat-icon>menu</mat-icon> View ▼
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item >
+        <button mat-menu-item (click)="selectDisplayDiv('menu')">
           <mat-icon>restaurant</mat-icon>
           <span>Menu</span>
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item (click)="selectDisplayDiv('comment')">
           <mat-icon>rate_review</mat-icon>
           <span>Reviews</span>
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item (click)="selectDisplayDiv('schedule')">
           <mat-icon>schedule</mat-icon>
           <span>Schedule</span>
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item (click)="selectDisplayDiv('about')">
           <mat-icon>info</mat-icon>
           <span>About us</span>
         </button>
@@ -34,10 +34,18 @@
   </section>
 
   <main  *ngIf="foodTruck">
-    <div class="about-us-div">
+    <!-- About Us Div  -->
+    <div class="about-us-div" *ngIf="showAboutUs">
       <h1>About us</h1>
       <p>{{foodTruck.description}}</p>
-
+    </div>
+    <!-- Menu Div -->
+    <div class="menu-div" *ngIf="showMenuItems">
       <app-menu [truck]="foodTruck"> </app-menu>
     </div>
+    <!-- Schedule Div -->
+    <div class="schedule-div" *ngIf="showSchedule">
+      <app-schedule [truck]="foodTruck"></app-schedule>
+    </div>
+
   </main>
