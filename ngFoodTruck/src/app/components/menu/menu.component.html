@@ -1,38 +1,54 @@
-<h1>Menu Options</h1>
+
+<div>
+  <h1>Menu Options</h1>
+  <button mat-raised-button color="primary" >
+    <mat-icon>add</mat-icon>Add Menu Item
+  </button>
+
+</div>
 
 
+<mat-card>
+  <h3>Create A New Menu Item</h3>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" name="name" [(ngModel)]="newMenuItem.name">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" name="description" [(ngModel)]="newMenuItem.description">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Image URL</mat-label>
+    <input matInput type="text" name="imgUrl" [(ngModel)]="newMenuItem.imgUrl">
+  </mat-form-field>
+<mat-form-field appearance="fill" class="example-full-width">
+  <mat-label>Active</mat-label>
+  <input matInput type="boolean" name="active" [(ngModel)]="newMenuItem.active">
+</mat-form-field>
+<mat-form-field appearance="fill" class="example-full-width">
+  <input matInput type="number" name="price" [(ngModel)]="newMenuItem.price">
+  <mat-label>Price</mat-label>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="createMenuItem(newMenuItem)">Submit</button>
+</mat-card>
 
-<h3>Create A New Menu Item</h3>
-<form>
-    Name: <input type="text" name="name" [(ngModel)]="newMenuItem.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newMenuItem.description"> <br> Image URL: <input type="text" name="imgUrl" [(ngModel)]="newMenuItem.imgUrl"><br>    Active: <input type="boolean" name="active" [(ngModel)]="newMenuItem.active"> Price: <input type="number" name="price" [(ngModel)]="newMenuItem.price">
-    <button (click)="createMenuItem(newMenuItem)">Submit</button>
-</form>
+<div class="food-truck-div">
 
-<table>
-    <thead>
-        <tr>
-            <td> ID</td><br>
-            <td>Name</td><br>
-            <td>Description</td><br>
-            <td>Image URL</td><br>
-            <td>Active</td><br>
-            <td>Price</td><br>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let menuItem of menuItems">
-            <td>{{menuItem.id}} </td><br><br>
-            <td>{{menuItem.name}} </td><br><br>
-            <td>{{menuItem.description}} </td><br><br>
-            <td>{{menuItem.imgUrl}} </td><br><br>
-            <td>{{menuItem.active}} </td><br><br>
-            <td>{{menuItem.price}} </td><br><br>
-
-            <button (click)="deleteMenuItem(menuItem.id)">Delete</button>
-            <button (click)="setEditMenuItem(menuItem)">Edit</button>
-
-        </tr>
-    </tbody>
-</table>
+  <mat-card class="example-card" *ngFor="let menuItem of menuItems" >
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{menuItem.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="menuItem.imgUrl" alt="Menu items for food truck">
+    <mat-card-content>
+      <p>
+        {{menuItem.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" class="main-btn" (click)="setEditMenuItem(menuItem)">Edit</button>
+      <button mat-raised-button color="warni" class="main-btn" (click)="deleteMenuItem(menuItem.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
