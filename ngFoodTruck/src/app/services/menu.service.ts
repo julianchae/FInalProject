@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment';
 import { Menu } from '../models/menu';
@@ -10,7 +10,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class MenuService {
 
-  private url = environment.baseUrl + "api/trucks";
+  private url = environment.baseUrl + "api/trucks/menuItem";
 
   constructor(private http: HttpClient,
     private authServ: AuthService) { }
@@ -26,8 +26,8 @@ export class MenuService {
     }
 
 
-    index() {
-      return this.http.get<Menu[]>(this.url)
+    index(tid: number) {
+      return this.http.get<Menu[]>(this.url + '/' + tid)
       .pipe(
         catchError((err: any) => {
           console.log(err);
