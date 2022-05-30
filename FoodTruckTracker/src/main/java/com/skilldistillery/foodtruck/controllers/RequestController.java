@@ -30,7 +30,7 @@ public class RequestController {
 	RequestService serv;
 	
 	@GetMapping("requests")
-	public List<Request> index(Principal principal) {
+	public List<Request> getUserRequests(Principal principal) {
 		return serv.index(principal.getName());
 	}
 	
