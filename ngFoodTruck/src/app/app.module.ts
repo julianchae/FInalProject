@@ -25,6 +25,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { RequestComponent } from './components/request/request.component';
+import { LocationComponent } from './components/location/location.component';
 
 
 
@@ -42,7 +45,10 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     ProfileComponent,
     CrudFoodTruckComponent,
     MenuComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    CommentComponent,
+    RequestComponent,
+    LocationComponent
 
 
 
