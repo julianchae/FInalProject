@@ -17,7 +17,7 @@ export class Comment {
     rating : number =0,
     commentDate : string | null='',
     user: User | null = null,
-    foodTruck : FoodTruck | null
+    foodTruck : FoodTruck | null = null
   ){
 
 
