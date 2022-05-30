@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-single-truck',
+
   templateUrl: './single-truck.component.html',
   styleUrls: ['./single-truck.component.css']
 })

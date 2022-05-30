@@ -116,7 +116,7 @@ public class TruckController {
 		return item;
 	}
 	
-	@GetMapping("trucks/menuItems/{tid}")
+	@GetMapping("trucks/menuItem/{tid}")
 	public List<MenuItem> getMenuItemsForTruck(
 			HttpServletRequest req, 
 			HttpServletResponse resp,

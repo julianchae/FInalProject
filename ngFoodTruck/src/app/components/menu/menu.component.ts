@@ -1,9 +1,10 @@
 import { MenuService } from './../../services/menu.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Menu } from 'src/app/models/menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { FoodTruck } from 'src/app/models/food-truck';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +12,8 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+
+  @Input() truck: FoodTruck = new FoodTruck();
 
   menuItems: Menu[] = [];
 
@@ -46,7 +49,7 @@ export class MenuComponent implements OnInit {
   }
 
   loadMenu(){
-    this.menuServ.index().subscribe(
+    this.menuServ.index(this.truck.id).subscribe(
       success => this.menuItems = success,
       err => console.log("Observable got an error " + err)
     );
@@ -68,7 +71,7 @@ export class MenuComponent implements OnInit {
     );
   }
   reload() {
-    this.menuServ.index().subscribe(
+    this.menuServ.index(this.truck.id).subscribe(
       data => this.menuItems = data,
       err => console.log(err)
     );
