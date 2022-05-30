@@ -24,6 +24,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 
@@ -40,7 +41,8 @@ import {MatInputModule} from '@angular/material/input';
     SingleTruckComponent,
     ProfileComponent,
     CrudFoodTruckComponent,
-    MenuComponent
+    MenuComponent,
+    ScheduleComponent
 
 
 

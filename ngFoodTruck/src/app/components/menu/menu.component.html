@@ -4,7 +4,7 @@
 
 <h3>Create A New Menu Item</h3>
 <form>
-    Name: <input type="text" name="name" [(ngModel)]="newMenuItem.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newMenuItem.description"> <br> Image URL: <input type="text" name="sets" [(ngModel)]="newMenuItem.imgUrl"><br>    Active: <input type="boolean" name="repetitions" [(ngModel)]="newMenuItem.active"> Price: <input type="number" name="price" [(ngModel)]="newMenuItem.price">
+    Name: <input type="text" name="name" [(ngModel)]="newMenuItem.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newMenuItem.description"> <br> Image URL: <input type="text" name="imgUrl" [(ngModel)]="newMenuItem.imgUrl"><br>    Active: <input type="boolean" name="active" [(ngModel)]="newMenuItem.active"> Price: <input type="number" name="price" [(ngModel)]="newMenuItem.price">
     <button (click)="createMenuItem(newMenuItem)">Submit</button>
 </form>
 
