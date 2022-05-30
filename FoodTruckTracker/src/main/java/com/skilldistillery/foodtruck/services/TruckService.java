@@ -24,4 +24,8 @@ public interface TruckService {
 	FoodTruck addFoodTruck(String username, FoodTruck foodtruck);
 	
 	List<MenuItem> getFullMenuForSpecificTruck(int tid);
+
+	boolean deleteById(int menuId);
+
+
 }

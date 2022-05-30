@@ -111,4 +111,16 @@ public class TruckServiceImpl implements TruckService {
 	List<MenuItem> menu=	menuRepo.findByFoodTruckId(tid);
 		return menu;
 	}
+	@Override
+	public boolean deleteById(int menuId){
+		boolean deleted = false;
+		Optional<MenuItem> menuOpt = menuRepo.findById(menuId);
+
+		if (menuOpt.isPresent()) {
+			menuRepo.deleteById(menuId);
+			deleted = true;
+		}
+		
+		return deleted;
+	}
 }
