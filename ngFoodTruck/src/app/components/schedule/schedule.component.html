@@ -1,1 +1,20 @@
-<p>schedule works!</p>
+<!-- <p>schedule works!</p> -->
+
+<div *ngIf="schedule">
+  <h1>Truck Schedule</h1>
+  <!-- <form>
+      <input type="submit" name="submit" value="Show" (click)="show(truck.id)" />
+  </form> -->
+  <div *ngFor="let sch of schedule">
+    <h3>
+      {{sch.arrival}}
+    </h3>
+    <h3>
+      {{sch.departure}}
+    </h3>
+    <h3>
+      {{sch.description}}
+    </h3>
+  </div>
+
+</div>

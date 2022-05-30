@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'profile', component: ProfileComponent},
   {path:'updateFoodTruck', component: CrudFoodTruckComponent},
   {path:'updateMenuItem', component: MenuComponent},
+  {path:'schedule/truck/:id', component: ScheduleComponent},
   {path:'**', component: HomeComponent}
 
 ];
