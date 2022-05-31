@@ -30,7 +30,7 @@ h3, h4, h5 {
 
 .example-card img {
   height: 250px;
-  width: 400px;
+  min-width: 320px;
 }
 
 .example-header-image {
@@ -38,23 +38,11 @@ h3, h4, h5 {
 }
 
 .food-truck-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+  justify-items: center;
+  margin: 0 3vw;
 }
 
-@media screen and (min-width: 600px) {
-  .food-truck-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow: auto;
 
-  }
-
-  .example-card {
-    width: 400px;
-
-  }
-}
