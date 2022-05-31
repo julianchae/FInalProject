@@ -2,9 +2,7 @@
 
 <div *ngIf="schedule">
   <h1>Truck Schedule</h1>
-  <!-- <form>
-      <input type="submit" name="submit" value="Show" (click)="show(truck.id)" />
-  </form> -->
+
   <div *ngFor="let sch of schedule">
     <h3>
       {{sch.arrival}}
@@ -18,3 +16,21 @@
   </div>
 
 </div>
+
+<mat-card>
+  <h3>Create A New Schedule</h3>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Arrival</mat-label>
+    <input matInput type="text" name="arrival" [(ngModel)]="newSchedule.arrival">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Departure</mat-label>
+    <input matInput type="text" name="departure" [(ngModel)]="newSchedule.departure">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+  </mat-form-field>
+
+<button mat-raised-button color="primary" (click)="createSchedule(newSchedule)">Submit</button>
+</mat-card>
