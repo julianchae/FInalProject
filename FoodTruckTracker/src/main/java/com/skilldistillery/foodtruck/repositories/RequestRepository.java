@@ -12,5 +12,7 @@ public interface RequestRepository extends JpaRepository<Request, Integer>{
 	List<Request> findByUser_Username(String username);
 	
 	Request queryById(int rid);
+	
+	List<Request> findByFoodTruck_id(int tid);
 
 }

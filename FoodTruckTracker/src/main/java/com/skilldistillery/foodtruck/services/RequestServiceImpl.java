@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.foodtruck.entities.FoodTruck;
 import com.skilldistillery.foodtruck.entities.Request;
 import com.skilldistillery.foodtruck.entities.User;
 import com.skilldistillery.foodtruck.repositories.RequestRepository;
+import com.skilldistillery.foodtruck.repositories.TruckRepository;
 import com.skilldistillery.foodtruck.repositories.UserRepository;
 
 @Service
@@ -19,6 +21,9 @@ public class RequestServiceImpl implements RequestService {
 
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	TruckRepository truckRepo;
 
 	@Override
 	public List<Request> index(String username) {
@@ -71,6 +76,23 @@ public class RequestServiceImpl implements RequestService {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<Request> findByTruckId(String username , int tid) {
+		
+		
+List<FoodTruck>	foodtrucks = truckRepo.findByUser_Username(username);
+for (FoodTruck foodTruck : foodtrucks) {
+	if(foodTruck.getId() == tid) {
+		
+		return requestRepo.findByFoodTruck_id(tid);
+	}
+
+}
+return null;
+	
+		
 	}
 
 }

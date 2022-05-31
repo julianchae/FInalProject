@@ -75,8 +75,8 @@ export class SingleTruckComponent implements OnInit {
       this.showAboutUs = false;
       this.showComments = true;
       this.showSchedule = false;
-
     }
+
   }
 
   // loadFoodTruck(){

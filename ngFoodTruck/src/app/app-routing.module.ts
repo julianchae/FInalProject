@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'updateMenuItem', component: MenuComponent},
   {path:'schedule/truck/:id', component: ScheduleComponent},
   {path:'search', component: SearchComponent},
-  {path:'request', component: RequestComponent},
+  {path:'request/:tid', component: RequestComponent},
 
   {path:'**', component: HomeComponent}
 

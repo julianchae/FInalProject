@@ -8,7 +8,17 @@
 
     <mat-card class="card-info">
       <mat-icon class="single-icon" color="primary"> local_shipping</mat-icon>
-      <span class="example-spacer"></span>
+      <span class="example-spacer">
+
+
+
+          <span></span>
+
+
+          <button mat-raised-button color="accent" [routerLink]="['/request/' + foodTruck.id]" class="main-btn">Request this truck</button>
+
+
+      </span>
       <button mat-raised-button color="primary" [matMenuTriggerFor]="menu" aria-label="Hanburger dropdown for links">
         <mat-icon>menu</mat-icon> View ▼
       </button>
@@ -47,8 +57,6 @@
  <div class="review-div" *ngIf="showComments">
   <app-comment [truck]="foodTruck"> </app-comment>
 </div>
-
-
     <!-- Schedule Div -->
     <div class="schedule-div" *ngIf="showSchedule">
       <app-schedule [truck]="foodTruck"></app-schedule>
