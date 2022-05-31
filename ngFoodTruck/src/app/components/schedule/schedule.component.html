@@ -2,30 +2,30 @@
 
 <div *ngIf="schedule">
   <h1>Truck Schedule</h1>
-
   <div *ngFor="let sch of schedule">
     <h3>
-      {{sch.arrival}}
+      <!-- {{sch.arrival}} -->
+      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival">
     </h3>
     <h3>
-      {{sch.departure}}
+      <!-- {{sch.departure}} -->
+      <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure">
     </h3>
     <h3>
       {{sch.description}}
     </h3>
   </div>
-
 </div>
 
 <mat-card>
   <h3>Create A New Schedule</h3>
   <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Arrival</mat-label>
-    <input matInput type="text" name="arrival" [(ngModel)]="newSchedule.arrival">
+    <input matInput type="datetime-local" name="arrival" [(ngModel)]="newSchedule.arrival">
   </mat-form-field>
   <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Departure</mat-label>
-    <input matInput type="text" name="departure" [(ngModel)]="newSchedule.departure">
+    <input matInput type="datetime-local" name="departure" [(ngModel)]="newSchedule.departure">
   </mat-form-field>
   <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Description</mat-label>

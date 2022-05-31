@@ -1,37 +1,41 @@
 
-<div>
+<div *ngIf="userOwnsTruck();">
   <h1>Menu Options</h1>
-  <button mat-raised-button color="primary" >
+  <button mat-raised-button color="primary" (click)="addMenuItem = !addMenuItem">
     <mat-icon>add</mat-icon>Add Menu Item
   </button>
 
 </div>
 
 
-<mat-card>
-  <h3>Create A New Menu Item</h3>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Name</mat-label>
-    <input matInput type="text" name="name" [(ngModel)]="newMenuItem.name">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Description</mat-label>
-    <input matInput type="text" name="description" [(ngModel)]="newMenuItem.description">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Image URL</mat-label>
-    <input matInput type="text" name="imgUrl" [(ngModel)]="newMenuItem.imgUrl">
-  </mat-form-field>
-<mat-form-field appearance="fill" class="example-full-width">
-  <mat-label>Active</mat-label>
-  <input matInput type="boolean" name="active" [(ngModel)]="newMenuItem.active">
-</mat-form-field>
-<mat-form-field appearance="fill" class="example-full-width">
-  <input matInput type="number" name="price" [(ngModel)]="newMenuItem.price">
-  <mat-label>Price</mat-label>
-</mat-form-field>
-<button mat-raised-button color="primary" (click)="createMenuItem(newMenuItem)">Submit</button>
-</mat-card>
+<mat-card *ngIf="userOwnsTruck();">
+  <div *ngIf=" addMenuItem">
+
+    <button mat-raised-button color="primary" (click)="addMenuItem = !addMenuItem">X</button>
+    <h3>Create A New Menu Item</h3>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="newMenuItem.name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" name="description" [(ngModel)]="newMenuItem.description">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Image URL</mat-label>
+      <input matInput type="text" name="imgUrl" [(ngModel)]="newMenuItem.imgUrl">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Active</mat-label>
+      <input matInput type="boolean" name="active" [(ngModel)]="newMenuItem.active">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <input matInput type="number" name="price" [(ngModel)]="newMenuItem.price">
+      <mat-label>Price</mat-label>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="createMenuItem(newMenuItem)">Submit</button>
+  </div>
+  </mat-card>
 
 <div class="food-truck-div" *ngIf="!editMenuItem">
 
@@ -47,8 +51,8 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent" class="main-btn" (click)="setEditMenuItem(menuItem)">Edit</button>
-      <button mat-raised-button color="warn" class="main-btn" (click)="deleteMenuItem(menuItem.id)">Delete</button>
+      <button mat-raised-button color="accent" class="main-btn" (click)="setEditMenuItem(menuItem)" *ngIf="userOwnsTruck()">Edit</button>
+      <button mat-raised-button color="warn" class="main-btn" (click)="deleteMenuItem(menuItem.id)" *ngIf="userOwnsTruck()">Delete</button>
     </mat-card-actions>
   </mat-card>
 </div>
