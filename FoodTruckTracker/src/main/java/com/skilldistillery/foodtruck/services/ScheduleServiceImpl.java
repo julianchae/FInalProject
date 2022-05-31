@@ -1,6 +1,7 @@
 package com.skilldistillery.foodtruck.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,28 @@ public class ScheduleServiceImpl implements ScheduleService {
 		}
 		return schedule;
 
+	}
+
+	@Override
+	public Schedule updateSchedule(int tid, int lid, String username, Schedule schedule) {
+		Optional<Schedule> op = sRepo.findById(schedule.getId());
+		List<FoodTruck> foodtrucks = tRepo.findByUser_Username(username);
+		Schedule schedule1 = null;
+		if (op.isPresent()) {
+			schedule1 = op.get();
+			System.out.println(schedule1);
+			for (FoodTruck foodTruck : foodtrucks) {
+				if (foodTruck.getId() == tid) {
+					schedule1.setLocation(schedule.getLocation());
+					schedule1.setArrival(schedule.getArrival());
+					schedule1.setDeparture(schedule.getDeparture());
+					schedule1.setDescription(schedule.getDescription());
+					System.out.println(schedule1);
+					return sRepo.saveAndFlush(schedule1);
+				}
+			}
+		}
+		return null;
 	}
 
 }

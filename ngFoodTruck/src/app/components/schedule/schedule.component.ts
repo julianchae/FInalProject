@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { LocationService } from './../../services/location.service';
 import { Location } from './../../models/location';
 import { Component, Input, OnInit } from '@angular/core';
@@ -5,6 +6,8 @@ import { FoodTruck } from 'src/app/models/food-truck';
 import { Schedule } from 'src/app/models/schedule';
 import { AuthService } from 'src/app/services/auth.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-schedule',
@@ -17,16 +20,33 @@ export class ScheduleComponent implements OnInit {
   location: Location = new Location();
   newLocation: Location = new Location();
   selected: Schedule | null = null;
+  user: User | null = null;
+  addSchedule: boolean = false;
+
 
   newSchedule: Schedule = new Schedule();
   constructor(
     private scheduleService: ScheduleService,
     private authService: AuthService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private sanitizer: DomSanitizer,
+
   ) {}
 
   ngOnInit(): void {
     this.show(this.truck.id);
+    this.authService.getLoggedInUser().subscribe({
+      next:(user) => {
+        this.user = Object.assign({},user);
+
+
+      },
+      error:(fail) => {
+        console.error(fail);
+        // return null;
+      }
+    });
+
   }
 
   show(id: number) {
@@ -82,4 +102,21 @@ export class ScheduleComponent implements OnInit {
         (err) => console.log('Observable got an error ' + err)
       );
   }
+
+  mapsUrl(location: Location) {
+    let url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCyU6ofgUclS8SXStH03I61fVaLSf7Cuv0&q="
+    url+= location.street;
+    url+= location.city;
+    url+= location.state
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  userOwnsTruck(): boolean {
+    let isOwner: boolean = false;
+    if (this.user?.id === this.truck.user?.id) {
+      isOwner = true;
+    }
+    return isOwner;
+  }
+
 }

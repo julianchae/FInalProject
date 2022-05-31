@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,7 +74,20 @@ public class ScheduleController {
 		return schedule;
 	}
 	
-	
+	@PutMapping("schedule/truck/{tid}/location/{lid}")
+	public Schedule updateSchedule(
+			@RequestBody Schedule schedule,
+			@PathVariable int tid,
+			@PathVariable int lid,
+			Principal principal,
+			HttpServletResponse resp) {
+			System.out.println(schedule);
+			schedule = scheduleServe.updateSchedule(tid, lid, principal.getName(), schedule);
+			if(schedule == null) {
+				resp.setStatus(404);
+			}
+			return schedule;
+	}
 	
 	
 }

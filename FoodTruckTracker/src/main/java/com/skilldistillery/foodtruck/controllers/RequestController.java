@@ -54,4 +54,10 @@ public class RequestController {
 			resp.setStatus(404);
 		}
 	}
+	@GetMapping("requests/{tid}")
+	public List <Request> getTruckRequests(Principal principal,
+			 @PathVariable int tid
+			){
+		return serv.findByTruckId(principal.getName(),tid);
+	}
 }

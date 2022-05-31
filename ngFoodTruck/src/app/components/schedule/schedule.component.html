@@ -1,52 +1,77 @@
 <!-- <p>schedule works!</p> -->
-
-<div *ngIf="schedule">
+<div *ngIf="userOwnsTruck()">
   <h1>Truck Schedule</h1>
-  <div *ngFor="let sch of schedule">
-    <h3>
-      <!-- {{sch.arrival}} -->
-      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival">
-    </h3>
-    <h3>
-      <!-- {{sch.departure}} -->
-      <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure">
-    </h3>
-    <h3>
-      {{sch.description}}
-    </h3>
-  </div>
+  <button mat-raised-button color="primary" (click)="addSchedule = !addSchedule">Add Schedule</button>
 </div>
 
-<mat-card>
-  <h3>Create A New Schedule</h3>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Arrival</mat-label>
-    <input matInput type="datetime-local" name="arrival" [(ngModel)]="newSchedule.arrival">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Departure</mat-label>
-    <input matInput type="datetime-local" name="departure" [(ngModel)]="newSchedule.departure">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Description</mat-label>
-    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Street</mat-label>
-    <input matInput type="text" name="street" [(ngModel)]="location.street">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>City</mat-label>
-    <input matInput type="text" name="city" [(ngModel)]="location.city">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>State</mat-label>
-    <input matInput type="text" name="state" [(ngModel)]="location.state">
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="example-full-width">
+<div *ngIf="addSchedule">
+
+  <mat-card>
+    <button mat-raised-button color="warn" (click)="addSchedule = false">X</button>
+    <h3>Create A New Schedule</h3>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Arrival</mat-label>
+      <input matInput type="datetime-local" name="arrival" [(ngModel)]="newSchedule.arrival">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Departure</mat-label>
+      <input matInput type="datetime-local" name="departure" [(ngModel)]="newSchedule.departure">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Street</mat-label>
+      <input matInput type="text" name="street" [(ngModel)]="location.street">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>City</mat-label>
+      <input matInput type="text" name="city" [(ngModel)]="location.city">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>State</mat-label>
+      <input matInput type="text" name="state" [(ngModel)]="location.state">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Zip Code</mat-label>
     <input matInput type="text" name="zip" [(ngModel)]="location.zip">
   </mat-form-field>
 
-<button mat-raised-button color="primary" (click)="createSchedule(newSchedule, location)">Submit</button>
+  <button mat-raised-button color="primary" (click)="createSchedule(newSchedule, location); addSchedule = false">Submit</button>
 </mat-card>
+</div>
+
+
+<div *ngIf="schedule" class="food-truck-div">
+    <mat-card class="example-card"  *ngFor="let sch of schedule">
+      <mat-card-header>
+          <div mat-card class="example-header-image"></div>
+          <mat-card-title>{{sch.arrival | date: 'short'}} - <br> {{sch.departure | date: 'short' }}</mat-card-title>
+      </mat-card-header>
+      <div *ngIf="sch.location">
+
+        <iframe
+        width="100%"
+        height="300px"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        [src]="mapsUrl(sch.location)">
+      </iframe>
+    </div>
+      <mat-card-content>
+          <p>
+              {{sch.description}}
+            </p>
+              <p *ngIf="sch.location">Location: {{sch.location?.street}} {{sch.location.city}}, {{sch.location.state}} {{sch.location.zip}}</p>
+
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="accent" class="main-btn" *ngIf="userOwnsTruck()">Update</button>
+      </mat-card-actions>
+  </mat-card>
+ </div>
+
+
