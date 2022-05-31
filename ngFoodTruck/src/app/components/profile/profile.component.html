@@ -23,3 +23,24 @@
     <br/>
     <br/>
 </div>
+
+<mat-card *ngIf="userOwnsTruck();">
+    <mat-card-actions>
+        <button mat-raised-button color="accent" class="main-btn" *ngIf="userOwnsTruck()">Edit</button>
+    </mat-card-actions>
+    <h3 *ngIf="displayFoodTrucks">{{selected}}</h3>
+    <h3 *ngIf="displayRequests">{{requests}}</h3>
+</mat-card>
+
+(click)="updateFoodTruck(selected)"
+
+<div *ngIf="user?.role === 'foodTruckOwner'">
+
+
+
+
+
+
+
+
+</div>
