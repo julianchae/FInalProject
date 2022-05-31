@@ -9,10 +9,9 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.css']
+  styleUrls: ['./schedule.component.css'],
 })
 export class ScheduleComponent implements OnInit {
-
   @Input() truck: FoodTruck = new FoodTruck();
   schedule: Schedule[] = [];
   location: Location = new Location();
@@ -24,47 +23,65 @@ export class ScheduleComponent implements OnInit {
     private scheduleService: ScheduleService,
     private authService: AuthService,
     private locationService: LocationService
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.show(this.truck.id);
   }
 
-  show(id: number){
+  show(id: number) {
     this.scheduleService.show(id).subscribe(
-      success => {
+      (success) => {
         this.schedule = success;
       },
-      err => {
+      (err) => {
         console.log(err);
       }
     );
   }
 
-  createSchedule(schedule: Schedule, location: Location){
-    if (!location.street || !location.state || !location.city || !location.zip){
+  createSchedule(schedule: Schedule, location: Location) {
+    if (
+      !location.street ||
+      !location.state ||
+      !location.city ||
+      !location.zip
+    ) {
       return;
     }
-    this.locationService.findByStreet(location.street, location.state, location.city, location.zip).subscribe(
-      data => {
-
+    this.locationService.findByStreet(location.street).subscribe(
+      (data) => {
         this.newLocation = data;
         schedule.location = this.newLocation;
+        this.createScheduleHttp(schedule, location);
 
-        this.scheduleService.create(schedule, this.truck.id, this.newLocation.id).subscribe(
-          data => {
-            this.newSchedule = data;
-          },
-          err => console.log("Observable got an error " + err)
-          );
         console.log(data);
       },
-      err => this.newLocation = err
+      (err) => {
+        this.locationService.createLocation(location).subscribe(
+          (data) => {
+            this.newLocation = data;
+            schedule.location = this.newLocation;
+            this.createScheduleHttp(schedule, location);
 
-      );
-
-
-
+            console.log(data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
+    );
   }
 
+  createScheduleHttp(schedule: Schedule, location: Location) {
+    this.scheduleService
+      .create(schedule, this.truck.id, this.newLocation.id)
+      .subscribe(
+        (data) => {
+          this.newSchedule = data;
+        },
+        (err) => console.log('Observable got an error ' + err)
+      );
+  }
 }
