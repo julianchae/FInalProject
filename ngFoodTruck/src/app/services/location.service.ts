@@ -26,23 +26,22 @@ export class LocationService {
       return options;
     }
 
-    findByStreet(street: string, state: string, city: string, zip: string ) {
+    findByStreet(street: string) {
       return this.http.get<Location>(this.url + '/search/' + street, this.getHttpOptions() )
       .pipe(
         catchError((err: any) => {
           console.log(err);
-          let newLocation: Location = new Location();
-          newLocation.street = street;
-          newLocation.state = state;
-          newLocation.city = city;
-          newLocation.zip = zip;
-          return this.http.post<Location>(this.url, location, this.getHttpOptions())
-          .pipe(
-            catchError((err: any) => {
-              console.log(err);
-              return throwError('KABOOM');
-            })
-          );
+          return throwError('KABOOM');
+        })
+      );
+    }
+
+    createLocation(location: Location) {
+      return this.http.post<Location>(this.url, location, this.getHttpOptions())
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError('KABOOM');
         })
       );
     }
