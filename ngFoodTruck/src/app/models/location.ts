@@ -3,7 +3,7 @@ export class Location {
 
   id: number;
   comment : string | null;
-  street: string | null;
+  street: string;
    city : string | null;
    state: string | null;
    zip: string | null;
@@ -14,7 +14,7 @@ export class Location {
    constructor(
     id: number = 0,
     comment : string | null ='',
-    street: string | null = '',
+    street: string = '',
      city : string | null = '',
      state: string | null = '',
      zip: string | null = ' ',

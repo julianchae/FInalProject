@@ -7,6 +7,7 @@ export class Schedule {
   description: string | null;
   location: Location | null;
 
+
   constructor(
     id: number | null = 0,
     arrival: string | null = '',
