@@ -65,7 +65,7 @@ public class ScheduleController {
 			@PathVariable int lid,
 			Principal principal,
 			HttpServletResponse resp) {
-		
+			System.out.println(schedule);
 		schedule = scheduleServe.addSchedule(tid, lid, principal.getName(), schedule);
 		if(schedule == null) {
 			resp.setStatus(404);
