@@ -3,17 +3,18 @@
 <div *ngIf="schedule">
   <h1>Truck Schedule</h1>
   <div *ngFor="let sch of schedule">
-    <h3>
+    <!-- <h3> -->
       <!-- {{sch.arrival}} -->
-      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival">
-    </h3>
-    <h3>
+      <p>Arrival: <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival"></p>
+    <!-- </h3> -->
+    <!-- <h3> -->
       <!-- {{sch.departure}} -->
-      <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure">
-    </h3>
-    <h3>
-      {{sch.description}}
-    </h3>
+      <p>Departure: <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure"></p>
+    <!-- </h3> -->
+    <!-- <h3> -->
+      <!-- {{sch.description}} -->
+      <p>Description: <input matInput type="text" name="description" [(ngModel)]="sch.description"></p>
+    <!-- </h3> -->
   </div>
 </div>
 
