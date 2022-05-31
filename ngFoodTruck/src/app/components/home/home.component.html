@@ -1,27 +1,27 @@
 <div class="cover-title">
-<h3>#1 Food Truck App Since 2022</h3>
-<h1>Join the community of food truck lovers</h1>
-<h1>Trucks and Events in Colorado</h1>
-<button mat-raised-button color="accent" [routerLink]="['/register']">Create Account</button>
+    <h3>#1 Food Truck App Since 2022</h3>
+    <h1>Join the community of food truck lovers</h1>
+    <h1>Trucks and Events in Colorado</h1>
+    <button mat-raised-button color="accent" [routerLink]="['/register']">Create Account</button>
 </div>
 
 
 <div *ngIf="foodTrucks" class="food-truck-div">
 
-  <mat-card class="example-card" *ngFor="let foodTruck of foodTrucks" >
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{foodTruck.name}}</mat-card-title>
-      <mat-card-subtitle>{{foodTruck.id}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="foodTruck.imgUrl" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        {{foodTruck.description}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="accent" [routerLink]="['/truck/' + foodTruck.id]" class="main-btn">Show more...</button>
-    </mat-card-actions>
-  </mat-card>
+    <mat-card class="example-card" *ngFor="let foodTruck of foodTrucks">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{foodTruck.name}}</mat-card-title>
+            <mat-card-subtitle>{{foodTruck.id}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="foodTruck.imgUrl" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                {{foodTruck.description}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" [routerLink]="['/truck/' + foodTruck.id]" class="main-btn">Show more...</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
