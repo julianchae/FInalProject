@@ -36,13 +36,17 @@
     <input matInput type="text" name="street" [(ngModel)]="location.street">
   </mat-form-field>
   <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Description</mat-label>
-    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+    <mat-label>City</mat-label>
+    <input matInput type="text" name="city" [(ngModel)]="location.city">
   </mat-form-field>
   <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Description</mat-label>
-    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+    <mat-label>State</mat-label>
+    <input matInput type="text" name="state" [(ngModel)]="location.state">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Zip Code</mat-label>
+    <input matInput type="text" name="zip" [(ngModel)]="location.zip">
   </mat-form-field>
 
-<button mat-raised-button color="primary" (click)="createSchedule(newSchedule)">Submit</button>
+<button mat-raised-button color="primary" (click)="createSchedule(newSchedule, location)">Submit</button>
 </mat-card>

@@ -27,7 +27,7 @@ export class LocationService {
     }
 
     findByStreet(street: string, state: string, city: string, zip: string ) {
-      return this.http.get<Location>(this.url + '/search/' + street )
+      return this.http.get<Location>(this.url + '/search/' + street, this.getHttpOptions() )
       .pipe(
         catchError((err: any) => {
           console.log(err);

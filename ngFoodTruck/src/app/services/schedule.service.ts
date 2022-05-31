@@ -34,10 +34,10 @@ export class ScheduleService {
       })
     )
   }
-
-  create(schedule: Schedule, tid: number) {
+  // schedule/truck/{tid}/location/{lid}
+  create(schedule: Schedule, tid: number, lid: number) {
     console.log(schedule);
-    return this.http.post<Schedule>(this.url + '/' + tid + '/', schedule, this.getHttpOptions()).pipe(
+    return this.http.post<Schedule>(this.url + '/' + tid + '/location/' + lid, schedule, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('KABOOM');
