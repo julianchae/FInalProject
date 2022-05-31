@@ -28,6 +28,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { RequestComponent } from './components/request/request.component';
 import { LocationComponent } from './components/location/location.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -48,7 +49,8 @@ import { LocationComponent } from './components/location/location.component';
     ScheduleComponent,
     CommentComponent,
     RequestComponent,
-    LocationComponent
+    LocationComponent,
+    SearchComponent
 
 
 

@@ -11,6 +11,8 @@ import { throwError } from 'rxjs';
 })
 export class FoodTruckService {
 
+  searchTerm: string = "";
+
   private url = environment.baseUrl + "api/trucks";
   private userUrl = environment.baseUrl + "api/users/trucks"
 
@@ -78,6 +80,16 @@ export class FoodTruckService {
   destroy(id: number) {
 //TODO: update routes!!!
     return this.http.delete<boolean>(this.url + '/foodtruck/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+  searchForTrucksByKeyword(searchTerm: string){
+
+    return this.http.get<FoodTruck[]>(this.url + "/" + searchTerm)
+    .pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('KABOOM');

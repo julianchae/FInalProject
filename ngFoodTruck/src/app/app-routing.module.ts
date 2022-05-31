@@ -1,3 +1,6 @@
+import { Request } from './models/request';
+import { RequestComponent } from './components/request/request.component';
+import { SearchComponent } from './components/search/search.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CrudFoodTruckComponent } from './components/crud-food-truck/crud-food-truck.component';
 import { SingleTruckComponent } from './components/single-truck/single-truck.component';
@@ -13,6 +16,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 
+
 const routes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
@@ -23,6 +27,9 @@ const routes: Routes = [
   {path:'updateFoodTruck', component: CrudFoodTruckComponent},
   {path:'updateMenuItem', component: MenuComponent},
   {path:'schedule/truck/:id', component: ScheduleComponent},
+  {path:'search', component: SearchComponent},
+  {path:'request', component: RequestComponent},
+
   {path:'**', component: HomeComponent}
 
 ];
