@@ -13,7 +13,7 @@ export class ScheduleComponent implements OnInit {
 
   @Input() truck: FoodTruck = new FoodTruck();
   schedule: Schedule[] = [];
-
+  location: Location = new Location();
   selected: Schedule | null = null;
 
   newSchedule: Schedule = new Schedule();

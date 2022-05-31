@@ -31,6 +31,18 @@
     <mat-label>Description</mat-label>
     <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
   </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Street</mat-label>
+    <input matInput type="text" name="street" [(ngModel)]="location.street">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" name="description" [(ngModel)]="newSchedule.description">
+  </mat-form-field>
 
 <button mat-raised-button color="primary" (click)="createSchedule(newSchedule)">Submit</button>
 </mat-card>
