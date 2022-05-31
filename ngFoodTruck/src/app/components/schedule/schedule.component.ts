@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FoodTruck } from 'src/app/models/food-truck';
 import { Schedule } from 'src/app/models/schedule';
+import { AuthService } from 'src/app/services/auth.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class ScheduleComponent implements OnInit {
   @Input() truck: FoodTruck = new FoodTruck();
   schedule: Schedule[] = [];
 
-  constructor(private scheduleService: ScheduleService) { }
+  selected: Schedule | null = null;
+
+  newSchedule: Schedule = new Schedule();
+  constructor(private scheduleService: ScheduleService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.show(this.truck.id);
@@ -28,6 +33,17 @@ export class ScheduleComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  createSchedule(schedule: Schedule){
+    this.scheduleService.create(schedule, this.truck.id).subscribe(
+      data => {
+        // this.loadSchedule();
+        this.newSchedule = new Schedule();
+      },
+      err => console.log("Observable got an error " + err)
+      );
+
   }
 
 }
