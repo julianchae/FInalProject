@@ -3,18 +3,22 @@
 <div *ngIf="schedule">
   <h1>Truck Schedule</h1>
   <div *ngFor="let sch of schedule">
-    <h3>
-      <!-- {{sch.arrival}} -->
-      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival">
-    </h3>
-    <h3>
-      <!-- {{sch.departure}} -->
-      <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure">
-    </h3>
-    <h3>
-      {{sch.description}}
-    </h3>
-  </div>
+      <p>Arrival: <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival"></p>
+      <p>Departure: <input matInput type="datetime-local" name="departure" [(ngModel)]="sch.departure"></p>
+      <p>Description: <input matInput type="text" name="description" [(ngModel)]="sch.description"></p>
+      <!-- <p>Address: <input matInput type="text" name="address" [(ngModel)]="sch.street"></p> -->
+      {{sch.location?.street}}
+      <iframe
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDWc82oR6wmTsvHWV4by1AHmXuYOBt1dzk
+&q={{sch.location?.city}}+{{sch.location?.state}}">
+      </iframe>
+    </div>
 </div>
 
 <mat-card>
