@@ -54,7 +54,6 @@ export class ScheduleComponent implements OnInit {
         this.newLocation = data;
         schedule.location = this.newLocation;
         this.createScheduleHttp(schedule, location);
-
         console.log(data);
       },
       (err) => {
@@ -63,7 +62,6 @@ export class ScheduleComponent implements OnInit {
             this.newLocation = data;
             schedule.location = this.newLocation;
             this.createScheduleHttp(schedule, location);
-
             console.log(data);
           },
           (err) => {
