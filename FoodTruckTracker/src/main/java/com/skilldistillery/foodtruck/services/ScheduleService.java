@@ -15,4 +15,6 @@ public interface ScheduleService {
 
 	List<Schedule> specificSchedule(String username);
 
+	Schedule updateSchedule(int tid, int lid, String name, Schedule schedule);
+
 }
