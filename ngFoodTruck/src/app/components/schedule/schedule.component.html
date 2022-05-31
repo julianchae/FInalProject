@@ -5,10 +5,12 @@
 
   <div *ngFor="let sch of schedule">
     <h3>
-      {{sch.arrival}}
+      <!-- {{sch.arrival}} -->
+      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.arrival">
     </h3>
     <h3>
-      {{sch.departure}}
+      <!-- {{sch.departure}} -->
+      <input matInput type="datetime-local" name="arrival" [(ngModel)]="sch.departure">
     </h3>
     <h3>
       {{sch.description}}
