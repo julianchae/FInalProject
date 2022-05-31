@@ -14,5 +14,7 @@ public interface RequestService {
     public Request update(String username, int rid, Request request);
 
     public boolean destroy(String username, int rid);
+    
+    public List<Request> findByTruckId (String username, int tid);
 
 }
