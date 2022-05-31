@@ -12,6 +12,7 @@ import { throwError } from 'rxjs';
 export class FoodTruckService {
 
   private url = environment.baseUrl + "api/trucks";
+  private userUrl = environment.baseUrl + "api/users/trucks"
 
   constructor(private http: HttpClient,
       private authServ: AuthService
@@ -29,6 +30,16 @@ export class FoodTruckService {
 
   index() {
     return this.http.get<FoodTruck[]>(this.url)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+
+  getUserTrucks() {
+    return this.http.get<FoodTruck[]>(this.userUrl, this.getHttpOptions())
     .pipe(
       catchError((err: any) => {
         console.log(err);
