@@ -1,3 +1,4 @@
+import { FoodTruckService } from 'src/app/services/food-truck.service';
 import { MenuService } from './../../services/menu.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Menu } from 'src/app/models/menu';
@@ -23,10 +24,15 @@ export class MenuComponent implements OnInit {
 
   editMenuItem: Menu | null = null;
 
+  userFoodTrucks: FoodTruck[] = [];
+
+  addMenuItem: boolean = false;
+
   constructor(private menuServ: MenuService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private truckService: FoodTruckService) { }
 
     menuItem: Menu | null = null;
     user: User | null = null;
@@ -96,6 +102,14 @@ export class MenuComponent implements OnInit {
 
   displayTable(){
     this.selected = null;
+  }
+
+  userOwnsTruck(): boolean {
+    let isOwner: boolean = false;
+    if (this.user?.id === this.truck.user?.id) {
+      isOwner = true;
+    }
+    return isOwner;
   }
 }
 
