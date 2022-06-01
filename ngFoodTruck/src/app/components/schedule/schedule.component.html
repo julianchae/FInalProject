@@ -85,7 +85,7 @@
           <mat-label>Zip Code</mat-label>
           <input matInput type="text" name="zip" [(ngModel)]="location.zip">
         </mat-form-field>
-          <button mat-raised-button color="primary" (click)="updateSchedule(editSchedule); editSchedule = null">Update</button>
+          <button mat-raised-button color="primary" (click)="updateSchedule(editSchedule, location); editSchedule = null">Update</button>
         </mat-card>
       </div>
 
