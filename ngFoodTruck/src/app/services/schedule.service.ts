@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class ScheduleService {
 
-  private url = environment.baseUrl + 'api/schedule/truck';
+  private url = environment.baseUrl + 'api/schedule';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -25,7 +25,17 @@ export class ScheduleService {
   }
 
   show(id: number){
-    return this.http.get<Schedule[]>(this.url + '/' + id)
+    return this.http.get<Schedule[]>(this.url + '/truck/' + id)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('ScheduleService: error retrieving Schedule of a Truck');
+
+      })
+    )
+  }
+  show2(id: number){
+    return this.http.get<Schedule[]>(this.url + '/user/truck' )
     .pipe(
       catchError((err: any) => {
         console.log(err);

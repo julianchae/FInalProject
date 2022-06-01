@@ -557,11 +557,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `foodtruckdb`;
-INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (1, 'Please don\'t park by the fire hydrant', 1, 1, 1, '2022-05-01 13:35:00', '2022-06-01 13:35:00', 1);
-INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (2, 'Back in until you touch the curb. ', 2, 2, 2, '2022-02-01 13:35:00', '2019-06-01 13:35:00', 1);
-INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (3, 'No electicity for truck.', 3, 3, 3, '2022-03-01 13:35:00', '2020-06-01 13:35:00', 1);
-INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (4, 'Please use porta potty.', 4, 4, 4, '2022-04-01 13:35:00', '2021-06-01 13:35:00', 1);
-INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (5, 'Not allowed inside!', 5, 5, 5, '2022-05-01 13:35:00', '2018-02-07 13:35:00', 1);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (1, 'Please don\'t park by the fire hydrant', 1, 1, 1, '2022-05-01 13:35:00', '2022-06-01 13:35:00', 0);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (2, 'Back in until you touch the curb. ', 2, 2, 2, '2022-02-01 13:35:00', '2019-06-01 13:35:00', 0);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (3, 'No electicity for truck.', 3, 3, 3, '2022-03-01 13:35:00', '2020-06-01 13:35:00', 0);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (4, 'Please use porta potty.', 4, 4, 4, '2022-04-01 13:35:00', '2021-06-01 13:35:00', 0);
+INSERT INTO `request` (`id`, `remarks`, `user_id`, `food_truck_id`, `location_id`, `request_placed`, `requested_date`, `accepted`) VALUES (5, 'Not allowed inside!', 5, 5, 5, '2022-05-01 13:35:00', '2018-02-07 13:35:00', 0);
 
 COMMIT;
 

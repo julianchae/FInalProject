@@ -59,6 +59,16 @@ export class ScheduleComponent implements OnInit {
       }
     );
   }
+  show2(id: number) {
+    this.scheduleService.show(id).subscribe(
+      (success) => {
+        this.schedule = success;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   createSchedule(schedule: Schedule, location: Location) {
     if (
@@ -97,6 +107,7 @@ export class ScheduleComponent implements OnInit {
       .create(schedule, this.truck.id, this.newLocation.id)
       .subscribe(
         (data) => {
+          this.show(this.truck.id);
           this.newSchedule = data;
         },
         (err) => console.log('Observable got an error ' + err)
@@ -160,6 +171,7 @@ export class ScheduleComponent implements OnInit {
   }
   setEditSchedule(schedule: Schedule) {
     this.editSchedule = Object.assign({}, schedule);
+    this.location = Object.assign({}, schedule.location);
     console.log(this.editSchedule);
   }
 
@@ -169,6 +181,7 @@ export class ScheduleComponent implements OnInit {
       .subscribe(
         (data) => {
           this.newSchedule = data;
+          this.show(this.truck.id);
         },
         (err) => console.log('Observable got an error ' + err)
       );
