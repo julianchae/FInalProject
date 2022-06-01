@@ -44,4 +44,14 @@ export class ScheduleService {
       })
     );
   }
+
+  update(updateSchedule: Schedule, tid: number, lid: number) {
+
+    return this.http.put<Schedule>(this.url + '/' + tid + '/location/' + lid, updateSchedule, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
 }
