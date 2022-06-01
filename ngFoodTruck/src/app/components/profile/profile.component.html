@@ -1,40 +1,44 @@
 <!-- <p>profile works!</p> -->
 <div *ngIf="tempUser">
     <h1 [style.color]="color1">Update User</h1>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + user?.imgUrl + ')'"></div>
+        <mat-card-title>{{user?.firstName}} {{user?.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{user?.username}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-form-field class="example-form" appearance="fill">
+        <input matInput type="text" name="firstName" placeholder="First Name" [(ngModel)]="tempUser.firstName" />
+        <mat-label>First Name</mat-label>
+      </mat-form-field>
+      <mat-form-field class="example-form" appearance="fill">
+        <input matInput type="text" name="lastName" placeholder="Last Name" [(ngModel)]="tempUser.lastName" />
+        <mat-label>Last Name</mat-label>
+      </mat-form-field>
+      <mat-form-field class="example-form" appearance="fill">
+        <input matInput type="text" name="imgUrl" placeholder="Imgage Url" [(ngModel)]="tempUser.imgUrl" />
+        <mat-label>Imgage Url</mat-label>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit" (click)="updateUser(tempUser, tempUser.id)">
+        Edit User</button>
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent">Edit</button>
+      </mat-card-actions>
+    </mat-card>
+
     <form>
 
-        <!-- User ID: <input type="text" name="id" placeholder="0" [(ngModel)]="tempUser.id"/> -->
-        <!-- <br/>
-  <br/> -->
 
-        <br/> First Name: <input type="text" name="firstName" placeholder="First Name" [(ngModel)]="tempUser.firstName" />
-        <br/>
-        <br/> Last Name: <input type="text" name="lastName" placeholder="Last Name" [(ngModel)]="tempUser.lastName" />
-        <br/>
-        <br/>
-        <!-- Password: <input type="text" name="password" placeholder="Password" [(ngModel)]="tempUser.password"/>
-  <br/>
-  <br/> -->
-        Imgage Url: <input type="text" name="imgUrl" placeholder="Imgage Url" [(ngModel)]="tempUser.imgUrl" />
-        <br/>
-        <br/>
-        <input type="submit" name="submit" value="Update User" (click)="updateUser(tempUser, tempUser.id)" />
-    </form>
-    <br/>
-    <br/>
-</div>
 
-<mat-card >
-    <mat-card-actions>
-        <button mat-raised-button color="accent" class="main-btn" >Edit</button>
-    </mat-card-actions>
 
-</mat-card>
+  <app-crud-food-truck></app-crud-food-truck>
 
 
 <div *ngIf="user?.role === 'foodTruckOwner'">
 
-  <app-crud-food-truck></app-crud-food-truck>
 
 
   <mat-card>
@@ -85,7 +89,7 @@
         <td>{{req.id}}</td>
         <td>{{req.remarks}}</td>
         <td>{{req.location?.street}}</td>
-        <td><div *ngIf="req.accepted">✅</div></td>
+        <td><div *ngIf="req.accepted"> ✅</div></td>
         <td><button mat-raised-button color="accent" (click)="updateRequest(req, req.id, true)">Accept</button></td>
       </tr>
     </tbody>
