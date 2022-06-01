@@ -1,8 +1,10 @@
+import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { FoodTruck } from './../../models/food-truck';
 import { FoodTruckService } from './../../services/food-truck.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-single-truck',
@@ -24,9 +26,11 @@ export class SingleTruckComponent implements OnInit {
   showAboutUs: boolean = false;
   showSchedule: boolean = false;
   showComments: boolean = false;
+  user: User | null = null;
 
   constructor(private truckSvc: FoodTruckService,
             private route: ActivatedRoute,
+            private authService: AuthService,
             private router: Router
             ) { }
 
@@ -37,6 +41,19 @@ export class SingleTruckComponent implements OnInit {
         this.displaySingleTruck(parseInt(id));
       }
     }
+    this.authService.getLoggedInUser().subscribe({
+      next:(user) => {
+        this.user = Object.assign({},user);
+        // this.user.password = '';
+        //  this.user = user;
+        // console.log(user);
+
+      },
+      error:(fail) => {
+        console.error(fail);
+        // return null;
+      }
+    });
   }
 
   foodTruck: FoodTruck | null = null;
