@@ -17,10 +17,9 @@ h1 {
 .title-div {
   width: 100vw;
   height: 20vh;
+  min-height: 200px;
   background-size: cover;
   text-align: center;
-
-
 }
 
 .title-div h1{

@@ -24,18 +24,75 @@
     <br/>
 </div>
 
-<mat-card *ngIf="userOwnsTruck();">
+<mat-card >
     <mat-card-actions>
-        <button mat-raised-button color="accent" class="main-btn" *ngIf="userOwnsTruck()">Edit</button>
+        <button mat-raised-button color="accent" class="main-btn" >Edit</button>
     </mat-card-actions>
-    <h3 *ngIf="displayFoodTrucks">{{selected}}</h3>
-    <h3 *ngIf="displayRequests">{{requests}}</h3>
+
 </mat-card>
 
-(click)="updateFoodTruck(selected)"
 
 <div *ngIf="user?.role === 'foodTruckOwner'">
 
+  <app-crud-food-truck></app-crud-food-truck>
+
+
+  <mat-card>
+    <h1>Your Trucks</h1>
+
+    <table mat-table [dataSource]="foodTrucks" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Food Truck </th>
+        <td mat-cell *matCellDef="let truck"> {{truck.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let truck"> {{truck.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let truck"> <button mat-raised-button color="primary"[routerLink]="['/truck/' + truck.id]">View</button> </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+    class="table-row"
+
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-card>
+  <mat-card>
+
+  <h1>
+    Truck Requests
+  </h1>
+  <mat-card class="mat-elevation-z8 ">
+    <table class="homemade-form">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Remarks</th>
+        <th>Address</th>
+        <th>Accepted?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let req of truckRequests">
+        <td>{{req.id}}</td>
+        <td>{{req.remarks}}</td>
+        <td>{{req.location?.street}}</td>
+        <td><div *ngIf="req.accepted">✅</div></td>
+        <td><button mat-raised-button color="accent" (click)="updateRequest(req, req.id, true)">Accept</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-card>
+</mat-card>
 
 
 
@@ -44,3 +101,5 @@
 
 
 </div>
+
+

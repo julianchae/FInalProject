@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+.table-row {
+  transition: all 1s ease;
+}
+
+.table-row:hover {
+  background-color: #ebebeb;
+}
+
+.homemade-form td thead {
+  border-bottom: 1px black;
+}
+
+.homemade-form thead {
+  color: gray;
+  padding-bottom: 10px;
+}
