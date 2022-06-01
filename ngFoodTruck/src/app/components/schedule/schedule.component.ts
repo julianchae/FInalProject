@@ -120,10 +120,38 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  updateSchedule(schedule: Schedule){
-    if (!schedule.id || !schedule.location){
+  updateSchedule(schedule: Schedule, location: Location){
+    if (
+      !schedule.id ||
+      !schedule.location ||
+      !location.street ||
+      !location.state ||
+      !location.city ||
+      !location.zip
+      ){
       return
     }
+    this.locationService.findByStreet(location.street).subscribe(
+      (data) => {
+        this.newLocation = data;
+        schedule.location = this.newLocation;
+        this.updateScheduleHttp(schedule, location);
+        console.log(data);
+      },
+      (err) => {
+        this.locationService.update(location, location.id).subscribe(
+          (data) => {
+            this.newLocation = data;
+            schedule.location = this.newLocation;
+            this.updateScheduleHttp(schedule, location);
+            console.log(data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
+    );
     this.scheduleService.update(schedule, schedule.id, schedule.location.id).subscribe(
       data => {
         this.selected = null;
@@ -134,6 +162,17 @@ export class ScheduleComponent implements OnInit {
   setEditSchedule(schedule: Schedule) {
     this.editSchedule = Object.assign({}, schedule);
     console.log(this.editSchedule);
+  }
+
+  updateScheduleHttp(schedule: Schedule, location: Location) {
+    this.scheduleService
+      .update(schedule, this.truck.id, this.newLocation.id)
+      .subscribe(
+        (data) => {
+          this.newSchedule = data;
+        },
+        (err) => console.log('Observable got an error ' + err)
+      );
   }
 
 }
