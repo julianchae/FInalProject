@@ -59,6 +59,16 @@ export class ScheduleComponent implements OnInit {
       }
     );
   }
+  show2(id: number) {
+    this.scheduleService.show(id).subscribe(
+      (success) => {
+        this.schedule = success;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   createSchedule(schedule: Schedule, location: Location) {
     if (
