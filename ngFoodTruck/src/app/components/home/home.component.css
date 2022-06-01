@@ -7,11 +7,15 @@
   margin: 0;
   width: 100vw;
   height: 40vh;
+  min-height: 300px;
   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.pexels.com/photos/1766686/pexels-photo-1766686.jpeg?);
   background-size: cover;
   text-align: center;
   color: white;
-
+}
+.cover-title button {
+  margin: 0 auto;
+  width: 150px;
 }
 .cover-title h1 {
   margin: 0;
@@ -22,7 +26,10 @@
   margin: 0;
 }
 
-.main-btn but{
+
+.main-btn {
   position: relative;
   margin: 0 auto;
 }
+
+
