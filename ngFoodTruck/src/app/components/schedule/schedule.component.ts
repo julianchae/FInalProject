@@ -22,7 +22,7 @@ export class ScheduleComponent implements OnInit {
   selected: Schedule | null = null;
   user: User | null = null;
   addSchedule: boolean = false;
-
+  editSchedule: Schedule | null = null;
 
   newSchedule: Schedule = new Schedule();
   constructor(
@@ -117,6 +117,23 @@ export class ScheduleComponent implements OnInit {
       isOwner = true;
     }
     return isOwner;
+  }
+
+
+  updateFoodTruck(schedule: Schedule){
+    if (!schedule.id || !schedule.location){
+      return
+    }
+    this.scheduleService.update(schedule, schedule.id, schedule.location.id).subscribe(
+      data => {
+        this.selected = null;
+        this.editSchedule = null;
+      }
+    );
+  }
+  setEditSchedule(schedule: Schedule) {
+    this.editSchedule = Object.assign({}, schedule);
+    console.log(this.editSchedule);
   }
 
 }
