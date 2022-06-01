@@ -120,7 +120,7 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  updateFoodTruck(schedule: Schedule){
+  updateSchedule(schedule: Schedule){
     if (!schedule.id || !schedule.location){
       return
     }
