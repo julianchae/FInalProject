@@ -1,65 +1,57 @@
-<h1>Food Truck Options</h1>
 
 
+<mat-card >
 
-<h3>Create A New Food Truck</h3>
-<form>
-    Name: <input type="text" name="name" [(ngModel)]="newFoodTruck.name"> <br> Description: <input type="text" name="description" [(ngModel)]="newFoodTruck.description"> <br> Image URL: <input type="text" name="sets" [(ngModel)]="newFoodTruck.imgUrl"><br>    Active: <input type="boolean" name="repetitions" [(ngModel)]="newFoodTruck.active"><br> Website URL: <input type="text" name="accessoryWork" [(ngModel)]="newFoodTruck.websiteUrl"><br> <input type="hidden" name="user" [value]="user"><br>
-    <button (click)="createFoodTruck(newFoodTruck)">Submit</button>
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <td> ID</td><br>
-            <td>Name</td><br>
-            <td>Description</td><br>
-            <td>Image URL</td><br>
-            <td>Active</td><br>
-            <td>Date Created</td><br>
-            <td>Website URL</td><br>
-            <td>User</td><br>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let foodTruck of foodTrucks">
-            <td>{{foodTruck.id}} </td><br><br>
-            <td>{{foodTruck.name}} </td><br><br>
-            <td>{{foodTruck.description}} </td><br><br>
-            <td>{{foodTruck.imgUrl}} </td><br><br>
-            <td>{{foodTruck.active}} </td><br><br>
-            <td>{{foodTruck.dateCreated}} </td><br><br>
-            <td>{{foodTruck.websiteUrl}} </td><br><br>
-            <td>{{foodTruck.user}} </td><br><br>
-            <button (click)="deleteFoodTruck(foodTruck.id)">Delete</button>
-            <button (click)="setEditFoodTruck(foodTruck)">Edit</button>
-
-        </tr>
-    </tbody>
-</table>
+  <h3>Create A New Food Truck</h3>
+  <form class="create-truck-form">
+    <mat-form-field class="example-form" appearance="fill">
+      <input matInput type="text" name="name" [(ngModel)]="newFoodTruck.name">
+      <mat-label> Name</mat-label>
+    </mat-form-field>
+    <mat-form-field class="example-form" appearance="fill">
+      <input matInput type="text" name="description" [(ngModel)]="newFoodTruck.description">
+      <mat-label>Description</mat-label>
+    </mat-form-field>
+    <mat-form-field class="example-form" appearance="fill">
+      <input matInput type="text" name="imgUrl" [(ngModel)]="newFoodTruck.imgUrl">
+      <mat-label>Image URL</mat-label>
+    </mat-form-field>
+    <mat-form-field matInput class="example-form" appearance="fill">
+      <input matInput type="boolean" name="active" [(ngModel)]="newFoodTruck.active"><br>
+      <mat-label>Active</mat-label>
+    </mat-form-field>
+    <mat-form-field class="example-form" appearance="fill">
+      <input matInput type="text" name="websiteUrl" [(ngModel)]="newFoodTruck.websiteUrl">
+      <mat-label>Website URL</mat-label>
+    </mat-form-field>
+    <input matInput type="text" name="user" [value]="user" style="display: none;">
+    <br>
+    <button mat-raised-button color="primary" (click)="createFoodTruck(newFoodTruck)">Submit</button>
+  </form>
+</mat-card>
 
 
 <form *ngIf="editFoodTruck">
-    <label for="name">Food Truck Name: </label>
-    <input type="text" name="name" [(ngModel)]="editFoodTruck.name">
+  <label for="name">Food Truck Name: </label>
+  <input type="text" name="name" [(ngModel)]="editFoodTruck.name">
 
-    <label for="description">Description: </label>
-    <input type="text" name="description" [(ngModel)]="editFoodTruck.description">
+  <label for="description">Description: </label>
+  <input type="text" name="description" [(ngModel)]="editFoodTruck.description">
 
-    <label for="imgUrl">Sets: </label>
-    <input type="text" name="imgUrl" [(ngModel)]="editFoodTruck.imgUrl">
+  <label for="imgUrl">Sets: </label>
+  <input type="text" name="imgUrl" [(ngModel)]="editFoodTruck.imgUrl">
 
-    <label for="active">Active: </label>
-    <input type="boolean" name="active" [(ngModel)]="editFoodTruck.active">
+  <label for="active">Active: </label>
+  <input type="boolean" name="active" [(ngModel)]="editFoodTruck.active">
 
-    <label for="dateCreated">Date Created: </label>
-    <input type="text" name="dateCreated" [(ngModel)]="editFoodTruck.dateCreated">
+  <label for="dateCreated">Date Created: </label>
+  <input type="text" name="dateCreated" [(ngModel)]="editFoodTruck.dateCreated">
 
-    <label for="websiteUrl">Website URL: </label>
-    <input type="text" name="websiteUrl" [(ngModel)]="editFoodTruck.websiteUrl">
+  <label for="websiteUrl">Website URL: </label>
+  <input type="text" name="websiteUrl" [(ngModel)]="editFoodTruck.websiteUrl">
 
-    <label for="user">User: </label>
-    <input type="text" name="user" [(ngModel)]="editFoodTruck.user ">
+  <label for="user">User: </label>
+  <input type="text" name="user" [(ngModel)]="editFoodTruck.user ">
 
-    <button (click)="updateFoodTruck(editFoodTruck) ">Submit</button>
+  <button (click)="updateFoodTruck(editFoodTruck) ">Submit</button>
 </form>

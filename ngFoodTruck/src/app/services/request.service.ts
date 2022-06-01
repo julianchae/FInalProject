@@ -46,6 +46,16 @@ userCanCreateRequest(tid: number, lid: number, request: Request){
     );
   }
 
+  updateRequest(req: Request, id: number) {
+    return this.http.put<Request>(this.createUrl + '/' + id, req, this.getHttpOptions())
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
+
 
 
 

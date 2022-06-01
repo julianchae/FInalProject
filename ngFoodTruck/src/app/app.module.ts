@@ -29,6 +29,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { RequestComponent } from './components/request/request.component';
 import { LocationComponent } from './components/location/location.component';
 import { SearchComponent } from './components/search/search.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -68,7 +69,8 @@ import { SearchComponent } from './components/search/search.component';
     MatMenuModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
 
 
   ],

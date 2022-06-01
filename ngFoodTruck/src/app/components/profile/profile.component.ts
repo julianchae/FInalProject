@@ -1,3 +1,5 @@
+import { Request } from './../../models/request';
+import { RequestService } from './../../services/request.service';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -13,14 +15,17 @@ import { FoodTruckService } from 'src/app/services/food-truck.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @Input() truck: FoodTruck = new FoodTruck();
+
   foodTrucks: FoodTruck[] = [];
   selected: FoodTruck | null = null;
   newFoodTruck: FoodTruck = new FoodTruck();
   editFoodTruck: FoodTruck | null = null;
-  requests: Request | null = null;
+  userRequests: Request | null = null;
+  truckRequests: Request[] = []
   foodTruck: FoodTruck | null = null;
   color1 = '#7F6C79';
+  displayedColumns: string[] = ['name', 'description', 'id'];
+  reqColumn: string[] = ['id', 'remarks', 'username'];
   // private url = environment.baseUrl + "api/profile";
 
   //newProfile: Profile = new Profile();
@@ -28,7 +33,11 @@ export class ProfileComponent implements OnInit {
   user: User | null = null;
 
 
-  constructor(private profileService: ProfileService, private authService: AuthService, private truckSvc: FoodTruckService) { }
+  constructor(
+    private profileService: ProfileService,
+    private authService: AuthService,
+    private truckSvc: FoodTruckService,
+    private requestSvc: RequestService) { }
 
   ngOnInit(): void {
     this.authService.getLoggedInUser().subscribe({
@@ -37,6 +46,7 @@ export class ProfileComponent implements OnInit {
         this.tempUser.password = '';
          this.user = user;
         console.log(user);
+        this.loadUserTrucks();
         // user1 = user;
         // return user;
       },
@@ -45,6 +55,8 @@ export class ProfileComponent implements OnInit {
         // return null;
       }
     });
+
+    console.log(this.truckRequests)
   }
 
   updateUser(user: User, id: number | null){
@@ -61,17 +73,7 @@ export class ProfileComponent implements OnInit {
     );
 
   }
-  userOwnsTruck(): boolean {
-    let isOwner: boolean = false;
-    // for(this.user.role === foodTruckOwner)
-    {
 
-      if (this.user?.id === this.truck.user?.id) {
-    }
-      isOwner = true;
-      return isOwner;
-    }
-  }
 
   displayFoodTrucks(foodTruck: FoodTruck) {
     this.truckSvc.getUserTrucks().subscribe(
@@ -81,9 +83,28 @@ export class ProfileComponent implements OnInit {
       err => console.log(err)
     );
   }
-  displayRequests(request: Request) {
-    this.requests = request;
+
+
+  getTruckRequests(id: number) {
+    this.requestSvc.getRequestsOnTruck(id).subscribe(
+      data => {
+        this.truckRequests.push(...data);
+        console.log(this.truckRequests);
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
+
+  getAllUserTruckRequests() {
+    console.log("Inside getAllUserTruckReq()");
+    console.log(this.foodTrucks);
+    for(let truck of this.foodTrucks) {
+      this.getTruckRequests(truck.id);
+    }
+  }
+
   updateFoodTruck(foodTruck: FoodTruck){
     this.truckSvc.update(foodTruck).subscribe(
       data => {
@@ -98,6 +119,35 @@ export class ProfileComponent implements OnInit {
       data => this.foodTrucks = data,
       err => console.log(err)
     );
+  }
+
+  loadUserTrucks() {
+    this.truckSvc.getUserTrucks().subscribe(
+      data => {
+        console.log("inside load user trucks");
+        this.foodTrucks = data;
+        this.getAllUserTruckRequests();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  updateRequest(req: Request, id: number, accept: boolean) {
+    if (accept) {
+      req.accepted = true;
+    } else {
+      req.accepted = false;
+    }
+
+    this.requestSvc.updateRequest(req, id).subscribe(
+      data => {
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
   }

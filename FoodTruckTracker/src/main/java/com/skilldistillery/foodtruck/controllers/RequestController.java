@@ -60,6 +60,7 @@ public class RequestController {
 	public List <Request> getTruckRequests(Principal principal,
 			 @PathVariable int tid
 			){
+		System.out.println("Insde GetTruckReq");
 		return serv.findByTruckId(principal.getName(),tid);
 	}
 }
