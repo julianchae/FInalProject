@@ -48,3 +48,10 @@ Using service in the components controller to display data
 Building up Create/Read/Update/Delete functionality on the client
 
 ### Technologies used and lessons learned
+
+1. Configuring an Angular application
+2. Using Components
+3. Using Services
+4. Using Directives
+5. Sending / receiving JSON
+6. Sending asynchronous request to Java controller with http
