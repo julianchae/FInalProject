@@ -119,7 +119,6 @@ export class ScheduleComponent implements OnInit {
     return isOwner;
   }
 
-
   updateSchedule(schedule: Schedule, location: Location){
     if (
       !schedule.id ||
