@@ -99,10 +99,15 @@ public class TruckServiceImpl implements TruckService {
 		List<FoodTruck>foodtrucks=
 		truckRepo.findByUser_Username(username);
 		User user = userRepo.findByUsername(username);
+		if(user.getRole().equals("generalUser")) {
+			user.setRole("foodTruckOwner");
+		}
+		
 		newFoodtruck.setUser(user);
 		newFoodtruck.setDateCreated(LocalDateTime.now());
 		foodtrucks.add(newFoodtruck);
 		truckRepo.saveAndFlush(newFoodtruck);
+		userRepo.saveAndFlush(user);
 		return newFoodtruck;
 		
 	}
@@ -125,4 +130,5 @@ public class TruckServiceImpl implements TruckService {
 		
 		return deleted;
 	}
+	
 }
