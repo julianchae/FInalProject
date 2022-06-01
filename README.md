@@ -33,6 +33,18 @@ Configuring a Spring Boot app to publish REST API
   2. Using Spring Data JPA to perform all CRUD operations
   3. Sending and receiving JSON
 
+
+### Technologies used and lessons learned
+
+  | HTTP Verb | URI                           | Request Body | Response Body | Purpose |
+  |-----------|-------------------------------|--------------|-----------------------------------------|---------|
+  | GET       | `/api/trucks`              |              | Collection of representations of all food trucks  | **List** or **collection** endpoint |
+  | GET       | `/api/trucks/1`            |              | Representation of food truck `1` | **Retrieve** endpoint |
+  | GET       | `/api/trucks/search/1`   |              | Representation of food trucks with `elk` | **Retrieve** endpoint |
+  | POST      | `/api/trucks`              | Representation of a new food truck | Description of the result of the operation | **Create** endpoint |
+  | PUT       | `/api/trucks/1`            | Representation of a new food truck `1` | | **Replace** endpoint |
+  | DELETE    | `/api/trucks/1`            |              | | **Delete** route |
+
 ## Frontend process
 
 ### Steps & overview
@@ -48,3 +60,10 @@ Using service in the components controller to display data
 Building up Create/Read/Update/Delete functionality on the client
 
 ### Technologies used and lessons learned
+
+1. Configuring an Angular application
+2. Using Components
+3. Using Services
+4. Using Directives
+5. Sending / receiving JSON
+6. Sending asynchronous request to Java controller with http
