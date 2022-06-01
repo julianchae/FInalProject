@@ -51,6 +51,7 @@ h1 {
 }
 
 .about-us-div {
-  margin-left: 4vw;
+  display: flex;
+
 }
 

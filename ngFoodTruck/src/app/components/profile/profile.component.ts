@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   selected: FoodTruck | null = null;
   newFoodTruck: FoodTruck = new FoodTruck();
   editFoodTruck: FoodTruck | null = null;
-  userRequests: Request | null = null;
+  userRequests: Request[] = [];
   truckRequests: Request[] = []
   foodTruck: FoodTruck | null = null;
   color1 = '#7F6C79';
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   // private url = environment.baseUrl + "api/profile";
 
   //newProfile: Profile = new Profile();
-  tempUser: User = new User();
+  tempUser: User | null = null
   user: User | null = null;
 
 
@@ -42,11 +42,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getLoggedInUser().subscribe({
       next:(user) => {
-        this.tempUser = Object.assign({},user);
-        this.tempUser.password = '';
          this.user = user;
         console.log(user);
         this.loadUserTrucks();
+        this.getUsersRequests();
         // user1 = user;
         // return user;
       },
@@ -72,6 +71,12 @@ export class ProfileComponent implements OnInit {
       err => console.error(err)
     );
 
+  }
+
+  setTempUser() {
+    if(this.user){
+    this.tempUser = this.user;
+    }
   }
 
 
@@ -148,6 +153,17 @@ export class ProfileComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  getUsersRequests(){
+    this.requestSvc.getUserRequests().subscribe(
+      data => {
+        this.userRequests = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   }
