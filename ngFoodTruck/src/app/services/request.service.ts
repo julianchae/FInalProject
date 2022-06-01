@@ -56,6 +56,15 @@ userCanCreateRequest(tid: number, lid: number, request: Request){
     );
   }
 
+  getUserRequests() {
+    return this.http.get<Request[]>(this.createUrl, this.getHttpOptions())
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('KABOOM');
+      })
+    );
+  }
 
 
 

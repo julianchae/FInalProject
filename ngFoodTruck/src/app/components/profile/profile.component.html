@@ -1,13 +1,16 @@
 <!-- <p>profile works!</p> -->
-<div *ngIf="tempUser">
-    <h1 [style.color]="color1">Update User</h1>
+<div  class="user-card-div">
 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + user?.imgUrl + ')'"></div>
-        <mat-card-title>{{user?.firstName}} {{user?.lastName}}</mat-card-title>
-        <mat-card-subtitle>{{user?.username}}</mat-card-subtitle>
-      </mat-card-header>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + user?.imgUrl + ')'"></div>
+      <mat-card-title>{{user?.firstName}} {{user?.lastName}}</mat-card-title>
+      <mat-card-subtitle>{{user?.username}}</mat-card-subtitle>
+    </mat-card-header>
+    <div *ngIf="tempUser">
+
+      <button mat-raised-button color="warn" style="max-width: 10px;" (click)="tempUser = null">X</button>
+      <h3 [style.color]="color1">Update User</h3>
       <mat-form-field class="example-form" appearance="fill">
         <input matInput type="text" name="firstName" placeholder="First Name" [(ngModel)]="tempUser.firstName" />
         <mat-label>First Name</mat-label>
@@ -23,16 +26,43 @@
       <br>
       <button mat-raised-button color="primary" type="submit" (click)="updateUser(tempUser, tempUser.id)">
         Edit User</button>
+      </div>
 
-      <mat-card-actions>
-        <button mat-raised-button color="accent">Edit</button>
-      </mat-card-actions>
+        <mat-card-actions *ngIf="!tempUser">
+          <button mat-raised-button color="accent" (click)="setTempUser()">Edit</button>
+        </mat-card-actions>
     </mat-card>
 
-    <form>
+</div>
 
+<div *ngIf="userRequests">
+  <mat-card>
 
-
+    <h1>
+      User Requests
+    </h1>
+    <mat-card class="mat-elevation-z8 ">
+      <table class="homemade-form">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Remarks</th>
+          <th>Address</th>
+          <th>Accepted?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of userRequests">
+          <td>{{req.id}}</td>
+          <td>{{req.remarks}}</td>
+          <td>{{req.location?.street}}</td>
+          <td><div *ngIf="req.accepted"> ✅</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+  </mat-card>
+</div>
 
   <app-crud-food-truck></app-crud-food-truck>
 
