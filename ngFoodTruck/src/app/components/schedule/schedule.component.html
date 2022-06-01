@@ -49,6 +49,32 @@
           <div mat-card class="example-header-image"></div>
           <mat-card-title>{{sch.arrival | date: 'short'}} - <br> {{sch.departure | date: 'short' }}</mat-card-title>
       </mat-card-header>
+
+      <div *ngIf="editSchedule">
+
+        <mat-card>
+          <button mat-raised-button color="warn" (click)="editSchedule = null">X</button>
+          <h3>Update Schedule</h3>
+          <mat-form-field appearance="fill" style="display: none;">
+          <input matInput name="id" [(ngModel)]="editSchedule.id">
+        </mat-form-field>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Arrival</mat-label>
+            <input matInput type="datetime-local" name="arrival" [(ngModel)]="editSchedule.arrival">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Departure</mat-label>
+            <input matInput type="datetime-local" name="departure" [(ngModel)]="editSchedule.departure">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" name="description" [(ngModel)]="editSchedule.description">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="updateSchedule(editSchedule); editSchedule = null">Update</button>
+        </mat-card>
+      </div>
+
+
       <div *ngIf="sch.location">
 
         <iframe
@@ -74,11 +100,11 @@
   </mat-card>
  </div>
 
- <div *ngIf="editSchedule">
+ <!-- <div *ngIf="editSchedule">
 
   <mat-card>
     <button mat-raised-button color="warn" (click)="editSchedule = null">X</button>
-    <h3>Create A New Schedule</h3>
+    <h3>Update Schedule</h3>
     <mat-form-field appearance="fill" style="display: none;">
     <input matInput name="id" [(ngModel)]="editSchedule.id">
   </mat-form-field>
@@ -94,6 +120,6 @@
       <mat-label>Description</mat-label>
       <input matInput type="text" name="description" [(ngModel)]="editSchedule.description">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="updateFoodTruck(editSchedule); editSchedule = null">Update</button>
+    <button mat-raised-button color="primary" (click)="updateSchedule(editSchedule); editSchedule = null">Update</button>
   </mat-card>
-</div>
+</div> -->
