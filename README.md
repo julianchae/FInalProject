@@ -34,16 +34,22 @@ Configuring a Spring Boot app to publish REST API
   3. Sending and receiving JSON
 
 
-### Technologies used and lessons learned
+### URLs
 
-  | HTTP Verb | URI                           | Request Body | Response Body | Purpose |
-  |-----------|-------------------------------|--------------|-----------------------------------------|---------|
+  | HTTP Verb | URI                        | Request Body | Response Body | Purpose |
+  |-----------|----------------------------|--------------|-----------------------------------------|---------|
   | GET       | `/api/trucks`              |              | Collection of representations of all food trucks  | **List** or **collection** endpoint |
   | GET       | `/api/trucks/1`            |              | Representation of food truck `1` | **Retrieve** endpoint |
-  | GET       | `/api/trucks/search/1`   |              | Representation of food trucks with `elk` | **Retrieve** endpoint |
-  | POST      | `/api/trucks`              | Representation of a new food truck | Description of the result of the operation | **Create** endpoint |
-  | PUT       | `/api/trucks/1`            | Representation of a new food truck `1` | | **Replace** endpoint |
-  | DELETE    | `/api/trucks/1`            |              | | **Delete** route |
+  | GET       | `/api/trucks/taco`         |              | Representation of food trucks with `taco` | **Retrieve** endpoint |
+  | GET       | `/api/trucks/menuItem/1`   |              | Collection of representations of all menu items for food truck `1`  | **List** or **collection** endpoint |
+  | GET       | `/api/requests/1`              |              | Collection of representations of all requests for food truck `1` | **List** or **collection** endpoint |
+  | GET       | `/api/schedule/truck/1`              |              | Collection of representations of all schedules for food truck `1` | **List** or **collection** endpoint |
+  | POST      | `/api/trucks/menuItem`              | Representation of a new menu item | Description of the result of the operation | **Create** endpoint |
+  | PUT       | `/api/trucks/menuItem/1`            | Representation of a new menu item `1` | | **Replace** endpoint |
+  | DELETE    | `/api/trucks/menuItem/1`            |              | | **Delete** route |
+  | POST      | `/api/requests`              | Representation of a new request | Description of the result of the operation | **Create** endpoint |
+  | PUT       | `/api/requests/1`            | Representation of a new request `1` | | **Replace** endpoint |
+  | DELETE    | `/api/requests/1`            |              | | **Delete** route |
 
 ## Frontend process
 
