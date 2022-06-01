@@ -43,7 +43,9 @@ public class RequestController {
 	
 	@PutMapping("requests/{rid}")
 	public Request updateRequest(Principal principal, @RequestBody Request request, @PathVariable int rid) {
+		
 		return serv.update(principal.getName(), rid, request);
+		
 	}
 	
 	@DeleteMapping("requests/{rid}")
