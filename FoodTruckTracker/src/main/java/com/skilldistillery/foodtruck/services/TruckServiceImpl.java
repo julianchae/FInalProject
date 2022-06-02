@@ -99,7 +99,7 @@ public class TruckServiceImpl implements TruckService {
 		List<FoodTruck>foodtrucks=
 		truckRepo.findByUser_Username(username);
 		User user = userRepo.findByUsername(username);
-		if(user.getRole().equals("generalUser")) {
+		if(!user.getRole().equals("foodTruckOwner")) {
 			user.setRole("foodTruckOwner");
 		}
 		
