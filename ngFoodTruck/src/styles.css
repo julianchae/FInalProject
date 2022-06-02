@@ -29,8 +29,8 @@ h3, h4, h5 {
 }
 
 .example-card img {
-  height: 250px;
-  min-width: 320px;
+  max-height: 300px;
+  min-width: 100%;
 
 }
 
