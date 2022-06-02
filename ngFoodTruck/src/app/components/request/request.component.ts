@@ -103,6 +103,7 @@ createRequestForTruck(request: Request, location: Location){
   this.requestSvc.userCanCreateRequest(this.truck.id,
     location.id, this.request ).subscribe(
       data => {
+        console.log(data);
         this.loadRequestsForTruck();
         this.newRequest = new Request();
         this.router.navigateByUrl('/home');

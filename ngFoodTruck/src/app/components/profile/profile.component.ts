@@ -139,13 +139,9 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  updateRequest(req: Request, id: number, accept: boolean) {
-    if (accept) {
-      req.accepted = true;
-    } else {
-      req.accepted = false;
-    }
+  updateRequest(req: Request, id: number) {
 
+      req.accepted = true;
     this.requestSvc.updateRequest(req, id).subscribe(
       data => {
       },

@@ -21,7 +21,7 @@
       </mat-form-field>
       <mat-form-field class="example-form" appearance="fill">
         <input matInput type="text" name="imgUrl" placeholder="Imgage Url" [(ngModel)]="tempUser.imgUrl" />
-        <mat-label>Imgage Url</mat-label>
+        <mat-label>Image Url</mat-label>
       </mat-form-field>
       <br>
       <button mat-raised-button color="primary" type="submit" (click)="updateUser(tempUser, tempUser.id)">
@@ -120,7 +120,7 @@
         <td>{{req.remarks}}</td>
         <td>{{req.location?.street}}</td>
         <td><div *ngIf="req.accepted"> ✅</div></td>
-        <td><button mat-raised-button color="accent" (click)="updateRequest(req, req.id, true)">Accept</button></td>
+        <td><button mat-raised-button color="accent" (click)="updateRequest(req, req.id)">Accept</button></td>
       </tr>
     </tbody>
   </table>
